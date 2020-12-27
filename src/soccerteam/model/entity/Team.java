@@ -9,22 +9,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 
 
 @Entity
-public class Logins {
-
+public class Team {
 	
+	@Id
+	@Column
+	private String t_name;
 	
-    @Id
-    @Column
+	@Column
 	private String userid;
-    
-    @Column
-	private String userpw;
+	
+	
 
 }
