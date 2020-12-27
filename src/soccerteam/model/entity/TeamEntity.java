@@ -1,5 +1,7 @@
 package soccerteam.model.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,7 +23,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 @Builder
 
 @Entity(name = "team")
@@ -30,13 +31,22 @@ public class TeamEntity {
 
 	@Id
 	@Column(name="t_name")
-	@OneToMany(mappedBy="t_name")
-	private String t_name;
+	private String tName;
 
+	@NotNull
 	@Column(name = "userid")
 	@ManyToOne(targetEntity = LoginsEntity.class)
 	@JoinColumn(name = "userid")
-	@NotNull
-	private String userid;
+	private LoginsEntity userId;
 
+	@OneToMany(mappedBy="tName")
+	private List list;
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("t_name=");
+		builder.append(tName);
+		return builder.toString();
+	}
 }

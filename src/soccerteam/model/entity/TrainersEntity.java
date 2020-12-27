@@ -35,7 +35,7 @@ public class TrainersEntity {
 	@ManyToOne(targetEntity = TeamEntity.class)
 	@JoinColumn(name = "t_name")
 	@NotNull
-	private String tName;
+	private TeamEntity tName;
 
 	@Column(name = "tr_name")
 	@NotNull
