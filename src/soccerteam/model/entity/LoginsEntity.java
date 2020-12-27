@@ -28,15 +28,15 @@ import lombok.ToString;
 public class LoginsEntity {
 
 	@Id
-	@Column(name = "userid")
+	@Column(name = "user_id")
 	private String userId;
 
 	@NotNull
-	@Column(name = "userpw")
+	@Column(name = "user_pw")
 	private String userPw;
 	
 
-	@OneToMany(mappedBy="userid")
+	@OneToMany(mappedBy="userId")
 	private List<TeamEntity> list;
 
 	public LoginsEntity(String userId, String userPw) {

@@ -34,9 +34,9 @@ public class TeamEntity {
 	private String tName;
 
 	@NotNull
-	@Column(name = "userid")
+	@Column(name = "user_id")
 	@ManyToOne(targetEntity = LoginsEntity.class)
-	@JoinColumn(name = "userid")
+	@JoinColumn(name = "user_id")
 	private LoginsEntity userId;
 
 	@OneToMany(mappedBy="tName")
