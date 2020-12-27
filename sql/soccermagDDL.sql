@@ -20,18 +20,18 @@ CREATE TABLE team(
 CREATE TABLE  players (
 	p_number           number(20)		NOT NULL,
 	t_name             varchar2(25)		NOT NULL,
-	p_name 	           varchar2(50)		NULL,
-	p_age	           number(20)		NULL,
-    p_position         varchar2(50)		NULL
+	p_name 	           varchar2(50)		NOT NULL,
+	p_age	           number(20)		NOT NULL,
+    p_position         varchar2(50)		NOT NULL
 );
 
 
 CREATE TABLE  managers (
 	 m_number	 number(20)		    NOT NULL,
 	 t_name	     varchar2(25)		NOT NULL,
-	 m_name  	 varchar2(50)		NULL,
-	 m_age	     number(20)		    NULL,
-	 m_position	 varchar2(50)		NULL
+	 m_name  	 varchar2(50)		NOT NULL,
+	 m_age	     number(20)		    NOT NULL,
+	 m_position	 varchar2(50)		NOT NULL
 );
 
 
@@ -39,9 +39,9 @@ CREATE TABLE  managers (
 CREATE TABLE medical_staff (
 	d_number	      number(20)		    NOT NULL,
 	t_name	          varchar2(25)		NOT NULL,
-	d_name	          varchar2(50)		NULL,
-	d_age	          number(20)		    NULL,
-	d_position	      varchar2(50)		    NULL
+	d_name	          varchar2(50)		NOT NULL,
+	d_age	          number(20)		    NOT NULL,
+	d_position	      varchar2(50)		    NOT NULL
 );
 
 
@@ -49,9 +49,9 @@ CREATE TABLE medical_staff (
 CREATE TABLE trainers (
 	tr_number	 number(20)		    NOT NULL,
 	t_name	     varchar2(25)		NOT NULL,
-	tr_name	     varchar2(50)		NULL,
-	tr_age	     number(20)		    NULL,
-	tr_position	 varchar2(50)		    NULL
+	tr_name	     varchar2(50)		NOT NULL,
+	tr_age	     number(20)		    NOT NULL,
+	tr_position	 varchar2(50)		    NOT NULL
 );
 
 

@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
@@ -31,8 +32,8 @@ public class PlayersEntity {
 	private int pNumber;
 
 	@Column(name = "t_name")
-//	@ManyToOne(targetEntity = Team.class)
-	@JoinColumn(name = "probonoId")
+	@ManyToOne(targetEntity = TeamEntity.class)
+	@JoinColumn(name = "t_name")
 	@NotNull
 	private String tName;
 

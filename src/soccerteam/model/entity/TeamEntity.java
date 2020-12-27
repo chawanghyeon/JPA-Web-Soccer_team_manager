@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
@@ -20,32 +21,22 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 @ToString
+@Builder
 
-@Entity(name = "trainers")
-@Table(name = "trainers")
-public class TrainersEntity {
+@Entity(name = "team")
+@Table(name = "team")
+public class TeamEntity {
 
 	@Id
-	@Column(name = "tr_number")
-	private int trNumber;
+	@Column(name="t_name")
+	@OneToMany(mappedBy="t_name")
+	private String t_name;
 
-	@Column(name = "t_name")
-	@ManyToOne(targetEntity = TeamEntity.class)
-	@JoinColumn(name = "t_name")
+	@Column(name = "userid")
+	@ManyToOne(targetEntity = LoginsEntity.class)
+	@JoinColumn(name = "userid")
 	@NotNull
-	private String tName;
+	private String userid;
 
-	@Column(name = "tr_name")
-	@NotNull
-	private String trName;
-
-	@Column(name = "tr_age")
-	@NotNull
-	private int trAge;
-
-	@Column(name = "tr_position")
-	@NotNull
-	private String trPosition;
 }
