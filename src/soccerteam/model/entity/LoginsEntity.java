@@ -27,6 +27,7 @@ import lombok.ToString;
 @Table(name = "logins")
 public class LoginsEntity {
 
+	
 	@Id
 	@Column(name = "user_id")
 	private String userId;
