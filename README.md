@@ -1,26 +1,27 @@
-# WEB_JPA MINI PROJECT : Dear.Diary
+# WEB_JPA MINI PROJECT : Controller
 
 
 
-구체적인 기억보다 더 깊고 오래 남는 그 때의 '감정'으로 기억하는 나의 하루! <br>
-Dear Diary와 함께하는 하루하루가 쌓여서 일주일, 한달, 일년이 되고나면 누구나 멘탈갑이 될 수 있습니다!  
+꿀단지님께 날라온 메일 <br>
+토트넘을 소유하고 있는 00기업이 이번에 유벤투스를 인수하게 되었습니다.<br>
+클라이언트는 한 프로그램을 사용하여 두 기업을 관리하고 싶어합니다.<br>
+두팀을 관리할 있는 프로그램을 만들어주세요.<br>
 
-<b>Dear.Diary</b>는 <br>
-:thermometer:  날씨, 수면상태, 그 날의 기분, 하루 단상 등<br>
-:pencil2: 자신의 감정과 연관된 외부 및 내부 상태를 매일 간단히 기록 및 분석하고,  <br>
-:couple: 다른 사람의 기록을 살펴보는 과정을 통해  <br>
-:muscle: 나와 주변의 마음건강을 유지하도록 돕는  <br>
-:massage: 셀프 멘탈 헬스케어 체크 SNS입니다. <br>
+
+<b>Controller</b>는 <br>
+:thermometer: 선수, 감독, 트레이너, 의료진의 정보를 <br>
+:pencil2: 팀별로 사용할 수 있으며,  <br>
+:couple:  팀의 정보보안을 위해 다른팀으로의 접근은 차단하며,  <br>
+:muscle:  모든 정보를 확인할 수 있는  <br>
+:massage: 관리 프로그램입니다. <br>
 
 <p><p>
 	
-## WHY WE SELECT THIS TOPIC?<br><br>
+## TOPIC SELECT PROCESS<br><br>
 
 ### topic <br>
 
 <div>
-<img width="800" src=https://user-images.githubusercontent.com/73386460/101110209-dcb81300-361b-11eb-8e5a-75cf0469f02a.jpg><br>
-	<a href="http://dongascience.donga.com/news.php?idx=41968"><center> 출처 : 동아사이언스 </center></a>
 
 #### 정신줄 꽉 잡아요! <br>
 :mask: 사회적 거리두기의 일상화로 우울감이 심해지고 있는 포스트 코로나 시대,   <br>
@@ -75,15 +76,11 @@ Dear.Diary가 탄생했습니다!!<p></p>
 
 
 <div>
-<img width="1000" src=https://lh4.googleusercontent.com/dVuPisLaZvbbO7v7B0Yf3T4AXV2zYE-7L7lMroRW51R2pD9GyZVJn1DlOquyORKzETP0_A3eH8OQpMqBZKCMJF7LS0YUBBU4Uyrf3-e02mpv3uciUoatxd3H92q2aEB7xiKuKZtzZA>
+<img width="1000" src=https://user-images.githubusercontent.com/73386460/103197067-b6d71300-4928-11eb-907f-65809a582553.PNG>
 
 	
 
 ## MODELING 	
-
-### 메뉴트리
-<div>	
-<img width="1000" src="https://github.com/Heart-and-heart/Heart-and-Heart/blob/mergetest/%EB%A9%94%EB%89%B4%ED%8A%B8%EB%A6%AC.png?raw=true">
 
 ## Service 
 <div>	
@@ -126,178 +123,177 @@ Dear.Diary가 탄생했습니다!!<p></p>
 
 ## SQL TABLE 
 
-+ USER INFORMAITON 
++ Soccer Management DDL 
 
 ```SQL
-drop table USERINFO;
 
-create table USERINFO(
-   id varchar2(50) constraint userinfo_id_pk primary key,
-   pw number(7) not null,
-   matchingid varchar2(50) constraint userinfo_fk references USERINFO(id)
-); 
+CREATE TABLE team(
+	t_name	         varchar2(25)    NOT NULL,
+	user_id	         varchar2(50)	NOT NULL
+);
 
-insert into USERINFO values('ace123', 123456, null);
-insert into USERINFO values('bestyou1', 1111111, null);
-insert into USERINFO values('coral2', 222222,  'ace123');
-insert into USERINFO values('doglover3', 333333, 'bestyou1');
-insert into USERINFO values('enough4', 444444, null);
-insert into USERINFO values('forever5', 555555, null); 
-insert into USERINFO values('admin', 1234, null); 
 
-commit;          
+CREATE TABLE  players (
+	p_number           number(20)		NOT NULL,
+	t_name             varchar2(25)		NOT NULL,
+	p_name 	           varchar2(50)		NOT NULL,
+	p_age	           number(20)		NOT NULL,
+    p_position         varchar2(50)		NOT NULL
+);
+
+
+CREATE TABLE  managers (
+	 m_number	 number(20)		    NOT NULL,
+	 t_name	     varchar2(25)		NOT NULL,
+	 m_name  	 varchar2(50)		NOT NULL,
+	 m_age	     number(20)		    NOT NULL,
+	 m_position	 varchar2(50)		NOT NULL
+);
+
+
+
+CREATE TABLE medical_staff (
+	d_number	      number(20)		    NOT NULL,
+	t_name	          varchar2(25)		NOT NULL,
+	d_name	          varchar2(50)		NOT NULL,
+	d_age	          number(20)		    NOT NULL,
+	d_position	      varchar2(50)		    NOT NULL
+);
+
+
+
+CREATE TABLE trainers (
+	tr_number	 number(20)		    NOT NULL,
+	t_name	     varchar2(25)		NOT NULL,
+	tr_name	     varchar2(50)		NOT NULL,
+	tr_age	     number(20)		    NOT NULL,
+	tr_position	 varchar2(50)		    NOT NULL
+);
+
+
+
+CREATE TABLE logins (
+	user_id	           varchar2(50)	      NOT NULL,
+	user_pw	           varchar2(50)	      NOT NULL
+);
+
+
+ALTER TABLE logins ADD CONSTRAINT PK_LOGINS PRIMARY KEY (userid);
+
+ALTER TABLE players ADD CONSTRAINT PK_PLAYERS PRIMARY KEY (p_number);
+
+ALTER TABLE team ADD CONSTRAINT PK_TEAM PRIMARY KEY (t_name);
+
+ALTER TABLE team ADD CONSTRAINT FK_logins_TO_team_1 FOREIGN KEY (userid)
+REFERENCES logins (userid);
+
+ALTER TABLE managers ADD CONSTRAINT PK_MANAGERS PRIMARY KEY (m_number);
+
+ALTER TABLE medical_staff ADD CONSTRAINT PK_MEDICAL_STAFF PRIMARY KEY (d_number);
+
+ALTER TABLE trainers ADD CONSTRAINT PK_TRAINERS PRIMARY KEY (tr_number);
+
+ALTER TABLE players ADD CONSTRAINT FK_team_TO_players_1 FOREIGN KEY (t_name)
+REFERENCES team (t_name);
+
+ALTER TABLE managers ADD CONSTRAINT FK_team_TO_managers_1 FOREIGN KEY (t_name)
+REFERENCES team (t_name);
+
+ALTER TABLE medical_staff ADD CONSTRAINT FK_team_TO_medical_staff_1 FOREIGN KEY (t_name)
+REFERENCES team (t_name);
+
+ALTER TABLE trainers ADD CONSTRAINT FK_team_TO_trainers_1 FOREIGN KEY (t_name)
+REFERENCES team (t_name);
+
+DROP TABLE players CASCADE CONSTRAINTS;
+
+DROP TABLE team CASCADE CONSTRAINTS;
+
+DROP TABLE managers CASCADE CONSTRAINTS;
+
+DROP TABLE medical_staff CASCADE CONSTRAINTS;
+
+DROP TABLE trainers CASCADE CONSTRAINTS;
+
+DROP TABLE logins CASCADE CONSTRAINTS;
+
 ```
 
-+ EMOTIONS
++ Soccer Management DML 
 
 ```SQL
-drop sequence EMOTIONS_SEQ;
-drop table EMOTIONS;
 
-create sequence EMOTIONS_SEQ;
+insert into logins values ('cwh', '1234');
+insert into logins values ('yoon1234', '4567');
 
-create table EMOTIONS(emotionno number(1) constraint emotions_emotionno_pk primary key,
-   emotionstats varchar2(20) not null); 
-                
-                
-insert into EMOTIONS values(emotions_seq.nextval, '화가나');
-insert into EMOTIONS values(emotions_seq.nextval, '짜증나');
-insert into EMOTIONS values(emotions_seq.nextval, '걱정돼');
-insert into EMOTIONS values(emotions_seq.nextval, '그럭저럭'); 
-insert into EMOTIONS values(emotions_seq.nextval, '평온해');
-insert into EMOTIONS values(emotions_seq.nextval,' 최고');     
+insert into team values ('토트넘', 'cwh');
+insert into team values ('유벤투스', 'yoon1234');
 
-commit;             
-```
 
-+ WEATHER 
+insert into players values(1,'토트넘','권오민',23,'골키퍼');	
+insert into players values(2,'토트넘','권희성',25,'수비수');	
+insert into players values(3,'토트넘','김민건',27,'수비수');	
+insert into players values(4,'토트넘','김성호',29,'수비수');	
+insert into players values(5,'토트넘','김연식',28,'수비수');	
+insert into players values(6,'토트넘','김재웅',27,'공격수');	
+insert into players values(7,'토트넘','김준형',30,'공격수');	
+insert into players values(8,'토트넘','김창훈',25,'공격수');	
+insert into players values(9,'토트넘','김혜경',24,'미드필더');	
+insert into players values(10,'토트넘','김혜성',21,'미드필더');	
+insert into players values(11,'토트넘','박다영',22,'미드필더');	
+insert into players values(12,'유벤투스','염아정',24,'골키퍼');	
+insert into players values(13,'유벤투스','김연지',26,'수비수');	
+insert into players values(14,'유벤투스','박민영',28,'수비수');	
+insert into players values(15,'유벤투스','고은비',27,'수비수');	
+insert into players values(16,'유벤투스','장종욱',25,'수비수');	
+insert into players values(17,'유벤투스','이정민',24,'공격수');	
+insert into players values(18,'유벤투스','조윤혜',26,'공격수');	
+insert into players values(19,'유벤투스','최지수',24,'공격수');	
+insert into players values(20,'유벤투스','최지원',27,'미드필더');	
+insert into players values(21,'유벤투스','최태열',26,'미드필더');	
+insert into players values(22,'유벤투스','양호준',25,'미드필더');	
+	
+				
 
-```SQL
-drop table WEATHER;
 
-create sequence weather_seq;
-create table WEATHER(weatherno number(1) constraint weather_weatherno_pk primary key,
-   weatherstats varchar2(20) not null); 
+insert into trainers values(301,'토트넘','배수지',34,'재활');
+insert into trainers values(302,'토트넘','김태연',50,'재활');
+insert into trainers values(303,'유벤투스','한소희',40,'재활');
+insert into trainers values(304,'토트넘','김준면',30,'PT');
+insert into trainers values(305,'유벤투스','김선호',36,'PT');
+insert into trainers values(306,'유벤투스','남주혁',37,'PT');	
 
-insert into WEATHER values(weather_seq.nextval, '따뜻해');
-insert into WEATHER values(weather_seq.nextval, '더워');
-insert into WEATHER values(weather_seq.nextval, '비가와');
-insert into WEATHER values(weather_seq.nextval, '추워');
-insert into WEATHER values(weather_seq.nextval, '구름둥둥');
-insert into WEATHER values(weather_seq.nextval, '눈온다'); 
 
-commit;         
-```
-+ DIARY 
 
-```SQL
-drop sequence DIARY_SEQ;
-drop table DAIRY;
+insert into managers values (100, '토트넘', 'José Mourinho', 60, 'Manager');
+insert into managers values (101, '토트넘', 'João Sacramento', 50, 'Coach');
+insert into managers values (102, '토트넘', 'Nuno Santos', 40, 'Coach');
+insert into managers values (103, '유벤투스', 'Ledley King', 46, 'Coach');
+insert into managers values (104, '유벤투스', 'Carlos Lalin', 48, 'Coach');
+insert into managers values (105, '유벤투스', 'Giovanni Cerra', 57, 'Coach');
+				
 
-create sequence diary_seq;
 
-create table DIARY(
-   diaryno number(2) constraint diary_diaryno_pk primary key, 
-   id varchar2(50) constraint diary_id_fk references USERINFO(id),
-   emotionno number(1) constraint diary_emotionno_fk references EMOTIONS(emotionno),
-   weatherno number(1) constraint diary_weatherno_fk references WEATHER(weatherno),
-   reportingdate DATE,
-   sleepingtime number(2) not null, 
-   diarycomment varchar2(200) not null, 
-   isPublic number(1) not null 
-); 
+insert into medical_staff values (200, '토트넘', '차의사', 30, '정신과');			
+insert into medical_staff values (201, '토트넘', '조의사', 40, '정형외과');			
+insert into medical_staff values (202, '토트넘', '김의사', 32, '내과');			
+insert into medical_staff values (203, '유벤투스', '박의사', 43, '정형외과');			
+insert into medical_staff values (204, '유벤투스', '이의사', 50, '정형외과');			
+insert into medical_staff values (205, '유벤투스', '최의사', 53, '정형외과');			
+					
+				
+commit;
 
-insert into DIARY values(diary_seq.nextval, 'ace123', 6, 1, to_date('2020-12-01'), 6, '돈 주웠다 최고!', 2);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 5, 1, to_date('2020-12-01'), 7, '오늘 하루도 끝', 2);
-insert into DIARY values(diary_seq.nextval, 'coral2', 6, 2, to_date('2020-12-01'), 8, '도자기가 잘 구워졌다', 2);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 6, 1, to_date('2020-12-01'), 8, '예약해둔 맛집에서 저녁 먹었다', 2);
-insert into DIARY values(diary_seq.nextval, 'enough4', 5, 1, to_date('2020-12-01'), 7, '저녁이 맛있었다.', 1);
-insert into DIARY values(diary_seq.nextval, 'forever5', 3, 1, to_date('2020-12-01'), 5, '12월 첫날이라니 벌써...', 1);
-insert into DIARY values(diary_seq.nextval, 'ace123', 5, 3, to_date('2020-12-02'), 6, '무난무난한 하루였다.', 2);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 6, 3, to_date('2020-12-02'), 7, '보고싶었던 공연을 봤다', 2);
-insert into DIARY values(diary_seq.nextval, 'coral2', 4, 3, to_date('2020-12-02'), 8, '배고픈데 간식을 선물받았다', 2);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 2, 3, to_date('2020-12-02'), 6, '아이스크림 바닥에 흘렸다', 2);
-insert into DIARY values(diary_seq.nextval, 'enough4', 5, 3, to_date('2020-12-02'), 6, '택배가 왔다', 1);
-insert into DIARY values(diary_seq.nextval, 'forever5', 2, 3, to_date('2020-12-02'), 7, '지갑을 놓고 나왔다', 1);
-insert into DIARY values(diary_seq.nextval, 'ace123', 4, 4, to_date('2020-12-03'), 5, '내일만 지나면 주말!!', 2);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 2, 2, to_date('2020-12-03'), 6, '왜 다 나한테 시키지', 1);
-insert into DIARY values(diary_seq.nextval, 'coral2', 5, 1, to_date('2020-12-03'), 5, '알고리즘 문제 4개 풀었다 그리고 드디어 하나 맞았다', 2);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 5, 5, to_date('2020-12-03'), 7, '지하철에서 앉아서 왔다', 2);
-insert into DIARY values(diary_seq.nextval, 'enough4', 5, 5, to_date('2020-12-03'), 3, '길가다 친구를 만났다', 1);
-insert into DIARY values(diary_seq.nextval, 'forever5', 3, 5, to_date('2020-12-03'), 5, '내일 기말고사 마지막 시험', 0);
-insert into DIARY values(diary_seq.nextval, 'ace123', 2, 2, to_date('2020-12-04'), 6, '친구가 아프다고 한다.', 2);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 5, 2, to_date('2020-12-04'), 7, '떡볶이 먹었다', 2);
-insert into DIARY values(diary_seq.nextval, 'coral2', 2, 2, to_date('2020-12-04'), 5, '되는일이 없었다', 1);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 6, 1, to_date('2020-12-04'), 6, '쇼핑 최고다...진짜', 2);
-insert into DIARY values(diary_seq.nextval, 'enough4', 5, 2, to_date('2020-12-04'), 6, '부장님이 월차를 썼다', 1);
-insert into DIARY values(diary_seq.nextval, 'forever5', 4, 2, to_date('2020-12-04'), 7, '점심 메뉴가 나쁘지 않았다', 0);
-insert into DIARY values(diary_seq.nextval, 'ace123', 6, 3, to_date('2020-12-05'), 7, '월급이 들어왔다!', 2);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 6, 3, to_date('2020-12-05'), 6, '오랜만에 친구들 만났다', 2);
-insert into DIARY values(diary_seq.nextval, 'coral2', 4, 3, to_date('2020-12-05'), 7, '돈까스를 먹었다', 2);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 1, 3, to_date('2020-12-05'), 5, '엄마가 아프다.', 0);
-insert into DIARY values(diary_seq.nextval, 'enough4', 5, 3, to_date('2020-12-05'), 7, '오늘 요리가 잘됐다', 1);
-insert into DIARY values(diary_seq.nextval, 'forever5', 3, 3, to_date('2020-12-05'), 6, '알바하는데 손님 너무 없어서 지루했다', 1);
-insert into DIARY values(diary_seq.nextval, 'ace123', 4, 4, to_date('2020-12-06'), 6, '평온한 주말이다', 2);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 6, 4, to_date('2020-12-06'), 8, '강릉에서 킹크랩을 먹었다', 2);
-insert into DIARY values(diary_seq.nextval, 'coral2', 4, 4, to_date('2020-12-06'), 6, '집에서 운동했다', 2);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 3, 4, to_date('2020-12-06'), 5, '지우개 잊어버렸다', 2);
-insert into DIARY values(diary_seq.nextval, 'enough4', 5, 4, to_date('2020-12-06'), 6, '배민 쿠폰 1만원 당첨', 1);
-insert into DIARY values(diary_seq.nextval, 'forever5', 3, 4, to_date('2020-12-06'), 6, '은행업무 보러가기 귀찮다', 1);
-insert into DIARY values(diary_seq.nextval, 'ace123', 4, 1, to_date('2020-12-07'), 7, '일요일이다!', 2);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 5, 1, to_date('2020-12-07'), 6, '오늘은 버스가 시간에 맞춰왔다', 1);
-insert into DIARY values(diary_seq.nextval, 'coral2', 2, 1, to_date('2020-12-07'), 6, '안경이 깨졌다', 1);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 4, 1, to_date('2020-12-07'), 7, '부장님 없는 틈타 퇴근했다', 1);
-insert into DIARY values(diary_seq.nextval, 'enough4', 6, 1, to_date('2020-12-07'), 7, '생일선물로 조던 받았따', 1);
-insert into DIARY values(diary_seq.nextval, 'forever5', 6, 2, to_date('2020-12-07'), 7, '밀린 드라마 다 몰아봄. 눈이부시게 최고., ', 0);
-insert into DIARY values(diary_seq.nextval, 'ace123', 2, 4, to_date('2020-12-08'), 7, '상사한테 깨졌다', 2);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 2, 4, to_date('2020-12-08'), 5, '내일은 출장이다', 2);
-insert into DIARY values(diary_seq.nextval, 'coral2', 3, 4, to_date('2020-12-08'), 7, '배고프다', 0);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 4, 4, to_date('2020-12-08'), 6, '새우튀김을 먹었다', 2);
-insert into DIARY values(diary_seq.nextval, 'enough4', 6, 4, to_date('2020-12-08'), 7, '일이 꼬인 줄 알았는데 해결됐다', 0);
-insert into DIARY values(diary_seq.nextval, 'forever5', 5, 4, to_date('2020-12-08'), 6, '오랜만에 친구들 만나서 수다 떨었다.', 0);
-insert into DIARY values(diary_seq.nextval, 'ace123', 3, 5, to_date('2020-12-09'), 4, '실수했다. 어떡하지', 2);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 3, 5, to_date('2020-12-09'), 3, '출장인지 짐셔틀인지...', 2);
-insert into DIARY values(diary_seq.nextval, 'coral2', 1, 5, to_date('2020-12-09'), 3, '교통사고가 났다.', 2);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 5, 5, to_date('2020-12-09'), 7, '꼬북칩 초코맛 편의점에서 발견해서 3봉지 삼', 1);
-insert into DIARY values(diary_seq.nextval, 'enough4', 1, 5, to_date('2020-12-09'), 0, '친구가 죽었다.....', 0);
-insert into DIARY values(diary_seq.nextval, 'forever5', 3, 5, to_date('2020-12-09'), 7, '길에서 죽은 새를 보았다.', 0);
-insert into DIARY values(diary_seq.nextval, 'ace123', 5, 6, to_date('2020-12-10'), 7, '점심으로 제육볶음을 먹었다.', 2);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 3, 6, to_date('2020-12-10'), 3, '에고 피곤해', 0);
-insert into DIARY values(diary_seq.nextval, 'coral2', 5, 6, to_date('2020-12-10'), 6, '첫눈 내림', 1);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 6, 6, to_date('2020-12-10'), 8, '맛집에 웨이팅이 없었다', 2);
-insert into DIARY values(diary_seq.nextval, 'enough4', 4, 6, to_date('2020-12-10'), 7, '오랜만에 드라마를 봤다', 1);
-insert into DIARY values(diary_seq.nextval, 'forever5', 3, 6, to_date('2020-12-10'), 2, '아 테스형! 세상이 왜 이래!', 1);
-insert into DIARY values(diary_seq.nextval, 'ace123', 4, 1, to_date('2020-12-11'), 8, '무난무난', 2);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 3, 1, to_date('2020-12-11'), 8, '길냥이가 불쌍해', 1);
-insert into DIARY values(diary_seq.nextval, 'coral2', 6, 1, to_date('2020-12-11'), 7, '티켓팅, 성공했다!!!!, ', 2);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 5, 1, to_date('2020-12-11'), 8, '오랜만에 중학교 동창한테 연락이 왔다!! 반가웠다!!!!', 1);
-insert into DIARY values(diary_seq.nextval, 'enough4', 4, 1, to_date('2020-12-11'), 6, '쇼미더머니 결승전 ㄷㄷㄷㅈ', 1);
-insert into DIARY values(diary_seq.nextval, 'forever5', 2, 1, to_date('2020-12-11'), 7, '컨디션 너무 안 좋다. 코로나면 어뜨카지...', 0);
-insert into DIARY values(diary_seq.nextval, 'ace123', 3, 5, to_date('2020-12-12'), 4, '주말인데 걱정된다.', 2);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 4, 5, to_date('2020-12-12'), 10, '토!요!일!!!!!!!', 2);
-insert into DIARY values(diary_seq.nextval, 'coral2', 1, 5, to_date('2020-12-12'), 4, '사이드미러가 깨졌다', 2);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 4, 5, to_date('2020-12-12'), 5, '간단하게 회식했다', 2);
-insert into DIARY values(diary_seq.nextval, 'enough4', 3, 5, to_date('2020-12-12'), 4, '병원에 가야된다', 0);
-insert into DIARY values(diary_seq.nextval, 'forever5', 2, 5, to_date('2020-12-12'), 9, '친구 결혼식 다녀왔다. 나빼고 다 결혼해', 1);
-insert into DIARY values(diary_seq.nextval, 'ace123', 2, 5, to_date('2020-12-13'), 5, '짜증난다.', 0);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 5, 5, to_date('2020-12-13'), 7, '이승우 작가님 신작 읽었다, 크', 0);
-insert into DIARY values(diary_seq.nextval, 'coral2', 2, 5, to_date('2020-12-13'), 7, '밥먹다가 머리카락 나왔다', 2);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 3, 5, to_date('2020-12-13'), 4, '운동하다가 다쳤다', 2);
-insert into DIARY values(diary_seq.nextval, 'enough4', 2, 5, to_date('2020-12-13'), 4, '이사짐 싸느라 매우 힘듦...', 0);
-insert into DIARY values(diary_seq.nextval, 'forever5', 4, 5, to_date('2020-12-13'), 5, '오늘치 목표량 공부 다 했다.', 1);
-insert into DIARY values(diary_seq.nextval, 'ace123', 6, 1, to_date('2020-12-14'), 6, '최고다!', 2);
-insert into DIARY values(diary_seq.nextval, 'bestyou1', 4, 1, to_date('2020-12-14'), 6, '월요일인데 안피곤하다', 1);
-insert into DIARY values(diary_seq.nextval, 'coral2', 6, 1, to_date('2020-12-14'), 6, '이제 카페갈 수 있다', 1);
-insert into DIARY values(diary_seq.nextval, 'doglover3', 5, 1, to_date('2020-12-14'), 6, '점심이 맛있었다', 0);
-insert into DIARY values(diary_seq.nextval, 'enough4', 6, 1, to_date('2020-12-14'), 6, '이사 첫 날, 새 집에는 햇살이 잘 들어서 좋다.', 1);
-insert into DIARY values(diary_seq.nextval, 'forever5', 6, 1, to_date('2020-12-14'), 6, '일년만에 오프라인 공연 보러 다녀옴! 매우 신남!!', 1);
+'''
 
-commit;    
-```
+
+
 
 
 ## PROTOTYPE LINK
-https://ovenapp.io/view/QUf3DYCUbvbcQd5bSBf7GcjnouSksHxb/Bng3c
+https://ovenapp.io/project/Bw3y8pT5PFoud5JYHMvDrt6okzKgig7T#bavCk
+
+
 
 ## INSPRATION 
 <div>
