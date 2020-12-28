@@ -6,8 +6,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import soccerteam.model.dto.TeamDTO;
+import soccerteam.model.entity.LoginsEntity;
 import soccerteam.model.entity.TeamEntity;
 import soccerteam.model.util.DBUtil;
 
@@ -22,19 +24,20 @@ public class TeamDAO {
 		return instance;
 	}
 	
-	public boolean addTeam(TeamDAO team) throws SQLException {
+	public boolean addTeam(TeamDTO team) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
-		em.getTransaction().begin();
+		EntityTransaction tx = em.getTransaction();
 		boolean result = false;
 	
 		try {
-			em.persist(TeamDTO.toEntity());
-			em.getTransaction().commit();
+			em.persist(team.toEntity(em.find(LoginsEntity.class, team.getUserId())));
+			tx.commit();
 
 			result = true;
 
 		} catch (Exception e) {
-			em.getTransaction().rollback();
+			tx.rollback();
+			throw e;
 		} finally {
 			em.close();
 		}
@@ -42,19 +45,22 @@ public class TeamDAO {
 	}
 	
 	
-	public boolean updateTeam(TeamDAO team) throws SQLException {
+	public boolean updateTeam(String tName, String replaceName) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		em.getTransaction().begin();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		boolean result = false;
 	
 		try {
-			em.find(TeamEntity.class, tName).setTname(tName);
-			em.getTransaction().commit();
+			em.find(TeamEntity.class, tName).setTName(replaceName);
+			tx.commit();
 
 			result = true;
 
 		} catch (Exception e) {
-			em.getTransaction().rollback();
+			tx.rollback();
+			throw e;
+			
 		} finally {
 			em.close();
 		}
@@ -63,17 +69,17 @@ public class TeamDAO {
 	
 	public boolean deleteTeam(String tName) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		em.getTransaction().begin();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		boolean result = false;
 
 		try {
 			em.remove(em.find(TeamEntity.class, tName));
-
-			em.getTransaction().commit();
+			tx.commit();
 
 			result = true;
 		} catch (Exception e) {
-			em.getTransaction().rollback();
+			tx.rollback();
 			throw e;
 		} finally {
 			em.close();
@@ -85,14 +91,17 @@ public class TeamDAO {
 
 	public TeamDTO getTeam(String tName) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		em.getTransaction().begin();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		TeamDTO team = null;
 
 		try {
 			TeamEntity t = em.find(TeamEntity.class, tName);
-		    team = new TeamDTO(t.getTName(), t.getUserId());
+		    team = new TeamDTO(t.getTName(), t.getLogins().getUserId());
 		} catch (Exception e) {
-			em.getTransaction().rollback();
+			tx.rollback();
+			throw e;
+			
 		} finally {
 			em.close();
 		}
@@ -102,6 +111,9 @@ public class TeamDAO {
 	@SuppressWarnings("unchecked")
 	public ArrayList<TeamDTO> getAllTeam() throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		
 		List<TeamEntity> list = null;
 		ArrayList<TeamDTO> tlist = new ArrayList<>();
 		try {

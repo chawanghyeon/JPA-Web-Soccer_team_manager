@@ -37,7 +37,7 @@ public class TeamEntity {
 	@Column(name = "user_id")
 	@ManyToOne(targetEntity = LoginsEntity.class)
 	@JoinColumn(name = "user_id")
-	private LoginsEntity userId;
+	private LoginsEntity logins;
 
 	@OneToMany(mappedBy="team")
 	private List list;

@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import soccerteam.model.entity.ManagersEntity;
+import soccerteam.model.entity.TeamEntity;
 
 @Getter
 @Setter
@@ -14,12 +16,11 @@ import lombok.Setter;
 
 public class ManagersDTO {
 	
-	private int m_number;
-	private String t_name;
-	private String userid;
-	private String m_name;
-	private String m_age;
-	private String m_position;
+	private int mNumber;
+	private String tName;
+    private String mName;
+	private int mAge;
+	private String mPosition;
 
 	
 	
@@ -30,19 +31,27 @@ public class ManagersDTO {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("ManagersDTO [m_number=");
-		builder.append(m_number);
+		builder.append(mNumber);
 		builder.append(", t_name=");
-		builder.append(t_name);
-		builder.append(", userid=");
-		builder.append(userid);
+		builder.append(tName);
 		builder.append(", m_name=");
-		builder.append(m_name);
+		builder.append(mName);
 		builder.append(", m_age=");
-		builder.append(m_age);
+		builder.append(mAge);
 		builder.append(", m_position=");
-		builder.append(m_position);
+		builder.append(mPosition);
 		builder.append("]");
 		return builder.toString();
+	}
+
+
+
+
+
+
+	public ManagersEntity toEntity(TeamEntity team) {
+		
+		return ManagersEntity.builder().mNumber(mNumber).team(team).mName(mName).mAge(mAge).mPosition(mPosition).build();
 	}
 	
 	

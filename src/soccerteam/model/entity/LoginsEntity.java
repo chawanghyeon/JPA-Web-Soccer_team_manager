@@ -37,7 +37,7 @@ public class LoginsEntity {
 	private String userPw;
 	
 
-	@OneToMany(mappedBy="userId")
+	@OneToMany(mappedBy="logins")
 	private List<TeamEntity> list;
 
 	public LoginsEntity(String userId, String userPw) {
