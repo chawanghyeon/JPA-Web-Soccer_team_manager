@@ -8,32 +8,32 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import soccerteam.model.dto.MedicalStaffDTO;
-import soccerteam.model.dto.TrainerDTO;
-import soccerteam.model.entity.MedicalStaffEntity;
+import org.apache.log4j.PatternLayout;
+
+import soccerteam.model.dto.PlayerDTO;
+import soccerteam.model.entity.PlayerEntity;
 import soccerteam.model.entity.TeamEntity;
-import soccerteam.model.entity.TrainerEntity;
 import soccerteam.model.util.DBUtil;
 
-public class MedicalStaffDAO {
+public class PlayerDAO {
 
-	private static MedicalStaffDAO instance = new MedicalStaffDAO();
+	private static PlayerDAO instance = new PlayerDAO();
 
-	private MedicalStaffDAO() {
+	private PlayerDAO() {
 	}
 
-	public static MedicalStaffDAO getInstance() {
+	public static PlayerDAO getInstance() {
 		return instance;
 	}
 
-	public boolean addMedicalStaff(MedicalStaffDTO medicalStaff) throws Exception {
+	public boolean addPlayer(PlayerDTO player) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 
 		boolean result = false;
 
 		try {
-			em.persist(medicalStaff.toEntity(em.find(TeamEntity.class, medicalStaff.getTName())));
+			em.persist(player.toEntity(em.find(TeamEntity.class, player.getTName())));
 			tx.commit();
 
 			result = true;
@@ -47,7 +47,7 @@ public class MedicalStaffDAO {
 		return result;
 	}
 
-	public boolean updateMedicalStaff(int dNumber, String dPosition) throws SQLException {
+	public boolean updatePlayer(int pNumber, String pPosition) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -55,7 +55,7 @@ public class MedicalStaffDAO {
 		boolean result = false;
 
 		try {
-			em.find(MedicalStaffEntity.class, dNumber).setDPosition(dPosition);
+			em.find(PlayerEntity.class, pNumber).setPPosition(pPosition);
 			tx.commit();
 
 			result = true;
@@ -68,7 +68,7 @@ public class MedicalStaffDAO {
 		return result;
 	}
 
-	public boolean deleteMedicalStaff(int dNumber) throws SQLException {
+	public boolean deletePlayer(int pNumber) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -76,7 +76,7 @@ public class MedicalStaffDAO {
 		boolean result = false;
 
 		try {
-			em.remove(em.find(MedicalStaffEntity.class, dNumber));
+			em.remove(em.find(PlayerEntity.class, pNumber));
 			tx.commit();
 
 			result = true;
@@ -89,41 +89,41 @@ public class MedicalStaffDAO {
 		return result;
 	}
 
-	public MedicalStaffDTO getMedicalStaff(int dNumber) throws SQLException {
+	public PlayerDTO getPlayer(int pNumber) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 
-		MedicalStaffDTO medicalStaff = null;
+		PlayerDTO players = null;
 
 		try {
-			MedicalStaffEntity d = em.find(MedicalStaffEntity.class, dNumber);
-			medicalStaff = new MedicalStaffDTO(d.getDNumber(), d.getTeam().getTName(), d.getDName(), d.getDAge(),
-					d.getDPosition());
+			PlayerEntity p = em.find(PlayerEntity.class, pNumber);
+			players = new PlayerDTO(p.getPNumber(), p.getTeam().getTName(), p.getPName(), p.getPAge(),
+					p.getPPosition());
 		} catch (Exception e) {
 			tx.rollback();
 			throw e;
 		} finally {
 			em.close();
 		}
-		return medicalStaff;
+		return players;
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<MedicalStaffDTO> getAllMedicalStaffs() throws SQLException {
+	public ArrayList<PlayerDTO> getAllPlayers() throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 
-		List<MedicalStaffEntity> list = null;
-		ArrayList<MedicalStaffDTO> dlist = new ArrayList<>();
+		List<PlayerEntity> list = null;
+		ArrayList<PlayerDTO> plist = new ArrayList<>();
 
 		try {
-			list = em.createNativeQuery("SELECT * FROM medical_staff").getResultList();
+			list = em.createNativeQuery("SELECT * FROM players").getResultList();
 			Iterator it = list.iterator();
 			while (it.hasNext()) {
 				Object[] obj = (Object[]) it.next();
-				dlist.add(new MedicalStaffDTO(Integer.parseInt(String.valueOf(obj[0])), String.valueOf(obj[1]),
+				plist.add(new PlayerDTO(Integer.parseInt(String.valueOf(obj[0])), String.valueOf(obj[1]),
 						String.valueOf(obj[2]), Integer.parseInt(String.valueOf(obj[3])), String.valueOf(obj[4])));
 			}
 		} catch (Exception e) {
@@ -132,6 +132,6 @@ public class MedicalStaffDAO {
 		} finally {
 			em.close();
 		}
-		return dlist;
+		return plist;
 	}
 }

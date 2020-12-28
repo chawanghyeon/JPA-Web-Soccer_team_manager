@@ -23,13 +23,13 @@ import lombok.ToString;
 @Builder
 @ToString
 
-@Entity(name = "trainers")
-@Table(name = "trainers")
-public class TrainersEntity {
+@Entity(name = "players")
+@Table(name = "players")
+public class PlayerEntity {
 
 	@Id
-	@Column(name = "tr_number")
-	private int trNumber;
+	@Column(name = "p_number")
+	private int pNumber;
 
 	@Column(name = "t_name")
 	@ManyToOne(targetEntity = TeamEntity.class)
@@ -37,15 +37,15 @@ public class TrainersEntity {
 	@NotNull
 	private TeamEntity team;
 
-	@Column(name = "tr_name")
+	@Column(name = "p_name")
 	@NotNull
-	private String trName;
+	private String pName;
 
-	@Column(name = "tr_age")
+	@Column(name = "p_age")
 	@NotNull
-	private int trAge;
+	private int pAge;
 
-	@Column(name = "tr_position")
+	@Column(name = "p_position")
 	@NotNull
-	private String trPosition;
+	private String pPosition;
 }

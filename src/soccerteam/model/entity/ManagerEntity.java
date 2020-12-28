@@ -16,20 +16,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @ToString
 
-@Entity(name = "players")
-@Table(name = "players")
-public class PlayersEntity {
+@Entity(name = "managers")
+@Table(name = "managers")
+public class ManagerEntity {
 
 	@Id
-	@Column(name = "p_number")
-	private int pNumber;
+	@Column(name = "m_number")
+	private int mNumber;
 
 	@Column(name = "t_name")
 	@ManyToOne(targetEntity = TeamEntity.class)
@@ -37,15 +37,16 @@ public class PlayersEntity {
 	@NotNull
 	private TeamEntity team;
 
-	@Column(name = "p_name")
+	@Column(name = "m_name")
 	@NotNull
-	private String pName;
+	private String mName;
 
-	@Column(name = "p_age")
+	@Column(name = "m_age")
 	@NotNull
-	private int pAge;
+	private int mAge;
 
-	@Column(name = "p_position")
+	@Column(name = "m_position")
 	@NotNull
-	private String pPosition;
+	private String mPosition;
+
 }

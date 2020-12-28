@@ -25,31 +25,31 @@ import lombok.ToString;
 
 @Entity(name = "logins")
 @Table(name = "logins")
-public class LoginsEntity {
+public class LoginEntity {
 
 	
 	@Id
 	@Column(name = "user_id")
-	private String userId;
+	private String userID;
 
 	@NotNull
 	@Column(name = "user_pw")
-	private String userPw;
+	private String userPW;
 	
 
 	@OneToMany(mappedBy="logins")
 	private List<TeamEntity> list;
 
-	public LoginsEntity(String userId, String userPw) {
-		this.userId = userId;
-		this.userPw = userPw;
+	public LoginEntity(String userId, String userPw) {
+		this.userID = userId;
+		this.userPW = userPw;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("userId=");
-		builder.append(userId);
+		builder.append(userID);
 		return builder.toString();
 	}
 	

@@ -3,12 +3,12 @@
 <persistence xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
 
 <persistence-unit name="oracleDBUse">
-	<class>soccerteam.model.entity.LoginsEntity</class>
-	<class>soccerteam.model.entity.ManagersEntity</class>
+	<class>soccerteam.model.entity.LoginEntity</class>
+	<class>soccerteam.model.entity.ManagerEntity</class>
 	<class>soccerteam.model.entity.MedicalStaffEntity</class>
-	<class>soccerteam.model.entity.PlayersEntity</class>
+	<class>soccerteam.model.entity.PlayerEntity</class>
 	<class>soccerteam.model.entity.TeamEntity</class>
-	<class>soccerteam.model.entity.TrainersEntity</class>
+	<class>soccerteam.model.entity.TrainerEntity</class>
 
 
 <properties>

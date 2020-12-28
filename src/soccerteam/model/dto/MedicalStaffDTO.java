@@ -8,7 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 import soccerteam.model.entity.MedicalStaffEntity;
 import soccerteam.model.entity.TeamEntity;
-import soccerteam.model.entity.TrainersEntity;
+import soccerteam.model.entity.TrainerEntity;
 
 @NoArgsConstructor
 @AllArgsConstructor

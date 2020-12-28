@@ -8,33 +8,76 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import soccerteam.model.dto.TeamDTO;
+import soccerteam.model.dto.LoginDTO;
 import soccerteam.model.entity.LoginEntity;
-import soccerteam.model.entity.TeamEntity;
 import soccerteam.model.util.DBUtil;
 
-public class TeamDAO {
+public class LoginDAO {
 
-	private static TeamDAO instance = new TeamDAO();
+	private static LoginDAO instance = new LoginDAO();
 
-	private TeamDAO() {
+	private LoginDAO() {
 	}
 
-	public static TeamDAO getInstance() {
+	public static LoginDAO getInstance() {
 		return instance;
 	}
 
-	public boolean addTeam(TeamDTO team) throws Exception {
+	public boolean addLogin(LoginDTO login) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
+		
 		boolean result = false;
 
 		try {
-			em.persist(team.toEntity(em.find(LoginEntity.class, team.getUserID())));
+			em.persist(login.toEntity());
 			tx.commit();
 
 			result = true;
 
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
+		}
+		return result;
+	}
+
+	public boolean updateLogin(String userID, String newPw) throws SQLException {
+		EntityManager em = DBUtil.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		
+		boolean result = false;
+
+		try {
+			em.find(LoginEntity.class, userID).setUserPW(newPw);
+			tx.commit();
+
+			result = true;
+
+		} catch (Exception e) {
+			tx.rollback();
+			throw e;
+
+		} finally {
+			em.close();
+		}
+		return result;
+	}
+
+	public boolean deleteLogin(String userID) throws SQLException {
+		EntityManager em = DBUtil.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		
+		boolean result = false;
+
+		try {
+			em.remove(em.find(LoginEntity.class, userID));
+			tx.commit();
+
+			result = true;
 		} catch (Exception e) {
 			tx.rollback();
 			throw e;
@@ -44,87 +87,47 @@ public class TeamDAO {
 		return result;
 	}
 
-	public boolean updateTeam(String tName, String newName) throws SQLException {
+	public LoginDTO getLogin(String userID) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		boolean result = false;
+		
+		LoginDTO login = null;
 
 		try {
-			em.find(TeamEntity.class, tName).setTName(newName);
-			tx.commit();
-
-			result = true;
-
-		} catch (Exception e) {
-			tx.rollback();
-			throw e;
-
-		} finally {
-			em.close();
-		}
-		return result;
-	}
-
-	public boolean deleteTeam(String tName) throws SQLException {
-		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		boolean result = false;
-
-		try {
-			em.remove(em.find(TeamEntity.class, tName));
-			tx.commit();
-
-			result = true;
+			LoginEntity l = em.find(LoginEntity.class, userID);
+			login = new LoginDTO(userID, l.getUserPW());
 		} catch (Exception e) {
 			tx.rollback();
 			throw e;
 		} finally {
 			em.close();
 		}
-		return result;
-	}
-
-	public TeamDTO getTeam(String tName) throws SQLException {
-		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		TeamDTO team = null;
-
-		try {
-			TeamEntity t = em.find(TeamEntity.class, tName);
-			team = new TeamDTO(t.getTName(), t.getLogins().getUserID());
-		} catch (Exception e) {
-			tx.rollback();
-			throw e;
-
-		} finally {
-			em.close();
-		}
-		return team;
+		return login;
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<TeamDTO> getAllTeams() throws SQLException {
+	public ArrayList<LoginDTO> getAllLogins() throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-
-		List<TeamEntity> list = null;
-		ArrayList<TeamDTO> tlist = new ArrayList<>();
+		
+		List<LoginEntity> list = null;
+		ArrayList<LoginDTO> llist = new ArrayList<>();
+		
 		try {
-			list = em.createNativeQuery("SELECT * FROM team").getResultList();
+			list = em.createNativeQuery("SELECT * FROM logins").getResultList();
 			Iterator it = list.iterator();
-			while (it.hasNext()) {
+			while(it.hasNext()) {
 				Object[] obj = (Object[]) it.next();
-				tlist.add(new TeamDTO(String.valueOf(obj[0]), String.valueOf(obj[1])));
+				llist.add(new LoginDTO(String.valueOf(obj[0]), String.valueOf(obj[1])));
 			}
 		} catch (Exception e) {
 			em.getTransaction().rollback();
 		} finally {
 			em.close();
 		}
-		return tlist;
+		return llist;
 	}
+	
 }

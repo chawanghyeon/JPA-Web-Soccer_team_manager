@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import soccerteam.model.entity.LoginEntity;
 
 @Getter
 @Setter
@@ -12,20 +13,23 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 
-public class LoginsDTO {
+public class LoginDTO {
 	
-	private String userId;
-	private String userPw;
+	private String userID;
+	private String userPW;
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("LoginsDTO [userid=");
-		builder.append(userId);
+		builder.append(userID);
 		builder.append(", userpw=");
-		builder.append(userPw);
+		builder.append(userPW);
 		builder.append("]");
 		return builder.toString();
 	}
 	
+	public LoginEntity toEntity() {
+		return LoginEntity.builder().userID(userID).userPW(userPW).build();
+	}
 }

@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import soccerteam.model.entity.PlayersEntity;
+import soccerteam.model.entity.PlayerEntity;
 import soccerteam.model.entity.TeamEntity;
 
 @NoArgsConstructor
@@ -16,7 +16,7 @@ import soccerteam.model.entity.TeamEntity;
 @Builder
 @ToString
 
-public class PlayersDTO {
+public class PlayerDTO {
 
 	private int pNumber;
 
@@ -28,7 +28,7 @@ public class PlayersDTO {
 
 	private String pPosition;
 	
-	public PlayersEntity toEntity(TeamEntity team) {
-		return PlayersEntity.builder().pNumber(pNumber).pName(pName).pAge(pAge).pPosition(pPosition).team(team).build();
+	public PlayerEntity toEntity(TeamEntity team) {
+		return PlayerEntity.builder().pNumber(pNumber).pName(pName).pAge(pAge).pPosition(pPosition).team(team).build();
 	}
 }

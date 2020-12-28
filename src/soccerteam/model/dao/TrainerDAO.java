@@ -8,32 +8,32 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import org.apache.log4j.PatternLayout;
-
-import soccerteam.model.dto.PlayersDTO;
-import soccerteam.model.entity.PlayersEntity;
+import soccerteam.model.dto.PlayerDTO;
+import soccerteam.model.dto.TrainerDTO;
+import soccerteam.model.entity.PlayerEntity;
 import soccerteam.model.entity.TeamEntity;
+import soccerteam.model.entity.TrainerEntity;
 import soccerteam.model.util.DBUtil;
 
-public class PlayersDAO {
+public class TrainerDAO {
 
-	private static PlayersDAO instance = new PlayersDAO();
+	private static TrainerDAO instance = new TrainerDAO();
 
-	private PlayersDAO() {
+	private TrainerDAO() {
 	}
 
-	public static PlayersDAO getInstance() {
+	public static TrainerDAO getInstance() {
 		return instance;
 	}
 
-	public boolean addPlayer(PlayersDTO player) throws Exception {
+	public boolean addTrainer(TrainerDTO trainer) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 
 		boolean result = false;
 
 		try {
-			em.persist(player.toEntity(em.find(TeamEntity.class, player.getTName())));
+			em.persist(trainer.toEntity(em.find(TeamEntity.class, trainer.getTName())));
 			tx.commit();
 
 			result = true;
@@ -47,7 +47,7 @@ public class PlayersDAO {
 		return result;
 	}
 
-	public boolean updatePlayer(int pNumber, String pPosition) throws SQLException {
+	public boolean updateTrainer(int trNumber, String trPosition) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -55,7 +55,7 @@ public class PlayersDAO {
 		boolean result = false;
 
 		try {
-			em.find(PlayersEntity.class, pNumber).setPPosition(pPosition);
+			em.find(TrainerEntity.class, trNumber).setTrPosition(trPosition);
 			tx.commit();
 
 			result = true;
@@ -68,7 +68,7 @@ public class PlayersDAO {
 		return result;
 	}
 
-	public boolean deletePlayer(int pNumber) throws SQLException {
+	public boolean deleteTrainer(int trNumber) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -76,7 +76,7 @@ public class PlayersDAO {
 		boolean result = false;
 
 		try {
-			em.remove(em.find(PlayersEntity.class, pNumber));
+			em.remove(em.find(TrainerEntity.class, trNumber));
 			tx.commit();
 
 			result = true;
@@ -89,41 +89,41 @@ public class PlayersDAO {
 		return result;
 	}
 
-	public PlayersDTO getPlayer(int pNumber) throws SQLException {
+	public TrainerDTO getTrainer(int trNumber) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 
-		PlayersDTO players = null;
+		TrainerDTO trainer = null;
 
 		try {
-			PlayersEntity p = em.find(PlayersEntity.class, pNumber);
-			players = new PlayersDTO(p.getPNumber(), p.getTeam().getTName(), p.getPName(), p.getPAge(),
-					p.getPPosition());
+			TrainerEntity t = em.find(TrainerEntity.class, trNumber);
+			trainer = new TrainerDTO(t.getTrNumber(), t.getTeam().getTName(), t.getTrName(), t.getTrAge(),
+					t.getTrPosition());
 		} catch (Exception e) {
 			tx.rollback();
 			throw e;
 		} finally {
 			em.close();
 		}
-		return players;
+		return trainer;
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<PlayersDTO> getAllPlayers() throws SQLException {
+	public ArrayList<TrainerDTO> getAllTrainers() throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 
-		List<PlayersEntity> list = null;
-		ArrayList<PlayersDTO> plist = new ArrayList<>();
+		List<TrainerEntity> list = null;
+		ArrayList<TrainerDTO> tlist = new ArrayList<>();
 
 		try {
-			list = em.createNativeQuery("SELECT * FROM players").getResultList();
+			list = em.createNativeQuery("SELECT * FROM trainers").getResultList();
 			Iterator it = list.iterator();
 			while (it.hasNext()) {
 				Object[] obj = (Object[]) it.next();
-				plist.add(new PlayersDTO(Integer.parseInt(String.valueOf(obj[0])), String.valueOf(obj[1]),
+				tlist.add(new TrainerDTO(Integer.parseInt(String.valueOf(obj[0])), String.valueOf(obj[1]),
 						String.valueOf(obj[2]), Integer.parseInt(String.valueOf(obj[3])), String.valueOf(obj[4])));
 			}
 		} catch (Exception e) {
@@ -132,6 +132,6 @@ public class PlayersDAO {
 		} finally {
 			em.close();
 		}
-		return plist;
+		return tlist;
 	}
 }
