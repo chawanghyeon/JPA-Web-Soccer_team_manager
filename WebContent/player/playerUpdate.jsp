@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>감독 수정 페이지</title>
+<title>선수 수정 페이지</title>
 </head>
 <body>
 	<br>
@@ -12,21 +12,22 @@
 	<br>
 	<center>
 
-		<h3>감독 정보 수정하기 - 감독 분야 수정</h3>
+		<h3>선수 정보 수정하기 - 선수 포지션 수정</h3>
 		<hr>
 		<p>
-		<form action="soccerteam?command=updateManager" method="post">
+		<form action="soccerteam?command=updatePlayer" method="post">
 			<table border="1">
 				<thead>
 					<tr>
-						<th>팀 이름</th><th>감독 번호</th><th>감독 이름</th><th>감독 나이</th><th>감독 분야</th>
+						<th>팀 이름</th><th>선수 번호</th><th>선수 이름</th><th>선수 나이</th><th>선수 포지션</th>
 					</tr>
 					<tr>
-						<td>${requestScope.manager.tName}</td>
-					 	<td>${requestScope.manager.mNumber}</td>
-					 	<td>${requestScope.manager.mName}</td>
-					 	<td>${requestScope.manager.mAge}</td>
-					 	<td><input type="text" name="mPosition" value="${requestScope.manager.mPosition}"></td>
+							 <td>${requestScope.player.tName}</td>
+ 		                     <td>${requestScope.player.pNumber}</td>
+ 		                     <td>${requestScope.player.pName}</td>
+ 		                     <td>${requestScope.player.pAge}</td>
+ 		                     <td>${requestScope.player.pPosition}</td>
+					 	<td><input type="text" name="pPosition" value="${requestScope.player.pPosition}"></td>
 					</tr>
 
 					<tr>

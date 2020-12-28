@@ -6,31 +6,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>재능 기부자 등록화면</title>
+<title>의료진 등록 화면</title>
 </head>
 <body>
 <br><br><br>
 <center>
-<h3>재능 기부자</h3>
+<h3>의료진 등록</h3>
 <hr><p>
 
 <form action="${pageContext.request.contextPath}/soccerteam" method="post">
-	<input type="hidden" name="command" value="addManager">
+	<input type="hidden" name="command" value="addMedicalStaff">
 	<table border="1">
 		<tr>
-			<td>감독 번호</td><td><input type="text" name="mNumber"></td>
+			<td>의료진 번호</td><td><input type="text" name="dNumber"></td>
 		</tr>
 		<tr>
 	 		<td>${requestScope.team.tName}</td><td><input type="text" name="tName"></td>
 		</tr>
 		<tr>	
-			<td>감독 이름</td><td><input type="text" name="mName"></td>
+			<td>의료진 이름</td><td><input type="text" name="dName"></td>
 	 	</tr>
 	 	<tr>
-	 		<td>감독 나이</td><td><input type="text" name="mAge"></td>
+	 		<td>의료진 나이</td><td><input type="text" name="dAge"></td>
 	 	</tr>
 	 	<tr>
-	 		<td>감독 분야</td><td><input type="text" name="mPosition"></td>
+	 		<td>의료진 분야</td><td><input type="text" name="dPosition"></td>
 	 	</tr>
 	 	<tr>
 	 		<td colspan="2"><input type="submit" value="가입">&nbsp;&nbsp;&nbsp;<input type="reset" value="취소"></td>

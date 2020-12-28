@@ -6,31 +6,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>재능 기부자 등록화면</title>
+<title>선수 등록화면</title>
 </head>
 <body>
 <br><br><br>
 <center>
-<h3>재능 기부자</h3>
+<h3>선수 등록</h3>
 <hr><p>
 
 <form action="${pageContext.request.contextPath}/soccerteam" method="post">
-	<input type="hidden" name="command" value="addManager">
+	<input type="hidden" name="command" value="addPlayer">
 	<table border="1">
 		<tr>
-			<td>감독 번호</td><td><input type="text" name="mNumber"></td>
+			<td>선수 번호</td><td><input type="text" name="pNumber"></td>
 		</tr>
 		<tr>
 	 		<td>${requestScope.team.tName}</td><td><input type="text" name="tName"></td>
 		</tr>
 		<tr>	
-			<td>감독 이름</td><td><input type="text" name="mName"></td>
+			<td>선수 이름</td><td><input type="text" name="pName"></td>
 	 	</tr>
 	 	<tr>
-	 		<td>감독 나이</td><td><input type="text" name="mAge"></td>
+	 		<td>선수 나이</td><td><input type="text" name="pAge"></td>
 	 	</tr>
 	 	<tr>
-	 		<td>감독 분야</td><td><input type="text" name="mPosition"></td>
+	 		<td>선수 포지션</td><td><input type="text" name="pPosition"></td>
 	 	</tr>
 	 	<tr>
 	 		<td colspan="2"><input type="submit" value="가입">&nbsp;&nbsp;&nbsp;<input type="reset" value="취소"></td>

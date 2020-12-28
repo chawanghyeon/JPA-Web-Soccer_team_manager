@@ -6,7 +6,7 @@
 <html> 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>감독 상세보기</title>
+<title>의료진 상세보기 화면</title>
 </head>
 <body>
 <br><br><br>
@@ -14,24 +14,24 @@
 
 ${requestScope.successMsg}
 
-<h3>감독 상세보기</h3>
+<h3>의료진  상세보기</h3>
 <hr><p> 
  
 <table border="1">
 	<tr>
-		<th>감독이름</th><th>감독나이</th><th>감독분야</th>
+		<th>의료진 이름</th><th>의료진 나이</th><th>의료진 분야</th>
 	</tr>
  	<tr>
- 		<td>${requestScope.manager.mName}</td>
- 		<td>${requestScope.manager.mAge}</td>
- 		<td>${requestScope.manager.mPosition}</td>
+ 		<td>${requestScope.medicalstaff.dName}</td>
+ 		<td>${requestScope.medicalstaff.dAge}</td>
+ 		<td>${requestScope.medicalstaff.dPosition}</td>
  	</tr>
 </table>
 
 <br><br><br>
-<a href="soccerteam?command=requestUpdateManager&mNumber=${requestScope.manager.mNumber}">수정하기</a>
+<a href="soccerteam?command=requestUpdateMedicalStaff&dNumber=${requestScope.medicalstaff.dNumber}">수정하기</a>
 
-<a href="soccerteam?command=deleteManager&mNumber=${requestScope.manager.mNumber}">탈퇴하기</a>
+<a href="soccerteam?command=deleteMedicalStaff&dNumber=${requestScope.medicalstaff.dNumber}">탈퇴하기</a>
 
 &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
 

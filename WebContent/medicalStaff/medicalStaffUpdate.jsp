@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>감독 수정 페이지</title>
+<title>의료진 수정 페이지</title>
 </head>
 <body>
 	<br>
@@ -12,21 +12,21 @@
 	<br>
 	<center>
 
-		<h3>감독 정보 수정하기 - 감독 분야 수정</h3>
+		<h3>의료진 정보 수정하기 - 의료진 분야 수정</h3>
 		<hr>
 		<p>
-		<form action="soccerteam?command=updateManager" method="post">
+		<form action="soccerteam?command=updateMedicalStaff" method="post">
 			<table border="1">
 				<thead>
 					<tr>
-						<th>팀 이름</th><th>감독 번호</th><th>감독 이름</th><th>감독 나이</th><th>감독 분야</th>
+						<th>팀 이름</th><th>의료진 번호</th><th>의료진 이름</th><th>의료진 나이</th><th>의료진 분야</th>
 					</tr>
 					<tr>
-						<td>${requestScope.manager.tName}</td>
-					 	<td>${requestScope.manager.mNumber}</td>
-					 	<td>${requestScope.manager.mName}</td>
-					 	<td>${requestScope.manager.mAge}</td>
-					 	<td><input type="text" name="mPosition" value="${requestScope.manager.mPosition}"></td>
+						<td>${requestScope.medicalstaff.tName}</td>
+					 	<td>${requestScope.medicalstaff.dNumber}</td>
+					 	<td>${requestScope.medicalstaff.dName}</td>
+					 	<td>${requestScope.medicalstaff.dAge}</td>
+					 	<td><input type="text" name="dPosition" value="${requestScope.medicalstaff.dPosition}"></td>
 					</tr>
 
 					<tr>
