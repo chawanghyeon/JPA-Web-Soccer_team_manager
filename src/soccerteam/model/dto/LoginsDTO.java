@@ -14,29 +14,18 @@ import lombok.Setter;
 
 public class LoginsDTO {
 	
-	
-	private String userid;
-	private String userpw;
+	private String userId;
+	private String userPw;
 
-	
-	
-	
-	
-	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("LoginsDTO [userid=");
-		builder.append(userid);
+		builder.append(userId);
 		builder.append(", userpw=");
-		builder.append(userpw);
+		builder.append(userPw);
 		builder.append("]");
 		return builder.toString();
 	}
 	
-	
-	
-	
-	
-
 }

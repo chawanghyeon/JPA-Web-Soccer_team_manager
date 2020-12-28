@@ -17,13 +17,8 @@ import soccerteam.model.entity.TeamEntity;
 
 public class TeamDTO {
 
-
 	private String tName;
 	private String userId;
-	
-	
-	
-	
 	
 	@Override
 	public String toString() {
@@ -36,18 +31,9 @@ public class TeamDTO {
 		return builder.toString();
 	}
 
-
-
-
-
 	public TeamEntity toEntity(LoginsEntity logins) {
 		
 		return TeamEntity.builder().tName(tName).logins(logins).build();
 	}
-	
-	
-	
-	
-	
 	
 }

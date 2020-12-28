@@ -32,4 +32,5 @@ public class TrainersDTO {
 	public TrainersEntity toEntity(TeamEntity team) {
 		return TrainersEntity.builder().trNumber(trNumber).trName(trName).trAge(trAge).trPosition(trPosition).team(team).build();
 	}
+	
 }

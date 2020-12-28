@@ -21,11 +21,6 @@ public class ManagersDTO {
     private String mName;
 	private int mAge;
 	private String mPosition;
-
-	
-	
-	
-	
 	
 	@Override
 	public String toString() {
@@ -44,17 +39,9 @@ public class ManagersDTO {
 		return builder.toString();
 	}
 
-
-
-
-
-
 	public ManagersEntity toEntity(TeamEntity team) {
 		
 		return ManagersEntity.builder().mNumber(mNumber).team(team).mName(mName).mAge(mAge).mPosition(mPosition).build();
 	}
 	
-	
-	
-
 }
