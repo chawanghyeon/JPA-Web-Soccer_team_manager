@@ -94,7 +94,7 @@ public class TeamDAO {
 
 		try {
 			TeamEntity t = em.find(TeamEntity.class, tName);
-			team = new TeamDTO(t.getTName(), t.getLogins().getUserID());
+			team = new TeamDTO(t.getTName(), t.getLogin().getUserID());
 		} catch (Exception e) {
 			tx.rollback();
 			throw e;

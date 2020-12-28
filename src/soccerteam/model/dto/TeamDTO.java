@@ -31,9 +31,9 @@ public class TeamDTO {
 		return builder.toString();
 	}
 
-	public TeamEntity toEntity(LoginEntity logins) {
+	public TeamEntity toEntity(LoginEntity login) {
 		
-		return TeamEntity.builder().tName(tName).logins(logins).build();
+		return TeamEntity.builder().tName(tName).login(login).build();
 	}
 	
 }
