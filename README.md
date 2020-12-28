@@ -284,7 +284,7 @@ insert into medical_staff values (205, '유벤투스', '최의사', 53, '정형�
 				
 commit;
 
-'''
+```
 
 
 
@@ -297,15 +297,15 @@ https://ovenapp.io/project/Bw3y8pT5PFoud5JYHMvDrt6okzKgig7T#bavCk
 
 ## INSPRATION 
 <div>
-1. GITHUB 연동 문제점
+1. 구조
 	
 	1) 버전 오류
  	- git에 올린 초기 버전에 맞지 않게 다운로드하고 수정하다보니 push, pull에 문제가 있었는데, 인터넷으로 버전 정리를 하면서 해결했다.
 	2) denied 되는 문제
  	- window 자격증명 삭제로 해결했다.
 
-2. UPDATE를 고려한 설계
-```
+2. 깃허브
+
 1) LOGIN
 2) 구조 짜기
 - MVC를 위해 CONTROLLER, VIEW, SERVICE, DAO, DTO 등 여러 개로 클래스를 나눠서 개발했다.
