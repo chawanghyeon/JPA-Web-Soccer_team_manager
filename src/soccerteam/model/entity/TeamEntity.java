@@ -39,7 +39,7 @@ public class TeamEntity {
 	@JoinColumn(name = "user_id")
 	private LoginsEntity userId;
 
-	@OneToMany(mappedBy="tName")
+	@OneToMany(mappedBy="team")
 	private List list;
 
 	@Override
@@ -49,4 +49,6 @@ public class TeamEntity {
 		builder.append(tName);
 		return builder.toString();
 	}
+
+	
 }
