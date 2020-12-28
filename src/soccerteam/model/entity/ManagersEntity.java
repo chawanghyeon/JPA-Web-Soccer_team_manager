@@ -35,7 +35,7 @@ public class ManagersEntity {
 	@ManyToOne(targetEntity = TeamEntity.class)
 	@JoinColumn(name = "t_name")
 	@NotNull
-	private TeamEntity tName;
+	private TeamEntity team;
 
 	@Column(name = "m_name")
 	@NotNull
