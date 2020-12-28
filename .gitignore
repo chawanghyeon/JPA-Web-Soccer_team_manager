@@ -1,0 +1,9 @@
+
+*.class
+*.class
+*.class
+*.class
+*.class
+*.class
+target/classes/soccerteam/model/entity/TeamEntity.class
+target/classes/soccerteam/model/entity/LoginsEntity.class
