@@ -51,10 +51,6 @@ public class SoccerTeamService {
 	public LoginDTO getLogin(String userID, String userPW) throws SQLException, NotExistException, MessageException {
 		LoginDTO login = loginDAO.getLogin(userID);
 		
-		if (login == null) {
-			throw new NotExistException("아이디나 비밀번호가 틀렸습니다.");
-		}
-		
 		if(login.getUserPW().equals(userPW)) {
 			return login;
 		}
