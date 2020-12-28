@@ -6,7 +6,7 @@
 <html> 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>감독 상세보기</title>
+<title>트레이너 상세보기</title>
 </head>
 <body>
 <br><br><br>
@@ -14,24 +14,26 @@
 
 ${requestScope.successMsg}
 
-<h3>감독 상세보기</h3>
+<h3>트레이너 상세보기</h3>
 <hr><p> 
  
 <table border="1">
 	<tr>
-		<th>감독이름</th><th>감독나이</th><th>감독분야</th>
+		<th>팀 이름</th><th>트레이너 번호</th><th>트레이너 이름</th><th>트레이너 나이</th><th>트레이닝 분야</th>
 	</tr>
  	<tr>
- 		<td>${requestScope.manager.mName}</td>
- 		<td>${requestScope.manager.mAge}</td>
- 		<td>${requestScope.manager.mPosition}</td>
+ 		<td>${requestScope.trainer.tName}</td>
+ 		<td>${requestScope.trainer.trNumber}</td>
+ 		<td>${requestScope.trainer.trName}</td>
+ 		<td>${requestScope.trainer.trAge}</td>
+ 		<td>${requestScope.trainer.trPosition}</td>
  	</tr>
 </table>
 
 <br><br><br>
-<a href="soccerteam?command=requestUpdateManager&mNumber=${requestScope.manager.mNumber}">수정하기</a>
+<a href="soccerteam?command=requestUpdateTrainer&trNumber=${requestScope.trainer.trNumber}">수정하기</a>
 
-<a href="soccerteam?command=deleteManager&mNumber=${requestScope.manager.mNumber}">탈퇴하기</a>
+<a href="soccerteam?command=deleteTrainer&trNumber=${requestScope.trainer.trNumber}">탈퇴하기</a>
 
 &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
 

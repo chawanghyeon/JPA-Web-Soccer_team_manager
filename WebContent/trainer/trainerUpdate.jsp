@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>감독 수정 페이지</title>
+<title>트레이너 수정 페이지</title>
 </head>
 <body>
 	<br>
@@ -12,21 +12,21 @@
 	<br>
 	<center>
 
-		<h3>감독 정보 수정하기 - 감독 분야 수정</h3>
+		<h3>트레이너 정보 수정하기 - 트레이너 분야 수정</h3>
 		<hr>
 		<p>
 		<form action="soccerteam?command=updateManager" method="post">
 			<table border="1">
 				<thead>
 					<tr>
-						<th>팀 이름</th><th>감독 번호</th><th>감독 이름</th><th>감독 나이</th><th>감독 분야</th>
+						<th>팀 이름</th><th>트레이너 번호</th><th>트레이너 이름</th><th>트레이너 나이</th><th>트레이너 분야</th>
 					</tr>
 					<tr>
-						<td>${requestScope.manager.tName}</td>
-					 	<td>${requestScope.manager.mNumber}</td>
-					 	<td>${requestScope.manager.mName}</td>
-					 	<td>${requestScope.manager.mAge}</td>
-					 	<td><input type="text" name="mPosition" value="${requestScope.manager.mPosition}"></td>
+						<td>${requestScope.trainer.tName}</td>
+					 	<td>${requestScope.trainer.trNumber}</td>
+					 	<td>${requestScope.trainer.trName}</td>
+					 	<td>${requestScope.trainer.trAge}</td>
+					 	<td><input type="text" name="trPosition" value="${requestScope.trainer.trPosition}"></td>
 					</tr>
 
 					<tr>
