@@ -13,7 +13,7 @@ DROP TABLE logins CASCADE CONSTRAINTS;
 
 CREATE TABLE team(
 	t_name	         varchar2(25)    NOT NULL,
-	userid	         varchar2(50)	NOT NULL
+	user_id	         varchar2(50)	NOT NULL
 );
 
 
@@ -57,8 +57,8 @@ CREATE TABLE trainers (
 
 
 CREATE TABLE logins (
-	userid	           varchar2(50)	      NOT NULL,
-	userpw	           varchar2(50)	      NOT NULL
+	user_id	           varchar2(50)	      NOT NULL,
+	user_pw	           varchar2(50)	      NOT NULL
 );
 
 

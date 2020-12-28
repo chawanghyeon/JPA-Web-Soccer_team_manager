@@ -28,11 +28,11 @@ import lombok.ToString;
 public class LoginsEntity {
 
 	@Id
-	@Column(name = "userid")
+	@Column(name = "user_id")
 	private String userId;
 
 	@NotNull
-	@Column(name = "userpw")
+	@Column(name = "user_pw")
 	private String userPw;
 	
 
