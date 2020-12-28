@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>감독 수정 페이지</title>
+<title>비밀번호 수정페이지</title>
 </head>
 <body>
 	<br>
@@ -12,25 +12,22 @@
 	<br>
 	<center>
 
-		<h3>감독 정보 수정하기 - 감독 분야 수정</h3>
+		<h3>사용자 비밀번호 수정페이지</h3>
 		<hr>
 		<p>
-		<form action="soccerteam?command=updateManager" method="post">
+		<form action="soccerteam?command=updateLogin" method="post">
 			<table border="1">
 				<thead>
 					<tr>
-						<th>팀 이름</th><th>감독 번호</th><th>감독 이름</th><th>감독 나이</th><th>감독 분야</th>
+						<th>기부자 id</th>
+						<th>비밀번호</th>
 					</tr>
 					<tr>
-						<td>${requestScope.manager.tName}</td>
-					 	<td>${requestScope.manager.mNumber}</td>
-					 	<td>${requestScope.manager.mName}</td>
-					 	<td>${requestScope.manager.mAge}</td>
-					 	<td><input type="text" name="mPosition" value="${requestScope.manager.mPosition}"></td>
+						<td><input type="text" name="userID" value="${login.userID}" readonly></td>
+						<td><input type="password" name="userPW" value="${login.userPW}"></td>
 					</tr>
-
 					<tr>
-						<td colspan="5"><input type="submit" value="수정">
+						<td colspan="2"><input type="submit" value="수정">
 							&nbsp;&nbsp;&nbsp; <input type="reset" value="취소"></td>
 					</tr>
 			</table>

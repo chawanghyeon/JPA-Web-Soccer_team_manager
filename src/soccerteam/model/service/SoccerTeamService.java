@@ -3,6 +3,7 @@ package soccerteam.model.service;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import soccerteam.exception.MessageException;
 import soccerteam.exception.NotExistException;
 import soccerteam.model.dao.LoginDAO;
 import soccerteam.model.dao.ManagerDAO;
@@ -47,12 +48,18 @@ public class SoccerTeamService {
 		return loginDAO.getAllLogins();
 	}
 
-	public LoginDTO getLogin(String userID) throws SQLException, NotExistException {
+	public LoginDTO getLogin(String userID, String userPW) throws SQLException, NotExistException, MessageException {
 		LoginDTO login = loginDAO.getLogin(userID);
+		
 		if (login == null) {
-			throw new NotExistException("검색하신 로그인 정보가 없습니다.");
+			throw new NotExistException("아이디나 비밀번호가 틀렸습니다.");
 		}
-		return login;
+		
+		if(login.getUserPW().equals(userPW)) {
+			return login;
+		}
+		
+		throw new MessageException("아이디나 비밀번호가 틀렸습니다.");
 	}
 
 	public boolean addLogin(LoginDTO login) throws Exception {
