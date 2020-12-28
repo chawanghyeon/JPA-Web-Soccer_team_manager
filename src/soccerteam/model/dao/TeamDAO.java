@@ -82,7 +82,7 @@ public class TeamDAO {
 	}
 	
 	
-	//의미가있나????
+
 	public TeamDTO getTeam(String tName) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
@@ -90,7 +90,7 @@ public class TeamDAO {
 
 		try {
 			TeamEntity t = em.find(TeamEntity.class, tName);
-			team = new TeamDTO(t.getTName());
+		    team = new TeamDTO(t.getTName(), t.getUserId());
 		} catch (Exception e) {
 			em.getTransaction().rollback();
 		} finally {
@@ -102,14 +102,14 @@ public class TeamDAO {
 	@SuppressWarnings("unchecked")
 	public ArrayList<TeamDTO> getAllTeam() throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		List<TeamDTO> list = null;
+		List<TeamEntity> list = null;
 		ArrayList<TeamDTO> tlist = new ArrayList<>();
 		try {
 			list = em.createNativeQuery("SELECT * FROM Team").getResultList();
 			Iterator it = list.iterator();
 			while(it.hasNext()) {
 				Object[] obj = (Object[]) it.next();
-				tlist.add(new TeamDTO(String.valueOf(obj[0]), String.valueOf(obj[1]), String.valueOf(obj[2]), String.valueOf(obj[3])));
+				tlist.add(new TeamDTO(String.valueOf(obj[0]), String.valueOf(obj[1])));
 			}
 		} catch (Exception e) {
 			em.getTransaction().rollback();
