@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import soccerteam.model.entity.MedicalStaffEntity;
+import soccerteam.model.entity.TeamEntity;
+import soccerteam.model.entity.TrainersEntity;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,4 +27,8 @@ public class MedicalStaffDTO {
 	private int dAge;
 
 	private String dPosition;
+	
+	public MedicalStaffEntity toEntity(TeamEntity team) {
+		return MedicalStaffEntity.builder().dNumber(dNumber).dName(dName).dAge(dAge).dPosition(dPosition).team(team).build();
+	}
 }
