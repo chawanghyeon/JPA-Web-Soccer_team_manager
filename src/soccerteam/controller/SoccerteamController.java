@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import soccerteam.model.dto.LoginDTO;
+import soccerteam.model.dto.ManagerDTO;
+import soccerteam.model.dto.MedicalStaffDTO;
+import soccerteam.model.dto.PlayerDTO;
+import soccerteam.model.dto.TeamDTO;
 import soccerteam.model.dto.TrainerDTO;
 import soccerteam.model.service.SoccerTeamService;
 
@@ -39,6 +44,66 @@ public class SoccerteamController extends HttpServlet {
 					updateTrainer(request, response);
 				} else if (command.equals("deleteTrainer")) {// 트레이너 삭제
 					deleteTrainer(request, response);
+				} else if (command.equals("getAllLogin")) {// 모든 관리자 검색
+					getAllLogins(request, response);
+				} else if (command.equals("getLogin")) {// 특정 관리자 정보 검색
+					getLogin(request, response);
+				} else if (command.equals("addLogin")) {// 관리자 추가 등록
+					addLogin(request, response);
+				} else if (command.equals("requestUpdateLogin")) {// 관리자 정보 수정요청
+					requestUpdateLogin(request, response);
+				} else if (command.equals("updateLogin")) {// 관리자 정보 수정
+					updateLogin(request, response);
+				} else if (command.equals("deleteLogin")) {// 관리자 삭제
+					deleteLogin(request, response);
+				} else if (command.equals("getAllTeam")) {// 모든 팀 검색
+					getAllTeam(request, response);
+				} else if (command.equals("getTeam")) {// 특정 팀 정보 검색
+					getTeam(request, response);
+				} else if (command.equals("addTeam")) {// 팀 추가 등록
+					addTeam(request, response);
+				} else if (command.equals("requestUpdateTeam")) {// 팀 정보 수정요청
+					requestUpdateTeam(request, response);
+				} else if (command.equals("updateTeam")) {// 팀 정보 수정
+					updateTeam(request, response);
+				} else if (command.equals("deleteTeam")) {// 팀 삭제
+					deleteTeam(request, response);
+				} else if (command.equals("getAllManager")) {// 모든 매니저 검색
+					getAllManagers(request, response);
+				} else if (command.equals("getManager")) {// 특정 매니저 정보 검색
+					getManager(request, response);
+				} else if (command.equals("addManager")) {// 매니저 추가 등록
+					addManager(request, response);
+				} else if (command.equals("requestUpdateManager")) {// 매니저 정보 수정요청
+					requestUpdateManager(request, response);
+				} else if (command.equals("updateManager")) {// 매니저 정보 수정
+					updateManager(request, response);
+				} else if (command.equals("deleteManager")) {// 매니저 삭제
+					deleteManager(request, response);	
+				} else if (command.equals("getAllMedicalStaff")) {// 모든 의료진 검색
+					getAllMedicalStaffs(request, response);
+				} else if (command.equals("getMedicalStaff")) {// 특정 의료진 정보 검색
+					getMedicalStaff(request, response);
+				} else if (command.equals("addMedicalStaff")) {// 의료진 추가 등록
+					addMedicalStaff(request, response);
+				} else if (command.equals("requestUpdateMedicalStaff")) {// 의료진 정보 수정요청
+					requestUpdateMedicalStaff(request, response);
+				} else if (command.equals("updateMedicalStaff")) {// 의료진 정보 수정
+					updateMedicalStaff(request, response);
+				} else if (command.equals("deleteMedicalStaff")) {// 의료진삭제
+					deleteMedicalStaff(request, response);	
+				} else if (command.equals("getAllPlayer")) {// 모든 선수 검색
+					getAllPlayers(request, response);
+				} else if (command.equals("getPlayer")) {// 특정 선수 정보 검색
+					getPlayer(request, response);
+				} else if (command.equals("addPlayer")) {// 선수 추가 등록
+					addPlayer(request, response);
+				} else if (command.equals("requestUpdatePlayer")) {// 선수 정보 수정요청
+					requestUpdatePlayer(request, response);
+				} else if (command.equals("updatePlayer")) {// 선수 정보 수정
+					updatePlayer(request, response);
+				} else if (command.equals("deletePlayer")) {// 선수 삭제
+					deletePlayer(request, response);
 				}
 			} catch (Exception s) {
 				request.setAttribute("errorMsg", s.getMessage());
@@ -67,9 +132,9 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			TrainerDTO t = service.getTrainer(Integer.parseInt(request.getParameter("trNumber")));
-			if (t != null) {
-				request.setAttribute("trainer", t);
+			TrainerDTO tr = service.getTrainer(Integer.parseInt(request.getParameter("trNumber")));
+			if (tr != null) {
+				request.setAttribute("trainer", tr);
 				url = "trainer/trainerDetail.jsp";
 			} else {
 				request.setAttribute("errorMsg", "존재하지 않는 트레이너입니다.");
@@ -163,4 +228,598 @@ public class SoccerteamController extends HttpServlet {
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
+	
+	
+
+		
+// 관리자 전체  검색
+public void getAllLogins(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+	String url = "showError.jsp";
+	try {
+		request.setAttribute("allLogins", service.getAllLogins());
+		url = "Login/LoginList.jsp";
+	} catch (Exception s) {
+		request.setAttribute("errorMsg", s.getMessage());
+		s.printStackTrace();
+	}
+	request.getRequestDispatcher(url).forward(request, response);
+}
+
+// 특정 관리자  검색
+public void getLogin(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+	String url = "showError.jsp";
+	try {
+		LoginDTO l = service.getLogin((request.getParameter("userID")));
+		if (l != null) {
+			request.setAttribute("login", l);
+			url = "login/loginDetail.jsp";
+		} else {
+			request.setAttribute("errorMsg", "존재하지 않는 관리자입니다.");
+		}
+	} catch (Exception s) {
+		request.setAttribute("errorMsg", s.getMessage());
+		s.printStackTrace();
+	}
+	request.getRequestDispatcher(url).forward(request, response);
+}
+
+// 관리자 가입 메소드
+protected void addLogin(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+	String url = "showError.jsp";
+
+	
+	String userID = request.getParameter("userID");
+	String userPW = request.getParameter("userPW");
+
+	
+	//질문 아이디랑 비밀번호가 둘다 
+	if (userID != null) {
+
+		LoginDTO login = new LoginDTO(userID, userPW);
+		try {
+			boolean result = service.addLogin(login);
+			if (result) {
+				request.setAttribute("login", login);
+				request.setAttribute("successMsg", "가입 완료");
+				url = "login/loginDetail.jsp";
+			} else {
+				request.setAttribute("errorMsg", "다시 시도하세요");
+			}
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+}
+
+// 관리자 비밀번호 수정 요구
+public void requestUpdateLogin(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+	String url = "showError.jsp";
+	try {
+		request.setAttribute("login", service.getLogin((request.getParameter("userID"))));
+		url = "login/loginDetail.jsp";
+	} catch (Exception s) {
+		request.setAttribute("errorMsg", s.getMessage());
+		s.printStackTrace();
+	}
+	request.getRequestDispatcher(url).forward(request, response);
+}
+
+// 관리자  수정
+public void updateLogin(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+	String url = "showError.jsp";
+
+	try {
+		String userID = (request.getParameter("userID"));
+
+		if (service.updateLogin(userID, request.getParameter("userPW"))) {
+			request.setAttribute("login", service.getLogin(userID));
+			url = "login/loginDetail.jsp";
+		} else {
+			request.setAttribute("errorMsg", "수정 실패");
+		}
+	} catch (Exception s) {
+		request.setAttribute("errorMsg", s.getMessage());
+		s.printStackTrace();
+	}
+	request.getRequestDispatcher(url).forward(request, response);
+}
+
+// 관리자  삭제
+public void deleteLogin(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+	String url = "showError.jsp";
+	try {
+		if (service.deleteLogin((request.getParameter("userID")))) {
+			request.setAttribute("allLogins", service.getAllLogins());
+			url = "login/loginDetail.jsp";
+		} else {
+			request.setAttribute("errorMsg", "삭제 실패");
+		}
+	} catch (Exception s) {
+		request.setAttribute("errorMsg", s.getMessage());
+		s.printStackTrace();
+	}
+	request.getRequestDispatcher(url).forward(request, response);
+}
+
+
+
+// 모든 매니저 검색
+public void getAllManagers(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+	String url = "showError.jsp";
+	try {
+		request.setAttribute("allManagers", service.getAllManagers());
+		url = "manager/managerList.jsp";
+	} catch (Exception s) {
+		request.setAttribute("errorMsg", s.getMessage());
+		s.printStackTrace();
+	}
+	request.getRequestDispatcher(url).forward(request, response);
+}
+
+//매니저 검색
+public void getManager(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+	String url = "showError.jsp";
+	try {
+		ManagerDTO m = service.getManager(Integer.parseInt(request.getParameter("mNumber")));
+		if (m != null) {
+			request.setAttribute("manager", m);
+			url = "manager/managerList.jsp";
+		} else {
+			request.setAttribute("errorMsg", "존재하지 않는 감독입니다.");
+		}
+	} catch (Exception s) {
+		request.setAttribute("errorMsg", s.getMessage());
+		s.printStackTrace();
+	}
+	request.getRequestDispatcher(url).forward(request, response);
+}
+
+// 매니저  가입 메소드
+protected void addManager(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+	String url = "showError.jsp";
+
+	
+	int mNumber = Integer.parseInt(request.getParameter("mNumber"));
+	String tName = request.getParameter("tName");
+	String mName = request.getParameter("mName");
+	int mAge = Integer.parseInt(request.getParameter("mAge"));
+	String mPosition = request.getParameter("mPosition");
+	
+	if (mNumber != 0) {
+
+		ManagerDTO manager = new ManagerDTO( mNumber, tName, mName,  mAge, mPosition );
+		try {
+			boolean result = service.addManager(manager);
+			if (result) {
+				request.setAttribute("manager", manager);
+				request.setAttribute("successMsg", "가입 완료");
+				url = "manager/managerList.jsp";
+			} else {
+				request.setAttribute("errorMsg", "다시 시도하세요");
+			}
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+}
+
+// 매니저 수정 요구
+public void requestUpdateManager(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+	String url = "showError.jsp";
+	try {
+		request.setAttribute("manager", service.getManager(Integer.parseInt(request.getParameter("mNumber"))));
+		url = "manager/managerList.jsp";
+	} catch (Exception s) {
+		request.setAttribute("errorMsg", s.getMessage());
+		s.printStackTrace();
+	}
+	request.getRequestDispatcher(url).forward(request, response);
+}
+
+// 매니저  수정
+public void updateManager(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+	String url = "showError.jsp";
+
+	try {
+		int mNumber = Integer.parseInt(request.getParameter("mNumber"));
+
+		if (service.updateManager(mNumber, request.getParameter("mPosition"))) {
+			request.setAttribute("manager", service.getManager(mNumber));
+			url = "manager/managerList.jsp";
+		} else {
+			request.setAttribute("errorMsg", "수정 실패");
+		}
+	} catch (Exception s) {
+		request.setAttribute("errorMsg", s.getMessage());
+		s.printStackTrace();
+	}
+	request.getRequestDispatcher(url).forward(request, response);
+}
+
+//매니저  삭제
+public void deleteManager(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+	String url = "showError.jsp";
+	try {
+		if (service.deleteManager(Integer.parseInt(request.getParameter("mNumber")))) {
+			request.setAttribute("allManager", service.getAllManagers());
+			url = "manager/managerList.jsp";
+		} else {
+			request.setAttribute("errorMsg", "삭제 실패");
+		}
+	} catch (Exception s) {
+		request.setAttribute("errorMsg", s.getMessage());
+		s.printStackTrace();
+	}
+	request.getRequestDispatcher(url).forward(request, response);
+}
+
+//모든 팀 검색
+	public void getAllTeam(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "showError.jsp";
+		try {
+			request.setAttribute("allTeam", service.getAllTeam());
+			url = "team/teamList.jsp";
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
+			s.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+
+	// 팀 검색
+	public void getTeam(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "showError.jsp";
+		try {
+			TeamDTO t = service.getTeam((request.getParameter("tName")));
+			if (t != null) {
+				request.setAttribute("team", t);
+				url = "team/teamList.jsp";
+			} else {
+				request.setAttribute("errorMsg", "존재하지 않는 팀입니다.");
+			}
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
+			s.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+
+	// 팀 가입 메소드
+	protected void addTeam(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "showError.jsp";
+
+		String tName = request.getParameter("tName");
+		String userID = request.getParameter("userID");
+
+		if (tName != null) {
+
+			TeamDTO team = new TeamDTO(tName, userID);
+			try {
+				boolean result = service.addTeam(team);
+				if (result) {
+					request.setAttribute("team", team);
+					request.setAttribute("successMsg", "가입 완료");
+					url = "team/teamList.jsp";
+				} else {
+					request.setAttribute("errorMsg", "다시 시도하세요");
+				}
+			} catch (Exception s) {
+				request.setAttribute("errorMsg", s.getMessage());
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+	}
+
+	// 팀 수정 요구
+	public void requestUpdateTeam(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "showError.jsp";
+		try {
+			request.setAttribute("team", service.getTeam((request.getParameter("tName"))));
+			url = "team/teamList.jsp";
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
+			s.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+
+	// 팀 수정
+	public void updateTeam(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "showError.jsp";
+
+		try {
+			String tName = (request.getParameter("tName"));
+
+			if (service.updateTeam(tName, request.getParameter("tName"))) {
+				request.setAttribute("team", service.getTeam(tName));
+				url = "team/teamList.jsp";
+			} else {
+				request.setAttribute("errorMsg", "수정 실패");
+			}
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
+			s.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+
+	// 팀 삭제
+	public void deleteTeam(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "showError.jsp";
+		try {
+			if (service.deleteTeam((request.getParameter("tName")))) {
+				request.setAttribute("allTeam", service.getAllTeam());
+				url = "team/teamList.jsp";
+			} else {
+				request.setAttribute("errorMsg", "삭제 실패");
+			}
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
+			s.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+	
+
+	
+	
+	// 모든 의료진 검색
+		public void getAllMedicalStaffs(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String url = "showError.jsp";
+			try {
+				request.setAttribute("allMedicalStaffs", service.getAllMedicalStaffs());
+				url = "medicalstaff/medicalstaffList.jsp";
+			} catch (Exception s) {
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+
+		// 의료진 검색
+		public void getMedicalStaff(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String url = "showError.jsp";
+			try {
+				MedicalStaffDTO d = service.getMedicalStaff(Integer.parseInt(request.getParameter("dNumber")));
+				if (d != null) {
+					request.setAttribute("medicalstaff", d);
+					url = "medicalstaff/medicalstaffList.jsp";
+				} else {
+					request.setAttribute("errorMsg", "존재하지 않는 의료진입니다.");
+				}
+			} catch (Exception s) {
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+
+		// 의료진 가입 메소드
+		protected void addMedicalStaff(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String url = "showError.jsp";
+
+			int dNumber = Integer.parseInt(request.getParameter("dNumber"));
+			String tName = request.getParameter("tName");
+			String dName = request.getParameter("dName");
+			int dAge = Integer.parseInt(request.getParameter("dAge"));
+			String dPosition = request.getParameter("dPosition");
+
+			if (dNumber != 0) {
+
+				MedicalStaffDTO medicalstaff = new MedicalStaffDTO(dNumber, tName, dName, dAge, dPosition);
+				try {
+					boolean result = service.addMedicalStaff(medicalstaff);
+					if (result) {
+						request.setAttribute("medicalstaff", medicalstaff);
+						request.setAttribute("successMsg", "가입 완료");
+						url = "medicalstaff/medicalstaffList.jsp";
+					} else {
+						request.setAttribute("errorMsg", "다시 시도하세요");
+					}
+				} catch (Exception s) {
+					request.setAttribute("errorMsg", s.getMessage());
+				}
+				request.getRequestDispatcher(url).forward(request, response);
+			}
+		}
+
+		// 의료진 수정 요구
+		public void requestUpdateMedicalStaff(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String url = "showError.jsp";
+			try {
+				request.setAttribute("medicalstaff", service.getMedicalStaff(Integer.parseInt(request.getParameter("dNumber"))));
+				url = "medicalstaff/medicalstaffList.jsp";
+			} catch (Exception s) {
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+
+		//의료진 수정
+		public void updateMedicalStaff(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String url = "showError.jsp";
+
+			try {
+				int dNumber = Integer.parseInt(request.getParameter("dNumber"));
+
+				if (service.updateMedicalStaff(dNumber, request.getParameter("dPosition"))) {
+					request.setAttribute("medicalstaff", service.getMedicalStaff(dNumber));
+					url = "medicalstaff/medicalstaffList.jsp";
+				} else {
+					request.setAttribute("errorMsg", "수정 실패");
+				}
+			} catch (Exception s) {
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+
+		//의료진 삭제
+		public void deleteMedicalStaff(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String url = "showError.jsp";
+			try {
+				if (service.deleteMedicalStaff(Integer.parseInt(request.getParameter("dNumber")))) {
+					request.setAttribute("allMedicalStaff", service.getAllMedicalStaffs());
+					url = "trainer/trainerList.jsp";
+				} else {
+					request.setAttribute("errorMsg", "삭제 실패");
+				}
+			} catch (Exception s) {
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+		
+		
+
+		
+		// 모든 선수 검색
+		public void getAllPlayers(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String url = "showError.jsp";
+			try {
+				request.setAttribute("allPlayers", service.getAllPlayers());
+				url = "player/playerList.jsp";
+			} catch (Exception s) {
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+
+		// 선수 검색
+		public void getPlayer(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String url = "showError.jsp";
+			try {
+				PlayerDTO p = service.getPlayer(Integer.parseInt(request.getParameter("pNumber")));
+				if (p != null) {
+					request.setAttribute("player", p);
+					url = "player/playerList.jsp";
+				} else {
+					request.setAttribute("errorMsg", "존재하지 않는 선수입니다.");
+				}
+			} catch (Exception s) {
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+
+		// 트레이너 가입 메소드
+		protected void addPlayer(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String url = "showError.jsp";
+
+			int pNumber = Integer.parseInt(request.getParameter("pNumber"));
+			String tName = request.getParameter("tName");
+			String pName = request.getParameter("pName");
+			int pAge = Integer.parseInt(request.getParameter("pAge"));
+			String pPosition = request.getParameter("pPosition");
+
+			if (pNumber != 0) {
+
+				PlayerDTO player = new PlayerDTO(pNumber, tName, pName, pAge, pPosition);
+				try {
+					boolean result = service.addPlayer(player);
+					if (result) {
+						request.setAttribute("player", player);
+						request.setAttribute("successMsg", "가입 완료");
+						url = "player/playerList.jsp";
+					} else {
+						request.setAttribute("errorMsg", "다시 시도하세요");
+					}
+				} catch (Exception s) {
+					request.setAttribute("errorMsg", s.getMessage());
+				}
+				request.getRequestDispatcher(url).forward(request, response);
+			}
+		}
+
+		// 트레이너 수정 요구
+		public void requestUpdatePlayer(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String url = "showError.jsp";
+			try {
+				request.setAttribute("player", service.getPlayer(Integer.parseInt(request.getParameter("pNumber"))));
+				url ="player/playerList.jsp";
+			} catch (Exception s) {
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+
+		// 트레이너 수정
+		public void updatePlayer(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String url = "showError.jsp";
+
+			try {
+				int pNumber = Integer.parseInt(request.getParameter("pNumber"));
+
+				if (service.updatePlayer(pNumber, request.getParameter("pPosition"))) {
+					request.setAttribute("player", service.getPlayer(pNumber));
+					url = "player/playerList.jsp";
+				} else {
+					request.setAttribute("errorMsg", "수정 실패");
+				}
+			} catch (Exception s) {
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+
+		// 트레이너 삭제
+		public void deletePlayer(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String url = "showError.jsp";
+			try {
+				if (service.deletePlayer(Integer.parseInt(request.getParameter("pNumber")))) {
+					request.setAttribute("allPlayer", service.getAllPlayers());
+					url = "player/playerList.jsp";
+				} else {
+					request.setAttribute("errorMsg", "삭제 실패");
+				}
+			} catch (Exception s) {
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+		
+			
+
+
+	
 }
