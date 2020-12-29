@@ -44,11 +44,16 @@ ${requestScope.successMsg}
 </table>
 
 <br><br><br>
-<a href="soccerteam?command=requestUpdateTeam&tName=<%=t.getTName()%>">수정하기</a>
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllPlayers&pName=${requestScope.player.pName}">선수</a>
 
-<a href="soccerteam?command=deleteTeam&tName=<%=t.getTName()%>">탈퇴하기</a>
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllManagers&mName=${requestScope.manager.mName}">감독</a>
 
-&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllMedicalStaff&dName=${requestScope.medicalstaff.dName}">의료진</a>
+
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllTrainers&tName=${requestScope.trainer.tName}">트레이너</a>
+
+<br><br><br>
+&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/loginDetail.jsp">메인으로 이동</a>
 
 </center>
 </body>
