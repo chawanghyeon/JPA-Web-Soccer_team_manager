@@ -256,24 +256,35 @@ https://ovenapp.io/project/Bw3y8pT5PFoud5JYHMvDrt6okzKgig7T#bavCk
 
 
 
-## INSPRATION 
-<div>
-1. 구조
-	
-	1) 버전 오류
- 	- git에 올린 초기 버전에 맞지 않게 다운로드하고 수정하다보니 push, pull에 문제가 있었는데, 인터넷으로 버전 정리를 하면서 해결했다.
-	2) denied 되는 문제
- 	- window 자격증명 삭제로 해결했다.
+## ISSUE
+1. 구조  
+	- 맨처음 sql table구조를 설계할 때 제약 조건을 잘 못 설정했습니다.
+	- ERDCLOUD에서 sql문장을 자동으로 생성해주는 기능을 썼는데 오류가 많았습니다.
+	- Entity mapping하는 과정에서 JoinColumn과 mappedBy를 헷갈려 오류가 생겼습니다.
 
-2. 깃허브
+2. 깃허브  
+코딩을 하다보면 이클립스 설정 파일이나 class파일 등이 자동으로 변경되는데 이것들을 깃허브에 같이 올려 소스파일을 확실하게 분리해서 작업해도 충돌이 일어나는 경우가 빈번했습니다.
+.gitignore파일을 만들어서 커밋시 제외할 파일들을 설정해 해결했습니다.
 
-1) LOGIN
-2) 구조 짜기
-- MVC를 위해 CONTROLLER, VIEW, SERVICE, DAO, DTO 등 여러 개로 클래스를 나눠서 개발했다.
-- 덕분에 수정과정에서 에러가 발생할 때마다 어느 지점으로 가서 손을 볼 지 파악할 수 있어 유용했다
-3) SEQUENCE 기능의 활용
-- 관리자가 개발자와 다를 경우를 고려해 감정, 날씨 등의 정보를 추가할 때 따로 일련번호를 확인할 필요가 없도록
-  각 테이블의 일련번호를 SEQUENCE로 매겨지게 했다.
+3. 코드
+```jsp
+<td>${requestScope.team.tName}</td>
+ 		
+ 		
+<td>
+<% TeamDTO t = (TeamDTO)request.getAttribute("team"); 
+	if(t != null){
+%>
+		<%=t.getTName()%>		
+<%			
+	}
+%>
+</td>
+```
+같은 코드지만 el태그를 사용한 부분은 인식을 하지 못하는 문제가 있었습니다.
 
-
-
+```java
+em.remove(em.find(LoginEntity.class, userID));
+em.createNativeQuery("DELETE FROM logins WHERE user_id="+"'"+userID+"'").executeUpdate();
+```
+em.remove가 실행되지 않는 문제가 발생해 createNativeQuery로 해결했습니다.
