@@ -1,10 +1,7 @@
 # WEB_JPA MINI PROJECT : Control하다
 
 
-
 꿀단지님께 날라온 메일:memo: <br>
-
-
 <p><p></p>
 
 
@@ -25,7 +22,7 @@
 	
 
 
-### topic <br>
+### Service <br>
 
 <div>
 
@@ -47,44 +44,50 @@
 :clock8: 트레이너의 정보를 등록, 확인하고 이력을 확인할 수 있습니다. <br>
 <p><p></p>
 
-#### Control<br>
 
 
->#### CASE 1. 토트넘선수관리팀에 입사한 왕현씨 
->CASE 1.
+
+#### 시나리오<br>
+
+
+>#### CASE 1. 토트넘선수관리팀에 입사한 왕현씨 <br>
 >연말은 FA가 많다.<br>
 >이번년도에는 권희성선수가 팀을 나가게 되었고, 김민수선수가 입단하게 되었다.<br>
->선수관리 프로그램에서 권희성선수를 삭제하고 김민수선수를 등록해야한다. .<p> <br>
+>선수관리 프로그램에서 권희성선수를 삭제하고 김민수선수를 등록해야한다.<p> <br>
 ><br>	
 
-<br>
->#### CASE 2. 유벤투스의료관리팀에 입사한 윤혜씨 	
->이번년도에 부상으로 부진했던 최지원선수의 데이터를 담당의료진들에게 보내야합니다. <p>
+
+>#### CASE 2. 유벤투스감독관리팀에 입사한 윤혜씨 <br>	
+>꾸준히 팀의 신임을 받은 Giovanni Cerra 코치는 내년부터 감독으로 승진하게 되었다.<br>
+>Giovanni Cerra 코치의 포지션을 변경해야한다.<p><br>
 ><br>
-> <p></p><br><br>
 
 
 
-##STRUCTURE
+## STRUCTURE
 
 
 <div>
 <img width="1000" src=https://user-images.githubusercontent.com/73386460/103197067-b6d71300-4928-11eb-907f-65809a582553.PNG>
 
-	
+		
 
-## MODELING 	
-
-## Service 
-<div>	
-
-### 1. CASE1.관리자 행동 시나리오		1
+### CASE1.관리자 행동 시나리오		
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:key: 로그인 <br>
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:ballot_box_with_check: 카테고리 고르기 <br>
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:couplekiss: 선수 정보 확인 <br>
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: 선수 등록   <br>
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:x: 선수 삭제 <br>
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:memo: 선수 명단 확인하기 <br>
+<br>
+
+
+### CASE2.관리자 행동 시나리오		
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:key: 로그인 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:ballot_box_with_check: 카테고리 고르기 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:couplekiss: 감독 정보 확인 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: Giovanni Cerra 코치의 정보 수정   <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: 모든 감독 정보 확인하기  <br>
 <br>
 
 
@@ -296,3 +299,8 @@ em.remove(em.find(LoginEntity.class, userID));
 em.createNativeQuery("DELETE FROM logins WHERE user_id="+"'"+userID+"'").executeUpdate();
 ```
 em.remove가 실행되지 않는 문제가 발생해 createNativeQuery로 해결했습니다.
+
+```java
+em.remove(em.find(LoginEntity.class, userID));
+```
+context에 저장하지 않고 바로 삭제하려 해서 에러가 발생했습니다.
