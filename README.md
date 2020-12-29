@@ -299,3 +299,8 @@ em.remove(em.find(LoginEntity.class, userID));
 em.createNativeQuery("DELETE FROM logins WHERE user_id="+"'"+userID+"'").executeUpdate();
 ```
 em.remove가 실행되지 않는 문제가 발생해 createNativeQuery로 해결했습니다.
+
+```java
+em.remove(em.find(LoginEntity.class, userID));
+```
+context에 저장하지 않고 바로 삭제하려 해서 에러가 발생했습니다.
