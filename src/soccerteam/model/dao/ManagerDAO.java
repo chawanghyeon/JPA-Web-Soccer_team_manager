@@ -27,10 +27,12 @@ public class ManagerDAO {
 	public boolean addManager(ManagerDTO manager) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		
 		boolean result = false;
 
 		try {
-			em.persist(manager.toEntity(em.find(TeamEntity.class, manager.getTName())));
+			em.createNativeQuery("insert into managers (m_age, m_name, m_position, t_name, m_number) values ("+manager.getMage()+", '"+manager.getMname()+"', '"+manager.getMposition()+"', '"+manager.getTname()+"', "+manager.getMnumber()+")").executeUpdate();
 			tx.commit();
 
 			result = true;
@@ -104,7 +106,7 @@ public class ManagerDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<ManagerDTO> getAllManagers() throws SQLException {
+	public ArrayList<ManagerDTO> getAllManagers(String tname) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -113,7 +115,7 @@ public class ManagerDAO {
 		ArrayList<ManagerDTO> mlist = new ArrayList<>();
 
 		try {
-			list = em.createNativeQuery("SELECT * FROM managers").getResultList();
+			list = em.createNativeQuery("SELECT * FROM managers where t_name='"+tname+"'").getResultList();
 			Iterator it = list.iterator();
 			while (it.hasNext()) {
 				Object[] obj = (Object[]) it.next();

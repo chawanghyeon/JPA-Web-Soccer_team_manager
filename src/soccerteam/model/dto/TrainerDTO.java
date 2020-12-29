@@ -19,18 +19,18 @@ import soccerteam.model.entity.TrainerEntity;
 
 public class TrainerDTO {
 
-	private int trNumber;
+	private int trnumber;
 
-	private String tName;
+	private String tname;
 
-	private String trName;
+	private String trname;
 
-	private int trAge;
+	private int trage;
 
-	private String trPosition;
+	private String trposition;
 	
 	public TrainerEntity toEntity(TeamEntity team) {
-		return TrainerEntity.builder().trNumber(trNumber).trName(trName).trAge(trAge).trPosition(trPosition).team(team).build();
+		return TrainerEntity.builder().trNumber(trnumber).trName(trname).trAge(trage).trPosition(trposition).team(team).build();
 	}
 	
 }

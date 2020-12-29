@@ -79,8 +79,8 @@ public class SoccerTeamService {
 		}
 	}
 
-	public ArrayList<TrainerDTO> getAllTrainers() throws SQLException {
-		return trainerDAO.getAllTrainers();
+	public ArrayList<TrainerDTO> getAllTrainers(String tname) throws SQLException {
+		return trainerDAO.getAllTrainers(tname);
 	}
 
 	public TrainerDTO getTrainer(int trNumber) throws SQLException, NotExistException {
@@ -113,8 +113,8 @@ public class SoccerTeamService {
 		}
 	}
 
-	public ArrayList<PlayerDTO> getAllPlayers() throws SQLException {
-		return playerDAO.getAllPlayers();
+	public ArrayList<PlayerDTO> getAllPlayers(String tname) throws SQLException {
+		return playerDAO.getAllPlayers(tname);
 	}
 
 	public PlayerDTO getPlayer(int pNumber) throws SQLException, NotExistException {
@@ -181,8 +181,8 @@ public class SoccerTeamService {
 		}
 	}
 
-	public ArrayList<ManagerDTO> getAllManagers() throws SQLException {
-		return managerDAO.getAllManagers();
+	public ArrayList<ManagerDTO> getAllManagers(String tname) throws SQLException {
+		return managerDAO.getAllManagers(tname);
 	}
 
 	public ManagerDTO getManager(int mNumber) throws SQLException, NotExistException {
@@ -215,8 +215,8 @@ public class SoccerTeamService {
 		}
 	}
 
-	public ArrayList<MedicalStaffDTO> getAllMedicalStaffs() throws SQLException {
-		return medicalStaffDAO.getAllMedicalStaffs();
+	public ArrayList<MedicalStaffDTO> getAllMedicalStaffs(String tname) throws SQLException {
+		return medicalStaffDAO.getAllMedicalStaffs(tname);
 	}
 
 	public MedicalStaffDTO getMedicalStaff(int dNumber) throws SQLException, NotExistException {

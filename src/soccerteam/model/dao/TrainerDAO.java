@@ -29,11 +29,12 @@ public class TrainerDAO {
 	public boolean addTrainer(TrainerDTO trainer) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
-
+		tx.begin();
+		
 		boolean result = false;
 
 		try {
-			em.persist(trainer.toEntity(em.find(TeamEntity.class, trainer.getTName())));
+			em.createNativeQuery("insert into trainers (tr_age, tr_name, tr_position, t_name, tr_number) values ("+trainer.getTrname()+", '"+trainer.getTrname()+"', '"+trainer.getTrposition()+"', '"+trainer.getTname()+"', "+trainer.getTrnumber()+")").executeUpdate();
 			tx.commit();
 
 			result = true;
@@ -110,7 +111,7 @@ public class TrainerDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<TrainerDTO> getAllTrainers() throws SQLException {
+	public ArrayList<TrainerDTO> getAllTrainers(String tname) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -119,7 +120,7 @@ public class TrainerDAO {
 		ArrayList<TrainerDTO> tlist = new ArrayList<>();
 
 		try {
-			list = em.createNativeQuery("SELECT * FROM trainers").getResultList();
+			list = em.createNativeQuery("SELECT * FROM trainers where t_name='"+tname+"'").getResultList();
 			Iterator it = list.iterator();
 			while (it.hasNext()) {
 				Object[] obj = (Object[]) it.next();

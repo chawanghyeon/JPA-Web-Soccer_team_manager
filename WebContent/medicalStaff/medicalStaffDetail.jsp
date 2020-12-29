@@ -12,26 +12,26 @@
 <br><br><br>
 <center>
 
-${requestScope.successMsg}
-
 <h3>의료진  상세보기</h3>
 <hr><p> 
  
 <table border="1">
 	<tr>
-		<th>의료진 이름</th><th>의료진 나이</th><th>의료진 분야</th>
+		<th>팀 이름</th><th>의료진 이름</th><th>의료진 번호</th><th>의료진 나이</th><th>의료진 분야</th>
 	</tr>
  	<tr>
- 		<td>${requestScope.medicalstaff.dName}</td>
- 		<td>${requestScope.medicalstaff.dAge}</td>
- 		<td>${requestScope.medicalstaff.dPosition}</td>
+ 		<td>${requestScope.medicalStaff.tname}</td>
+ 		<td>${requestScope.medicalStaff.dname}</td>
+ 		<td>${requestScope.medicalStaff.dnumber}</td>
+ 		<td>${requestScope.medicalStaff.dage}</td>
+ 		<td>${requestScope.medicalStaff.dposition}</td>
  	</tr>
 </table>
 
 <br><br><br>
-<a href="soccerteam?command=requestUpdateMedicalStaff&dNumber=${requestScope.medicalstaff.dNumber}">수정하기</a>
+<a href="soccerteam?command=requestUpdateMedicalStaff&dNumber=${requestScope.medicalStaff.dnumber}">수정하기</a>
 
-<a href="soccerteam?command=deleteMedicalStaff&dNumber=${requestScope.medicalstaff.dNumber}">탈퇴하기</a>
+<a href="soccerteam?command=deleteMedicalStaff&dNumber=${requestScope.medicalStaff.dnumber}&tName=${requestScope.medicalStaff.tname}">탈퇴하기</a>
 
 &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
 

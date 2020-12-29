@@ -13,15 +13,13 @@
 <center>
 <h3>의료진 등록</h3>
 <hr><p>
-
+<% String t = request.getParameter("tname");%>
 <form action="${pageContext.request.contextPath}/soccerteam" method="post">
 	<input type="hidden" name="command" value="addMedicalStaff">
+	<input type="hidden" name="tName" value="<%=t%>">
 	<table border="1">
 		<tr>
 			<td>의료진 번호</td><td><input type="text" name="dNumber"></td>
-		</tr>
-		<tr>
-	 		<td>${requestScope.team.tName}</td><td><input type="text" name="tName"></td>
 		</tr>
 		<tr>	
 			<td>의료진 이름</td><td><input type="text" name="dName"></td>

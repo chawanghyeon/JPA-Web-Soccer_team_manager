@@ -30,8 +30,9 @@ public class TeamDAO {
 		tx.begin();
 		boolean result = false;
 
-		try {
-			em.persist(team.toEntity(em.find(LoginEntity.class, team.getUserID())));
+		try {//네이티브 쿼리로 변경
+			//강사님께 질문
+			em.createNativeQuery("insert into team (user_id, t_name) values ('"+team.getUserID()+"', '"+team.getTname()+"')").executeUpdate();
 			tx.commit();
 
 			result = true;

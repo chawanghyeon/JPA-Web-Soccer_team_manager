@@ -59,8 +59,8 @@
 			<br>
 			<br>
 			<form action="${pageContext.request.contextPath}/team/teamInsert.jsp">
-						<input type="hidden" name="userID" value="${requestScope.login.userID}">
-						<input type="submit" value="팀 생성하기">
+					<input type="hidden" name="userID" value="${requestScope.login.userID}">
+					<input type="submit" value="팀 생성하기">
 			</form>
 			<br> <a href="soccerteam?command=requestUpdateLogin&userID=${requestScope.login.userID}&userPW=${requestScope.login.userPW}">비밀번호 수정하기</a> 
 			<a href="soccerteam?command=deleteLogin&userID=${requestScope.login.userID}">탈퇴하기</a>

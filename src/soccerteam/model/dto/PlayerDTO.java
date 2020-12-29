@@ -18,17 +18,17 @@ import soccerteam.model.entity.TeamEntity;
 
 public class PlayerDTO {
 
-	private int pNumber;
+	private int pnumber;
 
-	private String tName;
+	private String tname;
 
-	private String pName;
+	private String pname;
 
-	private int pAge;
+	private int page;
 
-	private String pPosition;
+	private String pposition;
 	
 	public PlayerEntity toEntity(TeamEntity team) {
-		return PlayerEntity.builder().pNumber(pNumber).pName(pName).pAge(pAge).pPosition(pPosition).team(team).build();
+		return PlayerEntity.builder().pNumber(pnumber).pName(pname).pAge(page).pPosition(pposition).team(team).build();
 	}
 }

@@ -16,17 +16,18 @@
 		<hr>
 		<p>
 		<form action="soccerteam?command=updateManager" method="post">
+		<input type="hidden" name="mNumber" value="${requestScope.manager.mnumber}">
 			<table border="1">
 				<thead>
 					<tr>
 						<th>팀 이름</th><th>감독 번호</th><th>감독 이름</th><th>감독 나이</th><th>감독 분야</th>
 					</tr>
 					<tr>
-						<td>${requestScope.manager.tName}</td>
-					 	<td>${requestScope.manager.mNumber}</td>
-					 	<td>${requestScope.manager.mName}</td>
-					 	<td>${requestScope.manager.mAge}</td>
-					 	<td><input type="text" name="mPosition" value="${requestScope.manager.mPosition}"></td>
+						<td>${requestScope.manager.tname}</td>
+					 	<td>${requestScope.manager.mnumber}</td>
+					 	<td>${requestScope.manager.mname}</td>
+					 	<td>${requestScope.manager.mage}</td>
+					 	<td><input type="text" name="mPosition" value="${requestScope.manager.mposition}"></td>
 					</tr>
 
 					<tr>

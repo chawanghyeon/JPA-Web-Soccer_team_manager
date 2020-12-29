@@ -1,5 +1,5 @@
 ﻿<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="soccerteam.model.dto.TeamDTO"%>
@@ -18,7 +18,7 @@
 <% String t = request.getParameter("userID");%>
 <form action="${pageContext.request.contextPath}/soccerteam" method="post">
 	<input type="hidden" name="command" value="addTeam">
-	<input type="hidden" name="userID" value="t">
+	<input type="hidden" name="userID" value="<%=t%>">
 	<table border="1">
 		<tr>
 		

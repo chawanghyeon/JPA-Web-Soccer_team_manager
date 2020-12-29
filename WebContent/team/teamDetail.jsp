@@ -14,39 +14,27 @@
 <br><br><br>
 <center>
 
-${requestScope.successMsg}
-
 <h3>팀 상세보기</h3>
 <hr><p> 
  
 <table border="1">
 	
- 		<td>${requestScope.team.tname}</td>
- 		 
- 		
- 		
- 		<%-- <% TeamDTO t = (TeamDTO)request.getAttribute("team"); 
-				if(t != null){
-		%>
-				<h2><%=t.getTName()%></h2>		
-		<%			
-				}
-		%> --%>
+ 		<h1>${requestScope.team.tname}</h1>
+ 
 		
 </table>
-<%-- 
-<br><br><br>
-&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllPlayers&pName=<%=t.getTName()%>">선수</a>
-
-&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllManagers&mName=<%=t.getTName()%>">감독</a>
-
-&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllMedicalStaff&dName=<%=t.getTName()%>">의료진</a>
-
-&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllTrainers&tName=<%=t.getTName()%>">트레이너</a>
 
 <br><br><br>
-&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/loginDetail.jsp">메인으로 이동</a>
- --%>
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllPlayers&tName=${requestScope.team.tname}">선수</a>
+
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllManagers&tName=${requestScope.team.tname}">감독</a>
+
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllMedicalStaffs&tName=${requestScope.team.tname}">의료진</a>
+
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllTrainers&tName=${requestScope.team.tname}">트레이너</a>
+
+<br><br><br>
+&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
 </center>
 </body>
 </html>

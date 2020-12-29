@@ -15,18 +15,19 @@
 		<h3>트레이너 정보 수정하기 - 트레이너 분야 수정</h3>
 		<hr>
 		<p>
-		<form action="soccerteam?command=updateManager" method="post">
+		<form action="soccerteam?command=updateTrainer" method="post">
+		<input type="hidden" name="trNumber" value="${requestScope.trainer.trnumber}">
 			<table border="1">
 				<thead>
 					<tr>
 						<th>팀 이름</th><th>트레이너 번호</th><th>트레이너 이름</th><th>트레이너 나이</th><th>트레이너 분야</th>
 					</tr>
 					<tr>
-						<td>${requestScope.trainer.tName}</td>
-					 	<td>${requestScope.trainer.trNumber}</td>
-					 	<td>${requestScope.trainer.trName}</td>
-					 	<td>${requestScope.trainer.trAge}</td>
-					 	<td><input type="text" name="trPosition" value="${requestScope.trainer.trPosition}"></td>
+						<td>${requestScope.trainer.tname}</td>
+					 	<td>${requestScope.trainer.trnumber}</td>
+					 	<td>${requestScope.trainer.trname}</td>
+					 	<td>${requestScope.trainer.trage}</td>
+					 	<td><input type="text" name="trPosition" value="${requestScope.trainer.trposition}"></td>
 					</tr>
 
 					<tr>

@@ -29,11 +29,12 @@ public class PlayerDAO {
 	public boolean addPlayer(PlayerDTO player) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
-
+		tx.begin();
+		
 		boolean result = false;
 
 		try {
-			em.persist(player.toEntity(em.find(TeamEntity.class, player.getTName())));
+			em.createNativeQuery("insert into players (p_age, p_name, p_position, t_name, p_number) values ("+player.getPage()+", '"+player.getPname()+"', '"+player.getPposition()+"', '"+player.getTname()+"', "+player.getPnumber()+")").executeUpdate();
 			tx.commit();
 
 			result = true;
@@ -110,7 +111,7 @@ public class PlayerDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<PlayerDTO> getAllPlayers() throws SQLException {
+	public ArrayList<PlayerDTO> getAllPlayers(String tname) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -119,7 +120,7 @@ public class PlayerDAO {
 		ArrayList<PlayerDTO> plist = new ArrayList<>();
 
 		try {
-			list = em.createNativeQuery("SELECT * FROM players").getResultList();
+			list = em.createNativeQuery("SELECT * FROM players where t_name='"+tname+"'").getResultList();
 			Iterator it = list.iterator();
 			while (it.hasNext()) {
 				Object[] obj = (Object[]) it.next();

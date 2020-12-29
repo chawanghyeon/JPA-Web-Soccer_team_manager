@@ -29,11 +29,12 @@ public class MedicalStaffDAO {
 	public boolean addMedicalStaff(MedicalStaffDTO medicalStaff) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
-
+		tx.begin();
+		
 		boolean result = false;
 
 		try {
-			em.persist(medicalStaff.toEntity(em.find(TeamEntity.class, medicalStaff.getTName())));
+			em.createNativeQuery("insert into medical_staff (d_age, d_name, d_position, t_name, d_number) values ("+medicalStaff.getDage()+", '"+medicalStaff.getDname()+"', '"+medicalStaff.getDposition()+"', '"+medicalStaff.getTname()+"', "+medicalStaff.getDnumber()+")").executeUpdate();
 			tx.commit();
 
 			result = true;
@@ -110,7 +111,7 @@ public class MedicalStaffDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<MedicalStaffDTO> getAllMedicalStaffs() throws SQLException {
+	public ArrayList<MedicalStaffDTO> getAllMedicalStaffs(String tname) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -119,7 +120,7 @@ public class MedicalStaffDAO {
 		ArrayList<MedicalStaffDTO> dlist = new ArrayList<>();
 
 		try {
-			list = em.createNativeQuery("SELECT * FROM medical_staff").getResultList();
+			list = em.createNativeQuery("SELECT * FROM medical_staff where t_name='"+tname+"'").getResultList();
 			Iterator it = list.iterator();
 			while (it.hasNext()) {
 				Object[] obj = (Object[]) it.next();

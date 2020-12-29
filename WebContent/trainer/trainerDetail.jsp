@@ -22,18 +22,18 @@ ${requestScope.successMsg}
 		<th>팀 이름</th><th>트레이너 번호</th><th>트레이너 이름</th><th>트레이너 나이</th><th>트레이닝 분야</th>
 	</tr>
  	<tr>
- 		<td>${requestScope.trainer.tName}</td>
- 		<td>${requestScope.trainer.trNumber}</td>
- 		<td>${requestScope.trainer.trName}</td>
- 		<td>${requestScope.trainer.trAge}</td>
- 		<td>${requestScope.trainer.trPosition}</td>
+ 		<td>${requestScope.trainer.tname}</td>
+ 		<td>${requestScope.trainer.trnumber}</td>
+ 		<td>${requestScope.trainer.trname}</td>
+ 		<td>${requestScope.trainer.trage}</td>
+ 		<td>${requestScope.trainer.trposition}</td>
  	</tr>
 </table>
 
 <br><br><br>
-<a href="soccerteam?command=requestUpdateTrainer&trNumber=${requestScope.trainer.trNumber}">수정하기</a>
+<a href="soccerteam?command=requestUpdateTrainer&trNumber=${requestScope.trainer.trnumber}">수정하기</a>
 
-<a href="soccerteam?command=deleteTrainer&trNumber=${requestScope.trainer.trNumber}">탈퇴하기</a>
+<a href="soccerteam?command=deleteTrainer&trNumber=${requestScope.trainer.trnumber}&tName=${requestScope.trainer.tname}">탈퇴하기</a>
 
 &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
 

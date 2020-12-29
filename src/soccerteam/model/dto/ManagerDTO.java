@@ -16,32 +16,32 @@ import soccerteam.model.entity.TeamEntity;
 
 public class ManagerDTO {
 	
-	private int mNumber;
-	private String tName;
-    private String mName;
-	private int mAge;
-	private String mPosition;
+	private int mnumber;
+	private String tname;
+    private String mname;
+	private int mage;
+	private String mposition;
 	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("ManagersDTO [m_number=");
-		builder.append(mNumber);
+		builder.append(mnumber);
 		builder.append(", t_name=");
-		builder.append(tName);
+		builder.append(tname);
 		builder.append(", m_name=");
-		builder.append(mName);
+		builder.append(mname);
 		builder.append(", m_age=");
-		builder.append(mAge);
+		builder.append(mage);
 		builder.append(", m_position=");
-		builder.append(mPosition);
+		builder.append(mposition);
 		builder.append("]");
 		return builder.toString();
 	}
 
 	public ManagerEntity toEntity(TeamEntity team) {
 		
-		return ManagerEntity.builder().mNumber(mNumber).team(team).mName(mName).mAge(mAge).mPosition(mPosition).build();
+		return ManagerEntity.builder().mNumber(mnumber).team(team).mName(mname).mAge(mage).mPosition(mposition).build();
 	}
 	
 }

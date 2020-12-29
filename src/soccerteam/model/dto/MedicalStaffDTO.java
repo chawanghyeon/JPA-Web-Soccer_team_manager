@@ -18,17 +18,17 @@ import soccerteam.model.entity.TrainerEntity;
 @ToString
 
 public class MedicalStaffDTO {
-	private int dNumber;
+	private int dnumber;
 
-	private String tName;
+	private String tname;
 
-	private String dName;
+	private String dname;
 
-	private int dAge;
+	private int dage;
 
-	private String dPosition;
+	private String dposition;
 	
 	public MedicalStaffEntity toEntity(TeamEntity team) {
-		return MedicalStaffEntity.builder().dNumber(dNumber).dName(dName).dAge(dAge).dPosition(dPosition).team(team).build();
+		return MedicalStaffEntity.builder().dNumber(dnumber).dName(dname).dAge(dage).dPosition(dposition).team(team).build();
 	}
 }

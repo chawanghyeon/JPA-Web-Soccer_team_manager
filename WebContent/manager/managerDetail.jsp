@@ -19,19 +19,21 @@ ${requestScope.successMsg}
  
 <table border="1">
 	<tr>
-		<th>감독이름</th><th>감독나이</th><th>감독분야</th>
+		<th>팀 이름</th><th>감독 번호</th><th>감독 이름</th><th>감독 나이</th><th>감독 분야</th>
 	</tr>
  	<tr>
- 		<td>${requestScope.manager.mName}</td>
- 		<td>${requestScope.manager.mAge}</td>
- 		<td>${requestScope.manager.mPosition}</td>
+ 		<td>${requestScope.manager.tname}</td>
+ 		<td>${requestScope.manager.mnumber}</td>
+ 		<td>${requestScope.manager.mname}</td>
+ 		<td>${requestScope.manager.mage}</td>
+ 		<td>${requestScope.manager.mposition}</td>
  	</tr>
 </table>
 
 <br><br><br>
-<a href="soccerteam?command=requestUpdateManager&mNumber=${requestScope.manager.mNumber}">수정하기</a>
+<a href="soccerteam?command=requestUpdateManager&mNumber=${requestScope.manager.mnumber}">수정하기</a>
 
-<a href="soccerteam?command=deleteManager&mNumber=${requestScope.manager.mNumber}">탈퇴하기</a>
+<a href="soccerteam?command=deleteManager&mNumber=${requestScope.manager.mnumber}&tName=${requestScope.manager.tname}">탈퇴하기</a>
 
 &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
 

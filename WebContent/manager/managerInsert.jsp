@@ -13,15 +13,16 @@
 <center>
 <h3>재능 기부자</h3>
 <hr><p>
-
+<% String t = request.getParameter("tname");%>
 <form action="${pageContext.request.contextPath}/soccerteam" method="post">
 	<input type="hidden" name="command" value="addManager">
+	<input type="hidden" name="tName" value="<%=t%>">
 	<table border="1">
 		<tr>
 			<td>감독 번호</td><td><input type="text" name="mNumber"></td>
 		</tr>
 		<tr>
-	 		<td>${requestScope.team.tName}</td><td><input type="text" name="tName"></td>
+	 		<td>팀 이름</td><td><%=t%></td>
 		</tr>
 		<tr>	
 			<td>감독 이름</td><td><input type="text" name="mName"></td>
