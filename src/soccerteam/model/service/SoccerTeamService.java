@@ -66,7 +66,7 @@ public class SoccerTeamService {
 		return loginDAO.updateLogin(userID, newPw);
 	}
 
-	public boolean deleteLogin(String userID) throws SQLException, NotExistException {
+	public boolean deleteLogin(String userID) throws Exception {
 		notExistLogin(userID);
 		return loginDAO.deleteLogin(userID);
 	}

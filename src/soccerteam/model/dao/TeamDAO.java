@@ -27,6 +27,7 @@ public class TeamDAO {
 	public boolean addTeam(TeamDTO team) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		boolean result = false;
 
 		try {

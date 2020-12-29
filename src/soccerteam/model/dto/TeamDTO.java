@@ -20,6 +20,16 @@ public class TeamDTO {
 	private String tName;
 	private String userID;
 	
+	public String getTname() {
+		System.out.println("getTName");
+		return tName;
+	}
+	
+	public TeamEntity toEntity(LoginEntity login) {
+		
+		return TeamEntity.builder().tName(tName).login(login).build();
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -29,11 +39,6 @@ public class TeamDTO {
 		builder.append(userID);
 		builder.append("]");
 		return builder.toString();
-	}
-
-	public TeamEntity toEntity(LoginEntity login) {
-		
-		return TeamEntity.builder().tName(tName).login(login).build();
 	}
 
 }

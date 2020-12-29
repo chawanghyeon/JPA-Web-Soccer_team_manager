@@ -1,5 +1,5 @@
 ﻿<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="soccerteam.model.dto.TeamDTO"%>
@@ -20,41 +20,33 @@ ${requestScope.successMsg}
 <hr><p> 
  
 <table border="1">
-	<tr>
-		<th>팀이름</th>
-	</tr>
- 	<tr>
- 		<%-- <td>${requestScope.team.tName}</td>
- 		 --%>
+	
+ 		<td>${requestScope.team.tname}</td>
+ 		 
  		
  		
- 		<td>
- 		<% TeamDTO t = (TeamDTO)request.getAttribute("team"); 
+ 		<%-- <% TeamDTO t = (TeamDTO)request.getAttribute("team"); 
 				if(t != null){
 		%>
-				<%=t.getTName()%>		
+				<h2><%=t.getTName()%></h2>		
 		<%			
 				}
-		%>
-		</td>
+		%> --%>
 		
-		
-		
- 	</tr>
 </table>
-
+<%-- 
 <br><br><br>
-&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllPlayers&pName=${requestScope.player.pName}">선수</a>
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllPlayers&pName=<%=t.getTName()%>">선수</a>
 
-&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllManagers&mName=${requestScope.manager.mName}">감독</a>
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllManagers&mName=<%=t.getTName()%>">감독</a>
 
-&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllMedicalStaff&dName=${requestScope.medicalstaff.dName}">의료진</a>
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllMedicalStaff&dName=<%=t.getTName()%>">의료진</a>
 
-&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllTrainers&tName=${requestScope.trainer.tName}">트레이너</a>
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllTrainers&tName=<%=t.getTName()%>">트레이너</a>
 
 <br><br><br>
 &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/loginDetail.jsp">메인으로 이동</a>
-
+ --%>
 </center>
 </body>
 </html>

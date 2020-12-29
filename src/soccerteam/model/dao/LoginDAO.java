@@ -68,7 +68,7 @@ public class LoginDAO {
 		return result;
 	}
 
-	public boolean deleteLogin(String userID) throws SQLException {
+	public boolean deleteLogin(String userID) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -76,11 +76,14 @@ public class LoginDAO {
 		boolean result = false;
 
 		try {
-			em.createNativeQuery("DELETE FROM logins WHERE user_id="+"'"+userID+"'").executeUpdate();
+			
+//			em.remove(em.find(LoginEntity.class, userID));//context에 저장하지 않고 바로 삭제하려 해서 에러
+			em.createNativeQuery("DELETE FROM logins WHERE user_id='"+userID+"'").executeUpdate();
 			tx.commit();
 
 			result = true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			tx.rollback();
 			throw e;
 		} finally {
