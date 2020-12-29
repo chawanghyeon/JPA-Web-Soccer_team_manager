@@ -26,6 +26,7 @@ public class LoginDAO {
 	public boolean addLogin(LoginDTO login) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		
 		boolean result = false;
 
@@ -36,7 +37,7 @@ public class LoginDAO {
 			result = true;
 
 		} catch (Exception e) {
-			em.getTransaction().rollback();
+			tx.rollback();
 			throw e;
 		} finally {
 			em.close();
@@ -75,7 +76,7 @@ public class LoginDAO {
 		boolean result = false;
 
 		try {
-			em.remove(em.find(LoginEntity.class, userID));
+			em.createNativeQuery("DELETE FROM logins WHERE user_id="+"'"+userID+"'").executeUpdate();
 			tx.commit();
 
 			result = true;
@@ -97,7 +98,7 @@ public class LoginDAO {
 
 		try {
 			LoginEntity l = em.find(LoginEntity.class, userID);
-			login = new LoginDTO(userID, l.getUserPW());
+			login = new LoginDTO(l.getUserID(), l.getUserPW());
 		} catch (Exception e) {
 			tx.rollback();
 			throw e;

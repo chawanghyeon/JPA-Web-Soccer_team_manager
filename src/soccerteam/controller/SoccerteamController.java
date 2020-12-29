@@ -277,23 +277,23 @@ public class SoccerteamController extends HttpServlet {
 		String userPW = request.getParameter("userPW");
 
 		// 질문 아이디랑 비밀번호가 둘다
-		if (userID != null) {
-			LoginDTO login = new LoginDTO(userID, userPW);
 			
 			try {
-				boolean result = service.addLogin(login);
-				
-				if (result) {
-					request.setAttribute("login", login);
-					request.setAttribute("successMsg", "가입 완료");
-					url = "login/loginDetail.jsp";
-				} else {
-					request.setAttribute("errorMsg", "다시 시도하세요");
+				if (userID != null) {
+					LoginDTO login = new LoginDTO(userID, userPW);
+					boolean result = service.addLogin(login);
+					
+					if (result) {
+						request.setAttribute("login", login);
+						request.setAttribute("successMsg", "가입 완료");
+						url = "login/loginDetail.jsp";
+					} else {
+						request.setAttribute("errorMsg", "다시 시도하세요");
+					}
 				}
 			} catch (Exception s) {
 				request.setAttribute("errorMsg", s.getMessage());
 			}
-		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
@@ -302,7 +302,10 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			
+			String userID = request.getParameter("userID");
+			String userPW = request.getParameter("userPW");
+			System.out.println(userID);
+			request.setAttribute("login", service.getLogin(userID, userPW));
 			url = "login/loginUpdate.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -338,7 +341,7 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			if (service.deleteLogin((request.getParameter("userID")))) {
+			if (service.deleteLogin(request.getParameter("userID"))) {
 				request.setAttribute("allLogins", service.getAllLogins());
 				url = "login/loginDetail.jsp";
 			} else {

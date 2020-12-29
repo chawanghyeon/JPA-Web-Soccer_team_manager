@@ -40,15 +40,16 @@
 			
 			
 			<% ArrayList<TeamDTO> list = (ArrayList<TeamDTO>)request.getAttribute("allTeams"); 
-				for(int i = 0; i < list.size(); i++){
+				if(list != null){
+					for(int i = 0; i < list.size(); i++){
 			%>
-					<%-- <a href="soccerteam?command=getTeam&tName=${requestScope.allTeams[i].tName}"><%= list.get(i).getTName() %></a> --%>
 					<form action="${pageContext.request.contextPath}/soccerteam">
 						<input type="hidden" name="command" value="getTeam">
 						<input type="hidden" name="tName" value="<%=list.get(i).getTName()%>">
 						<input type="submit" value="<%= list.get(i).getTName() %>">
 					</form>
 			<%
+					}
 				}
 			%>
 			
@@ -57,17 +58,10 @@
 			
 			<br>
 			<br>
-			<br> <a href="soccerteam?command=requestUpdateLogin&uesrID=${requestScope.login.userID}">비밀번호 수정하기</a> 
+			<br> <a href="soccerteam?command=requestUpdateLogin&userID=${requestScope.login.userID}&userPW=${requestScope.login.userPW}">비밀번호 수정하기</a> 
 			<a href="soccerteam?command=deleteLogin&userID=${requestScope.login.userID}">탈퇴하기</a>
 
 			&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
 	</center>
 </body>
 </html>
-
-
-
-
-
-
-

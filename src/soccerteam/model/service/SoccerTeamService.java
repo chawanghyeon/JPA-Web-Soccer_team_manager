@@ -63,7 +63,6 @@ public class SoccerTeamService {
 	}
 
 	public boolean updateLogin(String userID, String newPw) throws SQLException, NotExistException {
-		notExistLogin(userID);
 		return loginDAO.updateLogin(userID, newPw);
 	}
 

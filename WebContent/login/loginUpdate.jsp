@@ -16,6 +16,7 @@
 		<hr>
 		<p>
 		<form action="soccerteam?command=updateLogin" method="post">
+			<input type="hidden" name="userID" value="${login.userID}">
 			<table border="1">
 				<thead>
 					<tr>
@@ -23,8 +24,8 @@
 						<th>사용자 PW</th>
 					</tr>
 					<tr>
-						<td><input type="text" name="userID" value="${login.userID}" readonly></td>
-						<td><input type="password" name="userPW" value="${login.userPW}"></td>
+						<td>${requestScope.login.userID}</td>
+						<td><input type="password" name="userPW"></td>
 					</tr>
 					<tr>
 						<td colspan="2"><input type="submit" value="수정">
