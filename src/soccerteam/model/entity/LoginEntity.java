@@ -37,12 +37,12 @@ public class LoginEntity {
 	private String userPW;
 	
 
-	@OneToMany(mappedBy="logins")
-	private List<TeamEntity> list;
+	@OneToMany
+	private List<LoginEntity> list;
 
-	public LoginEntity(String userId, String userPw) {
-		this.userID = userId;
-		this.userPW = userPw;
+	public LoginEntity(String userID, String userPW) {
+		this.userID = userID;
+		this.userPW = userPW;
 	}
 
 	@Override

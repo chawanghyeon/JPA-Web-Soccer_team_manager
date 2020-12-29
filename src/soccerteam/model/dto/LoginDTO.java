@@ -30,6 +30,6 @@ public class LoginDTO {
 	}
 	
 	public LoginEntity toEntity() {
-		return LoginEntity.builder().userID(userID).userPW(userPW).build();
+		return new LoginEntity(userID, userPW);
 	}
 }

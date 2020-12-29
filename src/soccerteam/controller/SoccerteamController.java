@@ -1,6 +1,7 @@
 package soccerteam.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -252,7 +253,9 @@ public class SoccerteamController extends HttpServlet {
 			String userPW = request.getParameter("userPW");
 			
 			LoginDTO l = service.getLogin(userID, userPW);
+			
 			if (l != null) {
+				request.setAttribute("allTeams", service.getAllTeam(userID));
 				request.setAttribute("login", l);
 				url = "login/loginDetail.jsp";
 			} else {
@@ -290,8 +293,8 @@ public class SoccerteamController extends HttpServlet {
 			} catch (Exception s) {
 				request.setAttribute("errorMsg", s.getMessage());
 			}
-			request.getRequestDispatcher(url).forward(request, response);
 		}
+		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	// 관리자 비밀번호 수정 요구
@@ -299,11 +302,8 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			String userID = request.getParameter("userID");
-			String userPW = request.getParameter("userPW");
 			
-			request.setAttribute("login", service.getLogin(userID, userPW));
-			url = "login/loginDetail.jsp";
+			url = "login/loginUpdate.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();
@@ -472,7 +472,8 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			request.setAttribute("allTeams", service.getAllTeam());
+			String userID = request.getParameter("userID");
+			request.setAttribute("allTeams", service.getAllTeam(userID));
 			url = "team/teamList.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -485,7 +486,7 @@ public class SoccerteamController extends HttpServlet {
 	public void getTeam(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			TeamDTO t = service.getTeam((request.getParameter("tName")));
+			TeamDTO t = service.getTeam(request.getParameter("tName"));
 			if (t != null) {
 				request.setAttribute("team", t);
 				url = "team/teamDetail.jsp";
@@ -567,7 +568,8 @@ public class SoccerteamController extends HttpServlet {
 		String url = "showError.jsp";
 		try {
 			if (service.deleteTeam((request.getParameter("tName")))) {
-				request.setAttribute("allTeams", service.getAllTeam());
+				String userID = request.getParameter("userID");
+				request.setAttribute("allTeams", service.getAllTeam(userID));
 				url = "team/teamList.jsp";
 			} else {
 				request.setAttribute("errorMsg", "삭제 실패");
