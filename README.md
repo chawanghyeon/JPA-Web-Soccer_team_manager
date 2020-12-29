@@ -17,43 +17,51 @@
 
 
 <b>Control하다</b>는 <br>
-:soccer: 선수, 감독, 트레이너, 의료진의 정보를 <br>
-         팀별로 사용할 수 있지만,  <br>
-         팀의 정보보안을 위해 다른팀으로의 접근은 차단하는  <br>
+:soccer: 선수, 감독, 트레이너, 의료진의 정보를 확인할 수 있고,  <br>
+         수정 할 수 있는<br>
          관리 프로그램입니다. :computer:  <br>
 
 <p><p>
 	
-## TOPIC SELECT PROCESS<br><br>
+
 
 ### topic <br>
 
 <div>
 
-#### 선수관리프로그램 및 선수 페이지  <br>
-:player: 선수의 정보를 등록, 확인하고 업데이트 및 삭제를 할 수 있습니다.<br>
+#### 선수관리 및 선수 페이지  <br>
+:clock8: 선수의 정보를 등록, 확인하고 업데이트 및 삭제를 할 수 있습니다.<br>
+
 <p><p></p>
-	
+
 #### 감독 관리 및 감독 페이지 <br>
-:user: 감독의 정보를 등록, 확인하고 이력을 확인할 수 있습니다.  <br>
+:clock8: 감독의 정보를 등록, 확인하고 이력을 확인할 수 있습니다.  <br>
 
 <p><p></p>
 
-#### 트레이너 관리 및 감독 페이지 <br>
-:clock8: 감독의 정보를 등록, 확인하고 이력을 확인할 수 있습니다. <br>
+#### 트레이너 관리 및 트레이너 페이지 <br>
+:clock8: 트레이너의 정보를 등록, 확인하고 이력을 확인할 수 있습니다. <br>
+<p><p></p>
+
+#### 의료진 관리 및 의료진 페이지 <br>
+:clock8: 트레이너의 정보를 등록, 확인하고 이력을 확인할 수 있습니다. <br>
 <p><p></p>
 
 #### Control<br>
 
 
->#### CASE 1. 토트넘홍보팀에 입사한 a씨 
->
->오늘은 아침부터 이유없이 기분이 울적했다.<br>
->퇴근 길에 기분전환하려 만난 연인은 지루한지 하품을 해댔다.<br>
->즉석떢볶이 집에서는 맵기 정도를 두고는 싸웠다.<p> 
->연인과 싸우고 돌아오는 골목길,비가 쏟아진다.<p>
->우산도 없는데 서럽다.<br>
->지금 내 얼굴 위 빗방울이 빗물인지 눈물인지 모르겠ㄷㅏ...★ <p></p><br><br>
+>#### CASE 1. 토트넘선수관리팀에 입사한 왕현씨 
+>CASE 1.
+>연말은 FA가 많다.<br>
+>이번년도에는 권희성선수가 팀을 나가게 되었고, 김민수선수가 입단하게 되었다.<br>
+>선수관리 프로그램에서 권희성선수를 삭제하고 김민수선수를 등록해야한다. .<p> <br>
+><br>	
+
+<br>
+>#### CASE 2. 유벤투스의료관리팀에 입사한 윤혜씨 	
+>이번년도에 부상으로 부진했던 최지원선수의 데이터를 담당의료진들에게 보내야합니다. <p>
+><br>
+> <p></p><br><br>
 
 
 
@@ -70,13 +78,13 @@
 ## Service 
 <div>	
 
-### 1. 관리자 행동 시나리오		
+### 1. CASE1.관리자 행동 시나리오		1
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:key: 로그인 <br>
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:ballot_box_with_check: 카테고리 고르기 <br>
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:couplekiss: 선수 정보 확인 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: 선수 정보 수정   <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:calendar: 선수 삭제 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:x: 선수 명단 확인하기 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: 선수 등록   <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:x: 선수 삭제 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:memo: 선수 명단 확인하기 <br>
 <br>
 
 
@@ -256,24 +264,35 @@ https://ovenapp.io/project/Bw3y8pT5PFoud5JYHMvDrt6okzKgig7T#bavCk
 
 
 
-## INSPRATION 
-<div>
-1. 구조
-	
-	1) 버전 오류
- 	- git에 올린 초기 버전에 맞지 않게 다운로드하고 수정하다보니 push, pull에 문제가 있었는데, 인터넷으로 버전 정리를 하면서 해결했다.
-	2) denied 되는 문제
- 	- window 자격증명 삭제로 해결했다.
+## ISSUE
+1. 구조  
+	- 맨처음 sql table구조를 설계할 때 제약 조건을 잘 못 설정했습니다.
+	- ERDCLOUD에서 sql문장을 자동으로 생성해주는 기능을 썼는데 오류가 많았습니다.
+	- Entity mapping하는 과정에서 JoinColumn과 mappedBy를 헷갈려 오류가 생겼습니다.
 
-2. 깃허브
+2. 깃허브  
+코딩을 하다보면 이클립스 설정 파일이나 class파일 등이 자동으로 변경되는데 이것들을 깃허브에 같이 올려 소스파일을 확실하게 분리해서 작업해도 충돌이 일어나는 경우가 빈번했습니다.
+.gitignore파일을 만들어서 커밋시 제외할 파일들을 설정해 해결했습니다.
 
-1) LOGIN
-2) 구조 짜기
-- MVC를 위해 CONTROLLER, VIEW, SERVICE, DAO, DTO 등 여러 개로 클래스를 나눠서 개발했다.
-- 덕분에 수정과정에서 에러가 발생할 때마다 어느 지점으로 가서 손을 볼 지 파악할 수 있어 유용했다
-3) SEQUENCE 기능의 활용
-- 관리자가 개발자와 다를 경우를 고려해 감정, 날씨 등의 정보를 추가할 때 따로 일련번호를 확인할 필요가 없도록
-  각 테이블의 일련번호를 SEQUENCE로 매겨지게 했다.
+3. 코드
+```jsp
+<td>${requestScope.team.tName}</td>
+ 		
+ 		
+<td>
+<% TeamDTO t = (TeamDTO)request.getAttribute("team"); 
+	if(t != null){
+%>
+		<%=t.getTName()%>		
+<%			
+	}
+%>
+</td>
+```
+같은 코드지만 el태그를 사용한 부분은 인식을 하지 못하는 문제가 있었습니다.
 
-
-
+```java
+em.remove(em.find(LoginEntity.class, userID));
+em.createNativeQuery("DELETE FROM logins WHERE user_id="+"'"+userID+"'").executeUpdate();
+```
+em.remove가 실행되지 않는 문제가 발생해 createNativeQuery로 해결했습니다.
