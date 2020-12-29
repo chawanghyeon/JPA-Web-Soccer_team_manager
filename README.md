@@ -1,11 +1,7 @@
 # WEB_JPA MINI PROJECT : Control하다
 
 
-
 꿀단지님께 날라온 메일:memo: <br>
-
-<img width="300" src=https://user-images.githubusercontent.com/73386460/103259760-1a6f4800-49de-11eb-8612-3387c967605f.PNG>
-
 <p><p></p>
 
 
