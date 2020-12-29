@@ -22,7 +22,7 @@
 	
 
 
-### topic <br>
+### Service <br>
 
 <div>
 
@@ -44,7 +44,10 @@
 :clock8: 트레이너의 정보를 등록, 확인하고 이력을 확인할 수 있습니다. <br>
 <p><p></p>
 
-#### Control<br>
+
+
+
+#### 시나리오<br>
 
 
 >#### CASE 1. 토트넘선수관리팀에 입사한 왕현씨 
@@ -62,18 +65,13 @@
 
 
 
-##STRUCTURE
+## STRUCTURE
 
 
 <div>
 <img width="1000" src=https://user-images.githubusercontent.com/73386460/103197067-b6d71300-4928-11eb-907f-65809a582553.PNG>
 
-	
-
-## MODELING 	
-
-## Service 
-<div>	
+		
 
 ### 1. CASE1.관리자 행동 시나리오		1
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:key: 로그인 <br>
