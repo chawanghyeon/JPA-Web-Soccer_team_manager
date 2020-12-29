@@ -46,7 +46,7 @@
 					<form action="${pageContext.request.contextPath}/soccerteam">
 						<input type="hidden" name="command" value="getTeam">
 						<input type="hidden" name="tName" value="<%=list.get(i).getTName()%>">
-						<input type="submit" value="<%= list.get(i).getTName() %>">
+						<input type="submit" value="<%=list.get(i).getTName()%>">
 					</form>
 			<%
 					}

@@ -342,8 +342,7 @@ public class SoccerteamController extends HttpServlet {
 		String url = "showError.jsp";
 		try {
 			if (service.deleteLogin(request.getParameter("userID"))) {
-				request.setAttribute("allLogins", service.getAllLogins());
-				url = "login/loginDetail.jsp";
+				url = "index.html";
 			} else {
 				request.setAttribute("errorMsg", "삭제 실패");
 			}
@@ -573,7 +572,7 @@ public class SoccerteamController extends HttpServlet {
 			if (service.deleteTeam((request.getParameter("tName")))) {
 				String userID = request.getParameter("userID");
 				request.setAttribute("allTeams", service.getAllTeam(userID));
-				url = "team/teamList.jsp";
+				url = "login/loginDetail.jsp";
 			} else {
 				request.setAttribute("errorMsg", "삭제 실패");
 			}
