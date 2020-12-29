@@ -13,7 +13,7 @@
 <h3>회원 가입</h3>
 <hr><p>
 
-<form action="${pageContext.request.contextPath}/soccerteam" method="post">
+<form action="${pageContext.request.contextPath}/soccerteam">
 	<input type="hidden" name="command" value="addLogin">
 	<table border="1">
 		<tr>

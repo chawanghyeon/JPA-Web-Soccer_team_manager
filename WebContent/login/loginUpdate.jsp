@@ -19,8 +19,8 @@
 			<table border="1">
 				<thead>
 					<tr>
-						<th>기부자 id</th>
-						<th>비밀번호</th>
+						<th>사용자 ID</th>
+						<th>사용자 PW</th>
 					</tr>
 					<tr>
 						<td><input type="text" name="userID" value="${login.userID}" readonly></td>

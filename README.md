@@ -2,7 +2,7 @@
 
 
 
-꿀단지님께 날라온 메일:mail: <br>
+꿀단지님께 날라온 메일:memo: <br>
 
 
 <p><p></p>
@@ -43,15 +43,11 @@
 :clock8: 감독의 정보를 등록, 확인하고 이력을 확인할 수 있습니다. <br>
 <p><p></p>
 
-#### Dear.Diary<br>
-:no_mouth: 이렇게 메말라 가는 현대인의 감정을 돌보기 위해<br> 
-셀프 멘탈 헬스케어 체크 SNS 플랫폼
-Dear.Diary가 탄생했습니다!!<p></p>
-<img align="left" height="300" src = "https://github.com/Heart-and-heart/Heart-and-Heart/blob/mergetest/by%EC%A1%B0%EC%9C%A4%EC%98%81.jpg?raw=true"> 
-<img height="300" src = "https://github.com/Heart-and-heart/Heart-and-Heart/blob/mergetest/%EC%BD%94%EB%81%BC%EB%A6%AC.jpg?raw=true">
+#### Control<br>
 
->#### CASE 1. REGULAR DIARY를 사용 중인 A씨 일기
-><img align="left" height="170" img src="https://ohfun.net/contents/article/images/2019/0701/thm200_1561972645906397.jpg">
+
+>#### CASE 1. 토트넘홍보팀에 입사한 a씨 
+>
 >오늘은 아침부터 이유없이 기분이 울적했다.<br>
 >퇴근 길에 기분전환하려 만난 연인은 지루한지 하품을 해댔다.<br>
 >즉석떢볶이 집에서는 맵기 정도를 두고는 싸웠다.<p> 
@@ -60,20 +56,8 @@ Dear.Diary가 탄생했습니다!!<p></p>
 >지금 내 얼굴 위 빗방울이 빗물인지 눈물인지 모르겠ㄷㅏ...★ <p></p><br><br>
 
 
->#### CASE 2. DEAR DIARY를 사용 중인 B씨 일기
-><img align="left" height="238" img src = "https://instagram.ficn4-1.fna.fbcdn.net/v/t51.2885-15/e35/18888791_638450609677681_3614820475483455488_n.jpg?_nc_ht=instagram.ficn4-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=QDLB95sixEMAX_flfiT&tp=1&oh=05de921064cb026d07b2fea7c5ba94f6&oe=5FF700F1">
->아침에 일어났는데 기분이 울적했다.<br> 
->DEAR DIARY에 누적된 일기데이터 분석에 의하면 나는 비오는 날 <br>평소보다 울적해진다. 일기예보를 보니 역시 비가 올 예정이다.<br> 왜인지 아니까 안 우울하다.<p> 
->퇴근 길엔 연인을 만났는데 자꾸 하품을 했다.<br>
->DD의 커플정보를 보니 요즘 못 자던데 피로한 모양이다. 안쓰럽다.<br>
->연인이 내가 꾸물꾸물한 날 우울해지니까 매운 거 먹자고 하길래,<br>
->잠도 못잤는데 매운 거 먹으면 배탈난다고 죽집에 갔다.<br>
->나는 매운낙지, 그는 전복죽을 먹고 가서 푹 자라고 일찍 헤어졌다.<br>
->골목길에 들어서는데 비가 쏟아졌다. 아침에 우산 챙겼지롱!</p>
 
-
-
-## STRUCTURE 
+##STRUCTURE
 
 
 <div>
@@ -86,38 +70,14 @@ Dear.Diary가 탄생했습니다!!<p></p>
 ## Service 
 <div>	
 
-### 1. USER 행동 시나리오		
+### 1. 관리자 행동 시나리오		
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:key: 로그인 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:ballot_box_with_check: 내 다이어리 보기 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:couplekiss: 커플 이용자 다이어리 보기 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: 다이어리 쓰기  <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:calendar: 다이어리 수정 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:x: 다이어리 삭제 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:speech_balloon: 오늘 내 기분과 같은 기분인 사람들의 한줄 코멘트 보기 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;:bar_chart: 나의 감정상태 측정 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;① 자신이 지금까지 기록했던 기분점수 평균과<br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;② 최근 7일간의 기분점수 평균 비교 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;id님,  <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;:heavy_plus_sign: (감정상태가 평균과 같거나 더 높을 경우)  <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;이번주도 해피해피하게 아주 잘 보내고 있어요!  <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;:heavy_minus_sign: (감정상태가 평소보다 낮을 경우)  <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;이번주는 평소보다 우울하신가요? 오늘 간식으로 달콤한 케이크 한 조각 어때요? <br> <p></p>
-				
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;:sleeping: 9) 나의 수면상태 측정  <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;① 지금까지 기록했던 수면시간 평균과 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;② 최근 7일간의 수면시간 평균 비교  <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;id님,  <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;:heavy_plus_sign: id님, 푹 쉬셨네요 ! 주말엔 등산처럼 활기찬 야외활동을 해보는 게 어떨까요 ~?! <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;:heavy_minus_sign: 이번주는 평소보다 덜 주무셨어요. 주말엔 꼭 포근한 이불 속에서 푹 쉬세요!  <br>
-				 <br>
-
-### 2. 관리자 행동 시나리오
-<div>	
-	</br</p>
-	
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;:wrench: 1) 모든 다이어리 정보 CRUD  <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;:busts_in_silhouette: 2) 감정 테이블에 감정 추가/수정 (향후 Update용) <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;:droplet: 3) 날씨 테이블에 날씨 추가/수정 (향후 Update용) <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:ballot_box_with_check: 카테고리 고르기 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:couplekiss: 선수 정보 확인 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: 선수 정보 수정   <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:calendar: 선수 삭제 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:x: 선수 명단 확인하기 <br>
+<br>
 
 
 </br></p>

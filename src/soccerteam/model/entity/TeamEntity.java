@@ -17,7 +17,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -34,13 +33,12 @@ public class TeamEntity {
 	private String tName;
 
 	@NotNull
-	@Column(name = "user_id")
-	@ManyToOne(targetEntity = LoginEntity.class)
+	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private LoginEntity login;
 
-	@OneToMany(mappedBy="team")
-	private List list;
+	@OneToMany//(mappedBy="team")//team이 27번 라인의 team을 의미해서 오류?mappedBy reference an unknown target entity property:
+	private List<TeamEntity> list; //team이 playentity, managerentity등 여러 곳에서 참조하는데 어느 곳인지 몰라서 오류?
 
 	@Override
 	public String toString() {

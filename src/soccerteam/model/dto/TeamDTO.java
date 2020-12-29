@@ -23,9 +23,9 @@ public class TeamDTO {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("TeamDTO [t_name=");
+		builder.append("TeamDTO [tName=");
 		builder.append(tName);
-		builder.append(", userid=");
+		builder.append(", userID=");
 		builder.append(userID);
 		builder.append("]");
 		return builder.toString();
@@ -35,5 +35,5 @@ public class TeamDTO {
 		
 		return TeamEntity.builder().tName(tName).login(login).build();
 	}
-	
+
 }

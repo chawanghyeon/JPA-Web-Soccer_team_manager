@@ -148,8 +148,8 @@ public class SoccerTeamService {
 		}
 	}
 
-	public ArrayList<TeamDTO> getAllTeam() throws SQLException {
-		return teamDAO.getAllTeams();
+	public ArrayList<TeamDTO> getAllTeam(String userID) throws SQLException {
+		return teamDAO.getAllTeams(userID);
 	}
 
 	public TeamDTO getTeam(String tName) throws SQLException, NotExistException {

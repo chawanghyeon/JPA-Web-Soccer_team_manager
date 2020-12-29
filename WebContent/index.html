@@ -13,11 +13,14 @@
 		<h3>로그인 화면</h3>
 		<p>
 		<p>
-		<form action="soccerteam?command=getlogin" method="post">
+		<form action="soccerteam?command=getLogin" method="post">
 			&nbsp;&nbsp;&nbsp;<p>
 			ID : <input type="text" name="userID"><input type="hidden"><p>
 			PW : <input type="text" name="userPW"><input type="hidden"><p>
-			<input type="submit" value="로그인">&nbsp;&nbsp;&nbsp;<button onclick="login/loginInsert">회원가입</button>
+			<input type="submit" value="로그인">
+		</form>
+		<form action="login/loginInsert.jsp" method="post">
+			&nbsp;&nbsp;&nbsp;<button onclick="login/loginInsert">회원가입</button>
 		</form>
 		<p>
 	</center>

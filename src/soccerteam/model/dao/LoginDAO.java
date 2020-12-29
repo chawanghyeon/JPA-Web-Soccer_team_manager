@@ -37,6 +37,7 @@ public class LoginDAO {
 
 		} catch (Exception e) {
 			em.getTransaction().rollback();
+			throw e;
 		} finally {
 			em.close();
 		}

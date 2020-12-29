@@ -30,10 +30,9 @@ public class MedicalStaffEntity {
 	@Column(name = "d_number")
 	private int dNumber;
 
-	@Column(name = "t_name")
-	@ManyToOne(targetEntity = TeamEntity.class)
-	@JoinColumn(name = "t_name")
 	@NotNull
+	@ManyToOne(targetEntity=TeamEntity.class)
+	@JoinColumn(name = "t_name")
 	private TeamEntity team;
 
 	@Column(name = "d_name")

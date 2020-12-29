@@ -106,15 +106,16 @@ public class TeamDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<TeamDTO> getAllTeams() throws SQLException {
+	public ArrayList<TeamDTO> getAllTeams(String userID) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 
 		List<TeamEntity> list = null;
 		ArrayList<TeamDTO> tlist = new ArrayList<>();
+		
 		try {
-			list = em.createNativeQuery("SELECT * FROM team").getResultList();
+			list = em.createNativeQuery("SELECT * FROM team WHERE user_id=" + "'"+userID+"'").getResultList();
 			Iterator it = list.iterator();
 			while (it.hasNext()) {
 				Object[] obj = (Object[]) it.next();
