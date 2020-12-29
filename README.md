@@ -31,34 +31,36 @@
 
 <div>
 
-#### 선수관리프로그램 및 선수 페이지  <br>
-:player: 선수의 정보를 등록, 확인하고 업데이트 및 삭제를 할 수 있습니다.<br>
+#### 선수관리 및 선수 페이지  <br>
+:clock8: 선수의 정보를 등록, 확인하고 업데이트 및 삭제를 할 수 있습니다.<br>
+
 <p><p></p>
-	
 #### 감독 관리 및 감독 페이지 <br>
-:user: 감독의 정보를 등록, 확인하고 이력을 확인할 수 있습니다.  <br>
+:clock8: 감독의 정보를 등록, 확인하고 이력을 확인할 수 있습니다.  <br>
 
 <p><p></p>
 
-#### 트레이너 관리 및 감독 페이지 <br>
-:clock8: 감독의 정보를 등록, 확인하고 이력을 확인할 수 있습니다. <br>
+#### 트레이너 관리 및 트레이너 페이지 <br>
+:clock8: 트레이너의 정보를 등록, 확인하고 이력을 확인할 수 있습니다. <br>
 <p><p></p>
 
-#### 트레이너 관리 및 감독 페이지 <br>
-:clock8: 감독의 정보를 등록, 확인하고 이력을 확인할 수 있습니다. <br>
+#### 의료진 관리 및 의료진 페이지 <br>
+:clock8: 트레이너의 정보를 등록, 확인하고 이력을 확인할 수 있습니다. <br>
 <p><p></p>
 
 #### Control<br>
 
 
->#### CASE 1. 토트넘선수관리팀에 입사한 a씨 
+>#### CASE 1. 토트넘선수관리팀에 입사한 왕현씨 
 >CASE 1.
 >연말은 FA가 많다.<br>
->이번년도에는 양호준선수가 팀을 나가게 되었고, 최지원선수가 입단하게 되었다.<br>
->선수관리 프로그램에서 양호준선수를 삭제하고 최지원선수를 등록해야한다. .<p> <br>
-<br>	
->CASE 2.	
->연인과 싸우고 돌아오는 골목길,비가 쏟아진다.<p>
+>이번년도에는 권희성선수가 팀을 나가게 되었고, 김민수선수가 입단하게 되었다.<br>
+>선수관리 프로그램에서 권희성선수를 삭제하고 김민수선수를 등록해야한다. .<p> <br>
+><br>	
+
+<br>
+>#### CASE 2. 유벤투스의료관리팀에 입사한 윤혜씨 	
+>이번년도에 부상으로 부진했던 최지원선수의 데이터를 담당의료진들에게 보내야합니다. <p>
 >우산도 없는데 서럽다.<br>
 >지금 내 얼굴 위 빗방울이 빗물인지 눈물인지 모르겠ㄷㅏ...★ <p></p><br><br>
 
@@ -77,13 +79,13 @@
 ## Service 
 <div>	
 
-### 1. 관리자 행동 시나리오		
+### 1. CASE1.관리자 행동 시나리오		1
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:key: 로그인 <br>
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:ballot_box_with_check: 카테고리 고르기 <br>
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:couplekiss: 선수 정보 확인 <br>
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: 선수 정보 수정   <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:calendar: 선수 삭제 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:x: 선수 명단 확인하기 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:x: 선수 삭제 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:memo: 선수 명단 확인하기 <br>
 <br>
 
 
