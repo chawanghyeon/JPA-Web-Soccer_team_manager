@@ -28,7 +28,7 @@ import lombok.ToString;
 public class MedicalStaffEntity {
 	@Id
 	@Column(name = "d_number")
-	private int dNumber;
+	private int number;
 
 	@NotNull
 	@ManyToOne(targetEntity=TeamEntity.class)
@@ -37,13 +37,13 @@ public class MedicalStaffEntity {
 
 	@Column(name = "d_name")
 	@NotNull
-	private String dName;
+	private String name;
 
 	@Column(name = "d_age")
 	@NotNull
-	private int dAge;
+	private int age;
 
 	@Column(name = "d_position")
 	@NotNull
-	private String dPosition;
+	private String position;
 }

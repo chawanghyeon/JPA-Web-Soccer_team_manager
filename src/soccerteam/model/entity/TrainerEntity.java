@@ -29,7 +29,7 @@ public class TrainerEntity {
 
 	@Id
 	@Column(name = "tr_number")
-	private int trNumber;
+	private int number;
 
 	@NotNull
 	@ManyToOne(targetEntity=TeamEntity.class)
@@ -38,13 +38,13 @@ public class TrainerEntity {
 
 	@Column(name = "tr_name")
 	@NotNull
-	private String trName;
+	private String name;
 
 	@Column(name = "tr_age")
 	@NotNull
-	private int trAge;
+	private int age;
 
 	@Column(name = "tr_position")
 	@NotNull
-	private String trPosition;
+	private String position;
 }

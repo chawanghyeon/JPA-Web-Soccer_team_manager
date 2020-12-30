@@ -22,7 +22,7 @@
 						<th>팀 이름</th>
 					</tr>
 					<tr>
-					 	<td><input type="text" name="tName" value="${requestScope.team.tName}"></td>
+					 	<td><input type="text" name="team" value="${requestScope.team.team}"></td>
 					</tr>
 
 					<tr>

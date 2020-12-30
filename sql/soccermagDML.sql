@@ -16,17 +16,17 @@ insert into players values(8,'토트넘','김창훈',25,'공격수');
 insert into players values(9,'토트넘','김혜경',24,'미드필더');	
 insert into players values(10,'토트넘','김혜성',21,'미드필더');	
 insert into players values(11,'토트넘','박다영',22,'미드필더');	
-insert into players values(12,'유벤투스','염아정',24,'골키퍼');	
-insert into players values(13,'유벤투스','김연지',26,'수비수');	
-insert into players values(14,'유벤투스','박민영',28,'수비수');	
-insert into players values(15,'유벤투스','고은비',27,'수비수');	
-insert into players values(16,'유벤투스','장종욱',25,'수비수');	
-insert into players values(17,'유벤투스','이정민',24,'공격수');	
-insert into players values(18,'유벤투스','조윤혜',26,'공격수');	
-insert into players values(19,'유벤투스','최지수',24,'공격수');	
-insert into players values(20,'유벤투스','최지원',27,'미드필더');	
-insert into players values(21,'유벤투스','최태열',26,'미드필더');	
-insert into players values(22,'유벤투스','양호준',25,'미드필더');	
+insert into players values(1,'유벤투스','염아정',24,'골키퍼');	
+insert into players values(2,'유벤투스','김연지',26,'수비수');	
+insert into players values(3,'유벤투스','박민영',28,'수비수');	
+insert into players values(4,'유벤투스','고은비',27,'수비수');	
+insert into players values(5,'유벤투스','장종욱',25,'수비수');	
+insert into players values(6,'유벤투스','이정민',24,'공격수');	
+insert into players values(7,'유벤투스','조윤혜',26,'공격수');	
+insert into players values(8,'유벤투스','최지수',24,'공격수');	
+insert into players values(9,'유벤투스','최지원',27,'미드필더');	
+insert into players values(10,'유벤투스','최태열',26,'미드필더');	
+insert into players values(11,'유벤투스','양호준',25,'미드필더');	
 	
 				
 

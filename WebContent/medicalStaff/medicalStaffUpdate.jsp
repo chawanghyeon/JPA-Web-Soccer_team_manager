@@ -16,18 +16,18 @@
 		<hr>
 		<p>
 		<form action="soccerteam?command=updateMedicalStaff" method="post">
-		<input type="hidden" name="dNumber" value="${requestScope.medicalStaff.dnumber}">
+		<input type="hidden" name="number" value="${requestScope.medicalStaff.number}">
 			<table border="1">
 				<thead>
 					<tr>
 						<th>팀 이름</th><th>의료진 번호</th><th>의료진 이름</th><th>의료진 나이</th><th>의료진 분야</th>
 					</tr>
 					<tr>
-						<td>${requestScope.medicalStaff.tname}</td>
-					 	<td>${requestScope.medicalStaff.dnumber}</td>
-					 	<td>${requestScope.medicalStaff.dname}</td>
-					 	<td>${requestScope.medicalStaff.dage}</td>
-					 	<td><input type="text" name="dPosition" value="${requestScope.medicalStaff.dposition}"></td>
+						<td>${requestScope.medicalStaff.team}</td>
+					 	<td>${requestScope.medicalStaff.number}</td>
+					 	<td>${requestScope.medicalStaff.name}</td>
+					 	<td>${requestScope.medicalStaff.age}</td>
+					 	<td><input type="text" name="position" value="${requestScope.medicalStaff.position}"></td>
 					</tr>
 
 					<tr>

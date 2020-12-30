@@ -17,24 +17,18 @@ import soccerteam.model.entity.TeamEntity;
 
 public class TeamDTO {
 
-	private String tName;
+	private String team;
 	private String userID;
 	
-	public String getTname() {
-		System.out.println("getTName");
-		return tName;
-	}
-	
 	public TeamEntity toEntity(LoginEntity login) {
-		
-		return TeamEntity.builder().tName(tName).login(login).build();
+		return TeamEntity.builder().team(team).login(login).build();
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("TeamDTO [tName=");
-		builder.append(tName);
+		builder.append("TeamDTO [team=");
+		builder.append(team);
 		builder.append(", userID=");
 		builder.append(userID);
 		builder.append("]");

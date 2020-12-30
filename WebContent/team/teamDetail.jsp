@@ -19,21 +19,26 @@
  
 <table border="1">
 	
- 		<h1>${requestScope.team.tname}</h1>
+ 		<h1>${requestScope.team.team}</h1>
  
 		
 </table>
 
 <br><br><br>
-&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllPlayers&tName=${requestScope.team.tname}">선수</a>
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllPlayers&team=${requestScope.team.team}">선수</a>
 
-&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllManagers&tName=${requestScope.team.tname}">감독</a>
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllManagers&team=${requestScope.team.team}">감독</a>
 
-&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllMedicalStaffs&tName=${requestScope.team.tname}">의료진</a>
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllMedicalStaffs&team=${requestScope.team.team}">의료진</a>
 
-&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllTrainers&tName=${requestScope.team.tname}">트레이너</a>
-
+&nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllTrainers&team=${requestScope.team.team}">트레이너</a>
 <br><br><br>
+<form action="${pageContext.request.contextPath}/soccerteam" method="post">
+	<input type="hidden" name="userID" value="${requestScope.userID}">
+	<input type="hidden" name="team" value="${requestScope.team.team}">
+	<input type="hidden" name="command" value="deleteTeam">
+	<input type="submit" value="팀 삭제하기">
+</form>
 &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
 </center>
 </body>

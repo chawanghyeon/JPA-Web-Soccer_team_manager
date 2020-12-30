@@ -8,8 +8,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import soccerteam.model.dto.PeopleDTO;
 import soccerteam.model.dto.TeamDTO;
-import soccerteam.model.entity.LoginEntity;
 import soccerteam.model.entity.TeamEntity;
 import soccerteam.model.util.DBUtil;
 
@@ -32,7 +32,7 @@ public class TeamDAO {
 
 		try {//네이티브 쿼리로 변경
 			//강사님께 질문
-			em.createNativeQuery("insert into team (user_id, t_name) values ('"+team.getUserID()+"', '"+team.getTname()+"')").executeUpdate();
+			em.createNativeQuery("insert into team (user_id, t_name) values ('"+team.getUserID()+"', '"+team.getTeam()+"')").executeUpdate();
 			tx.commit();
 
 			result = true;
@@ -46,14 +46,14 @@ public class TeamDAO {
 		return result;
 	}
 
-	public boolean updateTeam(String tName, String newName) throws SQLException {
+	public boolean updateTeam(String team, String newName) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		boolean result = false;
 
 		try {
-			em.find(TeamEntity.class, tName).setTName(newName);
+			em.find(TeamEntity.class, team).setTeam(newName);
 			tx.commit();
 
 			result = true;
@@ -68,14 +68,14 @@ public class TeamDAO {
 		return result;
 	}
 
-	public boolean deleteTeam(String tName) throws SQLException {
+	public boolean deleteTeam(String team) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		boolean result = false;
 
 		try {
-			em.remove(em.find(TeamEntity.class, tName));
+			em.createNativeQuery("delete from team where t_name='"+team+"'").executeUpdate();
 			tx.commit();
 
 			result = true;
@@ -88,15 +88,15 @@ public class TeamDAO {
 		return result;
 	}
 
-	public TeamDTO getTeam(String tName) throws SQLException {
+	public TeamDTO getTeam(String team) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		TeamDTO team = null;
+		TeamDTO t2 = null;
 
 		try {
-			TeamEntity t = em.find(TeamEntity.class, tName);
-			team = new TeamDTO(t.getTName(), t.getLogin().getUserID());
+			TeamEntity t = em.find(TeamEntity.class, team);
+			t2 = new TeamDTO(t.getTeam(), t.getLogin().getUserID());
 		} catch (Exception e) {
 			tx.rollback();
 			throw e;
@@ -104,7 +104,7 @@ public class TeamDAO {
 		} finally {
 			em.close();
 		}
-		return team;
+		return t2;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -117,7 +117,7 @@ public class TeamDAO {
 		ArrayList<TeamDTO> tlist = new ArrayList<>();
 		
 		try {
-			list = em.createNativeQuery("SELECT * FROM team WHERE user_id=" + "'"+userID+"'").getResultList();
+			list = em.createNativeQuery("SELECT * FROM team WHERE user_id='"+userID+"'").getResultList();
 			Iterator it = list.iterator();
 			while (it.hasNext()) {
 				Object[] obj = (Object[]) it.next();

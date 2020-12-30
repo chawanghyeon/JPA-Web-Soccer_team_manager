@@ -8,9 +8,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import soccerteam.model.dto.ManagerDTO;
+import soccerteam.model.dto.PeopleDTO;
 import soccerteam.model.entity.ManagerEntity;
-import soccerteam.model.entity.TeamEntity;
 import soccerteam.model.util.DBUtil;
 
 public class ManagerDAO {
@@ -24,7 +23,7 @@ public class ManagerDAO {
 		return instance;
 	}
 
-	public boolean addManager(ManagerDTO manager) throws SQLException {
+	public boolean addManager(PeopleDTO manager) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -32,7 +31,7 @@ public class ManagerDAO {
 		boolean result = false;
 
 		try {
-			em.createNativeQuery("insert into managers (m_age, m_name, m_position, t_name, m_number) values ("+manager.getMage()+", '"+manager.getMname()+"', '"+manager.getMposition()+"', '"+manager.getTname()+"', "+manager.getMnumber()+")").executeUpdate();
+			em.createNativeQuery("insert into managers (m_age, m_name, m_position, t_name, m_number) values ("+manager.getAge()+", '"+manager.getName()+"', '"+manager.getPosition()+"', '"+manager.getTeam()+"', "+manager.getNumber()+")").executeUpdate();
 			tx.commit();
 
 			result = true;
@@ -45,14 +44,14 @@ public class ManagerDAO {
 		return result;
 	}
 
-	public boolean updateManager(int mNumber, String mPosition) throws SQLException {
+	public boolean updateManager(int number, String position) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		boolean result = false;
 
 		try {
-			em.find(ManagerEntity.class, mNumber).setMPosition(mPosition);
+			em.find(ManagerEntity.class, number).setPosition(position);
 			tx.commit();
 
 			result = true;
@@ -67,14 +66,14 @@ public class ManagerDAO {
 		return result;
 	}
 
-	public boolean deleteManager(int mNumber) throws SQLException {
+	public boolean deleteManager(int number) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		boolean result = false;
 
 		try {
-			em.remove(em.find(ManagerEntity.class, mNumber));
+			em.remove(em.find(ManagerEntity.class, number));
 			tx.commit();
 
 			result = true;
@@ -87,15 +86,15 @@ public class ManagerDAO {
 		return result;
 	}
 
-	public ManagerDTO getManager(int mNumber) throws SQLException {
+	public PeopleDTO getManager(int number) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		ManagerDTO managers = null;
+		PeopleDTO managers = null;
 
 		try {
-			ManagerEntity m = em.find(ManagerEntity.class, mNumber);
-			managers = new ManagerDTO(mNumber, m.getTeam().getTName(), m.getMName(), m.getMAge(), m.getMPosition());
+			ManagerEntity m = em.find(ManagerEntity.class, number);
+			managers = new PeopleDTO(number, m.getTeam().getTeam(), m.getName(), m.getAge(), m.getPosition());
 		} catch (Exception e) {
 			tx.rollback();
 			throw e;
@@ -106,20 +105,20 @@ public class ManagerDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<ManagerDTO> getAllManagers(String tname) throws SQLException {
+	public ArrayList<PeopleDTO> getAllManagers(String team) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 
 		List<ManagerEntity> list = null;
-		ArrayList<ManagerDTO> mlist = new ArrayList<>();
+		ArrayList<PeopleDTO> mlist = new ArrayList<>();
 
 		try {
-			list = em.createNativeQuery("SELECT * FROM managers where t_name='"+tname+"'").getResultList();
+			list = em.createNativeQuery("SELECT * FROM managers where t_name='"+team+"'").getResultList();
 			Iterator it = list.iterator();
 			while (it.hasNext()) {
 				Object[] obj = (Object[]) it.next();
-				mlist.add(new ManagerDTO(Integer.parseInt(String.valueOf(obj[0])), String.valueOf(obj[1]),
+				mlist.add(new PeopleDTO(Integer.parseInt(String.valueOf(obj[0])), String.valueOf(obj[1]),
 						String.valueOf(obj[2]), Integer.parseInt(String.valueOf(obj[3])), String.valueOf(obj[4])));
 			}
 		} catch (Exception e) {

@@ -31,7 +31,7 @@
 		</table>
 		<p>
 			<%-- <c:forEach items="${requestScope.allTeams}" var="data">
-					${data.tName}<br>
+					${data.team}<br>
 			</c:forEach> --%>
 			
 			
@@ -45,8 +45,9 @@
 			%>
 					<form action="${pageContext.request.contextPath}/soccerteam">
 						<input type="hidden" name="command" value="getTeam">
-						<input type="hidden" name="tName" value="<%=list.get(i).getTname()%>">
-						<input type="submit" value="<%=list.get(i).getTname()%>">
+						<input type="hidden" name="userID" value="<%=list.get(i).getUserID()%>">
+						<input type="hidden" name="team" value="<%=list.get(i).getTeam()%>">
+						<input type="submit" value="<%=list.get(i).getTeam()%>">
 					</form>
 			<%
 					}

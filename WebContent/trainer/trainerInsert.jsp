@@ -13,22 +13,22 @@
 <center>
 <h3>트레이너</h3>
 <hr><p>
-<% String t = request.getParameter("tname");%>
+<% String t = request.getParameter("team");%>
 <form action="${pageContext.request.contextPath}/soccerteam" method="post">
 	<input type="hidden" name="command" value="addTrainer">
-	<input type="hidden" name="tName" value="<%=t%>">
+	<input type="hidden" name="team" value="<%=t%>">
 	<table border="1">
 		<tr>
-			<td>트레이너 번호</td><td><input type="text" name="trNumber"></td>
+			<td>트레이너 번호</td><td><input type="text" name="number"></td>
 		</tr>
 		<tr>	
-			<td>트레이너 이름</td><td><input type="text" name="trName"></td>
+			<td>트레이너 이름</td><td><input type="text" name="name"></td>
 	 	</tr>
 	 	<tr>
-	 		<td>트레이너 나이</td><td><input type="text" name="trAge"></td>
+	 		<td>트레이너 나이</td><td><input type="text" name="age"></td>
 	 	</tr>
 	 	<tr>
-	 		<td>트레이닝 분야</td><td><input type="text" name="trPosition"></td>
+	 		<td>트레이닝 분야</td><td><input type="text" name="position"></td>
 	 	</tr>
 	 	<tr>
 	 		<td colspan="2"><input type="submit" value="가입">&nbsp;&nbsp;&nbsp;<input type="reset" value="취소"></td>

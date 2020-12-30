@@ -24,11 +24,11 @@
 	
 	<c:forEach items="${requestScope.allManagers}" var="data">
 		 <tr>
-		 	<td>${data.tname}</td>
-		 	<td><a href="${url}soccerteam?command=getManager&mNumber=${data.mnumber}">${data.mnumber}</a></td>
-		 	<td>${data.mname}</td>
-		 	<td>${data.mage}</td>
-		 	<td>${data.mposition}</td>
+		 	<td>${data.team}</td>
+		 	<td><a href="${url}soccerteam?command=getManager&number=${data.number}">${data.number}</a></td>
+		 	<td>${data.name}</td>
+		 	<td>${data.age}</td>
+		 	<td>${data.position}</td>
 		 </tr>
 	 </c:forEach>
 
@@ -38,11 +38,11 @@
 
 </table>
 <form action="${pageContext.request.contextPath}/manager/managerInsert.jsp">
-	<input type="hidden" name="tname" value="${requestScope.allManagers[0].tname}">
+	<input type="hidden" name="team" value="${requestScope.allManagers[0].team}">
 	<input type="submit" value="추가">
 </form>
 <br><br><br>
-&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/soccerteam?command=getTeam&tName=${requestScope.allManagers[0].tname}">팀 페이지로 이동</a><br>
+&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/soccerteam?command=getTeam&team=${requestScope.allManagers[0].team}">팀 페이지로 이동</a><br>
 <font color="blue">감독 번호를 클릭하면 상세 정보 확인이 가능합니다</font>
 &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
 

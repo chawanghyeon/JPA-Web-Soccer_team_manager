@@ -29,7 +29,7 @@ public class PlayerEntity {
 
 	@Id
 	@Column(name = "p_number")
-	private int pNumber;
+	private int number;
 
 	@NotNull
 	@ManyToOne(targetEntity=TeamEntity.class)
@@ -38,13 +38,13 @@ public class PlayerEntity {
 
 	@Column(name = "p_name")
 	@NotNull
-	private String pName;
+	private String name;
 
 	@Column(name = "p_age")
 	@NotNull
-	private int pAge;
+	private int age;
 
 	@Column(name = "p_position")
 	@NotNull
-	private String pPosition;
+	private String position;
 }

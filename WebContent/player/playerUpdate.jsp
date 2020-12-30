@@ -16,18 +16,19 @@
 		<hr>
 		<p>
 		<form action="soccerteam?command=updatePlayer" method="post">
-		<input type="hidden" name="pNumber" value="${requestScope.player.pnumber}">
+		<input type="hidden" name="number" value="${requestScope.player.number}">
+		<input type="hidden" name="team" value="${requestScope.player.team}">
 			<table border="1">
 				<thead>
 					<tr>
 						<th>팀 이름</th><th>선수 번호</th><th>선수 이름</th><th>선수 나이</th><th>선수 포지션</th>
 					</tr>
 					<tr>
-							 <td>${requestScope.player.tname}</td>
- 		                     <td>${requestScope.player.pnumber}</td>
- 		                     <td>${requestScope.player.pname}</td>
- 		                     <td>${requestScope.player.page}</td>
-					 	<td><input type="text" name="pPosition" value="${requestScope.player.pposition}"></td>
+							 <td>${requestScope.player.team}</td>
+ 		                     <td>${requestScope.player.number}</td>
+ 		                     <td>${requestScope.player.name}</td>
+ 		                     <td>${requestScope.player.age}</td>
+					 	<td><input type="text" name="position" value="${requestScope.player.position}"></td>
 					</tr>
 
 					<tr>

@@ -24,7 +24,7 @@
 	
 	<c:forEach items="${requestScope.allTeam}" var="data">
 		 <tr>
-		 	<td>${data.tName}</td>
+		 	<td>${data.team}</td>
 		 	
 		 </tr>
 	 </c:forEach>

@@ -30,7 +30,7 @@ public class TeamEntity {
 
 	@Id
 	@Column(name="t_name")
-	private String tName;
+	private String team;
 
 	@NotNull
 	@ManyToOne
@@ -43,8 +43,8 @@ public class TeamEntity {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("t_name=");
-		builder.append(tName);
+		builder.append("team=");
+		builder.append(team);
 		return builder.toString();
 	}
 

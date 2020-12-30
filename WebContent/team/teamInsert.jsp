@@ -22,7 +22,7 @@
 	<table border="1">
 		<tr>
 		
-			<td>팀 이름</td><td><input type="text" name="tName"></td>
+			<td>팀 이름</td><td><input type="text" name="team"></td>
 	 	</tr>
 	 	
 	 	<tr>

@@ -13,25 +13,25 @@
 <center>
 <h3>재능 기부자</h3>
 <hr><p>
-<% String t = request.getParameter("tname");%>
+<% String t = request.getParameter("team");%>
 <form action="${pageContext.request.contextPath}/soccerteam" method="post">
 	<input type="hidden" name="command" value="addManager">
-	<input type="hidden" name="tName" value="<%=t%>">
+	<input type="hidden" name="team" value="<%=t%>">
 	<table border="1">
 		<tr>
-			<td>감독 번호</td><td><input type="text" name="mNumber"></td>
+			<td>감독 번호</td><td><input type="text" name="number"></td>
 		</tr>
 		<tr>
 	 		<td>팀 이름</td><td><%=t%></td>
 		</tr>
 		<tr>	
-			<td>감독 이름</td><td><input type="text" name="mName"></td>
+			<td>감독 이름</td><td><input type="text" name="name"></td>
 	 	</tr>
 	 	<tr>
-	 		<td>감독 나이</td><td><input type="text" name="mAge"></td>
+	 		<td>감독 나이</td><td><input type="text" name="age"></td>
 	 	</tr>
 	 	<tr>
-	 		<td>감독 분야</td><td><input type="text" name="mPosition"></td>
+	 		<td>감독 분야</td><td><input type="text" name="position"></td>
 	 	</tr>
 	 	<tr>
 	 		<td colspan="2"><input type="submit" value="가입">&nbsp;&nbsp;&nbsp;<input type="reset" value="취소"></td>

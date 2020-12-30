@@ -10,11 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import soccerteam.model.dto.LoginDTO;
-import soccerteam.model.dto.ManagerDTO;
-import soccerteam.model.dto.MedicalStaffDTO;
-import soccerteam.model.dto.PlayerDTO;
+import soccerteam.model.dto.PeopleDTO;
 import soccerteam.model.dto.TeamDTO;
-import soccerteam.model.dto.TrainerDTO;
 import soccerteam.model.service.SoccerTeamService;
 
 @WebServlet("/soccerteam")
@@ -119,8 +116,8 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			String tname = request.getParameter("tName");
-			request.setAttribute("allTrainers", service.getAllTrainers(tname));
+			String team = request.getParameter("team");
+			request.setAttribute("allTrainers", service.getAllTrainers(team));
 			url = "trainer/trainerList.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -134,9 +131,9 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			TrainerDTO tr = service.getTrainer(Integer.parseInt(request.getParameter("trNumber")));
-			if (tr != null) {
-				request.setAttribute("trainer", tr);
+			PeopleDTO p = service.getTrainer(Integer.parseInt(request.getParameter("number")));
+			if (p != null) {
+				request.setAttribute("trainer", p);
 				url = "trainer/trainerDetail.jsp";
 			} else {
 				request.setAttribute("errorMsg", "존재하지 않는 트레이너입니다.");
@@ -153,15 +150,15 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 
-		int trNumber = Integer.parseInt(request.getParameter("trNumber"));
-		String tName = request.getParameter("tName");
-		String trName = request.getParameter("trName");
-		int trAge = Integer.parseInt(request.getParameter("trAge"));
-		String trPosition = request.getParameter("trPosition");
+		int number = Integer.parseInt(request.getParameter("number"));
+		String team = request.getParameter("team");
+		String name = request.getParameter("name");
+		int age = Integer.parseInt(request.getParameter("age"));
+		String position = request.getParameter("position");
 
-		if (trNumber != 0) {
+		if (number != 0) {
 
-			TrainerDTO trainer = new TrainerDTO(trNumber, tName, trName, trAge, trPosition);
+			PeopleDTO trainer = new PeopleDTO(number, team, name, age, position);
 			try {
 				boolean result = service.addTrainer(trainer);
 				if (result) {
@@ -183,7 +180,7 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			request.setAttribute("trainer", service.getTrainer(Integer.parseInt(request.getParameter("trNumber"))));
+			request.setAttribute("trainer", service.getTrainer(Integer.parseInt(request.getParameter("number"))));
 			url = "trainer/trainerUpdate.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -198,10 +195,10 @@ public class SoccerteamController extends HttpServlet {
 		String url = "showError.jsp";
 
 		try {
-			int trNumber = Integer.parseInt(request.getParameter("trNumber"));
+			int number = Integer.parseInt(request.getParameter("number"));
 
-			if (service.updateTrainer(trNumber, request.getParameter("trPosition"))) {
-				request.setAttribute("trainer", service.getTrainer(trNumber));
+			if (service.updateTrainer(number, request.getParameter("position"))) {
+				request.setAttribute("trainer", service.getTrainer(number));
 				url = "trainer/trainerDetail.jsp";
 			} else {
 				request.setAttribute("errorMsg", "수정 실패");
@@ -218,9 +215,9 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			if (service.deleteTrainer(Integer.parseInt(request.getParameter("trNumber")))) {
-				String tname = request.getParameter("tName");
-				request.setAttribute("allTrainers", service.getAllTrainers(tname));
+			if (service.deleteTrainer(Integer.parseInt(request.getParameter("number")))) {
+				String team = request.getParameter("team");
+				request.setAttribute("allTrainers", service.getAllTrainers(team));
 				url = "trainer/trainerList.jsp";
 			} else {
 				request.setAttribute("errorMsg", "삭제 실패");
@@ -360,8 +357,8 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			String tname = request.getParameter("tName");
-			request.setAttribute("allManagers", service.getAllManagers(tname));
+			String team = request.getParameter("team");
+			request.setAttribute("allManagers", service.getAllManagers(team));
 			url = "manager/managerList.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -375,7 +372,7 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			ManagerDTO m = service.getManager(Integer.parseInt(request.getParameter("mNumber")));
+			PeopleDTO m = service.getManager(Integer.parseInt(request.getParameter("number")));
 			if (m != null) {
 				request.setAttribute("manager", m);
 				url = "manager/managerDetail.jsp";
@@ -394,15 +391,15 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 
-		int mNumber = Integer.parseInt(request.getParameter("mNumber"));
-		String tName = request.getParameter("tName");
-		String mName = request.getParameter("mName");
-		int mAge = Integer.parseInt(request.getParameter("mAge"));
-		String mPosition = request.getParameter("mPosition");
+		int number = Integer.parseInt(request.getParameter("number"));
+		String team = request.getParameter("team");
+		String name = request.getParameter("name");
+		int age = Integer.parseInt(request.getParameter("age"));
+		String position = request.getParameter("position");
 
-		if (mNumber != 0) {
+		if (number != 0) {
 
-			ManagerDTO manager = new ManagerDTO(mNumber, tName, mName, mAge, mPosition);
+			PeopleDTO manager = new PeopleDTO(number, team, name, age, position);
 			try {
 				boolean result = service.addManager(manager);
 				if (result) {
@@ -424,7 +421,7 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			request.setAttribute("manager", service.getManager(Integer.parseInt(request.getParameter("mNumber"))));
+			request.setAttribute("manager", service.getManager(Integer.parseInt(request.getParameter("number"))));
 			url = "manager/managerUpdate.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -439,10 +436,10 @@ public class SoccerteamController extends HttpServlet {
 		String url = "showError.jsp";
 
 		try {
-			int mNumber = Integer.parseInt(request.getParameter("mNumber"));
+			int number = Integer.parseInt(request.getParameter("number"));
 
-			if (service.updateManager(mNumber, request.getParameter("mPosition"))) {
-				request.setAttribute("manager", service.getManager(mNumber));
+			if (service.updateManager(number, request.getParameter("position"))) {
+				request.setAttribute("manager", service.getManager(number));
 				url = "manager/managerDetail.jsp";
 			} else {
 				request.setAttribute("errorMsg", "수정 실패");
@@ -459,9 +456,9 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			if (service.deleteManager(Integer.parseInt(request.getParameter("mNumber")))) {
-				String tname = request.getParameter("tName");
-				request.setAttribute("allManagers", service.getAllManagers(tname));
+			if (service.deleteManager(Integer.parseInt(request.getParameter("number")))) {
+				String team = request.getParameter("team");
+				request.setAttribute("allManagers", service.getAllManagers(team));
 				url = "manager/managerList.jsp";
 			} else {
 				request.setAttribute("errorMsg", "삭제 실패");
@@ -492,9 +489,10 @@ public class SoccerteamController extends HttpServlet {
 	public void getTeam(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			TeamDTO t = service.getTeam(request.getParameter("tName"));
+			TeamDTO t = service.getTeam(request.getParameter("team"));
 			if (t != null) {
 				request.setAttribute("team", t);
+				request.setAttribute("userID", request.getParameter("userID"));
 				url = "team/teamDetail.jsp";
 			} else {
 				request.setAttribute("errorMsg", "존재하지 않는 팀입니다.");
@@ -511,16 +509,16 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 
-		String tName = request.getParameter("tName");
+		String team = request.getParameter("team");
 		String userID = request.getParameter("userID");
 
-		if (tName != null) {
+		if (team != null) {
 
-			TeamDTO team = new TeamDTO(tName, userID);
+			TeamDTO t = new TeamDTO(team, userID);
 			try {
-				boolean result = service.addTeam(team);
+				boolean result = service.addTeam(t);
 				if (result) {
-					request.setAttribute("team", team);
+					request.setAttribute("team", t);
 					request.setAttribute("successMsg", "가입 완료");
 					url = "team/teamDetail.jsp";
 				} else {
@@ -538,7 +536,7 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			request.setAttribute("team", service.getTeam((request.getParameter("tName"))));
+			request.setAttribute("team", service.getTeam((request.getParameter("team"))));
 			url = "team/teamUpdate.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -553,10 +551,10 @@ public class SoccerteamController extends HttpServlet {
 		String url = "showError.jsp";
 
 		try {
-			String tName = (request.getParameter("tName"));
+			String team = (request.getParameter("team"));
 
-			if (service.updateTeam(tName, request.getParameter("tName"))) {
-				request.setAttribute("team", service.getTeam(tName));
+			if (service.updateTeam(team, request.getParameter("team"))) {
+				request.setAttribute("team", service.getTeam(team));
 				url = "team/teamDetail.jsp";
 			} else {
 				request.setAttribute("errorMsg", "수정 실패");
@@ -573,8 +571,9 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			if (service.deleteTeam((request.getParameter("tName")))) {
-				String userID = request.getParameter("userID");
+			if (service.deleteTeam((request.getParameter("team")))) {
+				String userID = service.getLogin(userID, userPW);
+				request.setAttribute("login", userID);
 				request.setAttribute("allTeams", service.getAllTeam(userID));
 				url = "login/loginDetail.jsp";
 			} else {
@@ -592,8 +591,8 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			String tname = request.getParameter("tName");
-			request.setAttribute("allMedicalStaffs", service.getAllMedicalStaffs(tname));
+			String team = request.getParameter("team");
+			request.setAttribute("allMedicalStaffs", service.getAllMedicalStaffs(team));
 			url = "medicalStaff/medicalStaffList.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -607,9 +606,9 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			MedicalStaffDTO d = service.getMedicalStaff(Integer.parseInt(request.getParameter("dNumber")));
-			if (d != null) {
-				request.setAttribute("medicalStaff", d);
+			PeopleDTO p = service.getMedicalStaff(Integer.parseInt(request.getParameter("number")));
+			if (p != null) {
+				request.setAttribute("medicalStaff", p);
 				url = "medicalStaff/medicalStaffDetail.jsp";
 			} else {
 				request.setAttribute("errorMsg", "존재하지 않는 의료진입니다.");
@@ -626,15 +625,15 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 
-		int dNumber = Integer.parseInt(request.getParameter("dNumber"));
-		String tName = request.getParameter("tName");
-		String dName = request.getParameter("dName");
-		int dAge = Integer.parseInt(request.getParameter("dAge"));
-		String dPosition = request.getParameter("dPosition");
+		int number = Integer.parseInt(request.getParameter("number"));
+		String team = request.getParameter("team");
+		String name = request.getParameter("name");
+		int age = Integer.parseInt(request.getParameter("age"));
+		String position = request.getParameter("position");
 
-		if (dNumber != 0) {
+		if (number != 0) {
 
-			MedicalStaffDTO medicalStaff = new MedicalStaffDTO(dNumber, tName, dName, dAge, dPosition);
+			PeopleDTO medicalStaff = new PeopleDTO(number, team, name, age, position);
 			try {
 				boolean result = service.addMedicalStaff(medicalStaff);
 				if (result) {
@@ -657,7 +656,7 @@ public class SoccerteamController extends HttpServlet {
 		String url = "showError.jsp";
 		try {
 			request.setAttribute("medicalStaff",
-					service.getMedicalStaff(Integer.parseInt(request.getParameter("dNumber"))));
+					service.getMedicalStaff(Integer.parseInt(request.getParameter("number"))));
 			url = "medicalStaff/medicalStaffUpdate.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -672,10 +671,10 @@ public class SoccerteamController extends HttpServlet {
 		String url = "showError.jsp";
 
 		try {
-			int dNumber = Integer.parseInt(request.getParameter("dNumber"));
+			int number = Integer.parseInt(request.getParameter("number"));
 
-			if (service.updateMedicalStaff(dNumber, request.getParameter("dPosition"))) {
-				request.setAttribute("medicalStaff", service.getMedicalStaff(dNumber));
+			if (service.updateMedicalStaff(number, request.getParameter("position"))) {
+				request.setAttribute("medicalStaff", service.getMedicalStaff(number));
 				url = "medicalStaff/medicalStaffDetail.jsp";
 			} else {
 				request.setAttribute("errorMsg", "수정 실패");
@@ -692,9 +691,9 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			if (service.deleteMedicalStaff(Integer.parseInt(request.getParameter("dNumber")))) {
-				String tname = request.getParameter("tName");
-				request.setAttribute("allMedicalStaffs", service.getAllMedicalStaffs(tname));
+			if (service.deleteMedicalStaff(Integer.parseInt(request.getParameter("number")))) {
+				String team = request.getParameter("team");
+				request.setAttribute("allMedicalStaffs", service.getAllMedicalStaffs(team));
 				url = "medicalStaff/medicalStaffList.jsp";
 			} else {
 				request.setAttribute("errorMsg", "삭제 실패");
@@ -711,8 +710,8 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			String tname = request.getParameter("tName");
-			request.setAttribute("allPlayers", service.getAllPlayers(tname));
+			String team = request.getParameter("team");
+			request.setAttribute("allPlayers", service.getAllPlayers(team));
 			url = "player/playerList.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -726,7 +725,9 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			PlayerDTO p = service.getPlayer(Integer.parseInt(request.getParameter("pNumber")));
+			int number = Integer.parseInt(request.getParameter("number"));
+			String team = request.getParameter("team");
+			PeopleDTO p = service.getPlayer(number, team);
 			if (p != null) {
 				request.setAttribute("player", p);
 				url = "player/playerDetail.jsp";
@@ -745,18 +746,18 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 
-		int pNumber = Integer.parseInt(request.getParameter("pNumber"));
-		String tName = request.getParameter("tName");
-		String pName = request.getParameter("pName");
-		int pAge = Integer.parseInt(request.getParameter("pAge"));
-		String pPosition = request.getParameter("pPosition");
+		int number = Integer.parseInt(request.getParameter("number"));
+		String team = request.getParameter("team");
+		String name = request.getParameter("name");
+		int age = Integer.parseInt(request.getParameter("age"));
+		String position = request.getParameter("position");
 
-		if (pNumber != 0) {
+		if (number != 0) {
 
-			PlayerDTO player = new PlayerDTO(pNumber, tName, pName, pAge, pPosition);
+			PeopleDTO player = new PeopleDTO(number, team, name, age, position);
 			try {
 				if (service.addPlayer(player)) {
-					ArrayList<PlayerDTO> plist = service.getAllPlayers(tName);
+					ArrayList<PeopleDTO> plist = service.getAllPlayers(team);
 					request.setAttribute("allPlayers", plist);
 					request.setAttribute("successMsg", "가입 완료");
 					url = "player/playerList.jsp";
@@ -775,7 +776,9 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			request.setAttribute("player", service.getPlayer(Integer.parseInt(request.getParameter("pNumber"))));
+			int number = Integer.parseInt(request.getParameter("number"));
+			String team = request.getParameter("team");
+			request.setAttribute("player", service.getPlayer(number, team));
 			url = "player/playerUpdate.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -790,10 +793,11 @@ public class SoccerteamController extends HttpServlet {
 		String url = "showError.jsp";
 
 		try {
-			int pNumber = Integer.parseInt(request.getParameter("pNumber"));
-
-			if (service.updatePlayer(pNumber, request.getParameter("pPosition"))) {
-				request.setAttribute("player", service.getPlayer(pNumber));
+			int number = Integer.parseInt(request.getParameter("number"));
+			String team = request.getParameter("team");
+			String position = request.getParameter("position");
+			if (service.updatePlayer(number, position, team)) {
+				request.setAttribute("player", service.getPlayer(number, team));
 				url = "player/playerDetail.jsp";
 			} else {
 				request.setAttribute("errorMsg", "수정 실패");
@@ -810,9 +814,10 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			String tname = request.getParameter("tName");
-			if (service.deletePlayer(Integer.parseInt(request.getParameter("pNumber")))) {
-				request.setAttribute("allPlayers", service.getAllPlayers(tname));
+			String team = request.getParameter("team");
+			int number = Integer.parseInt(request.getParameter("number"));
+			if (service.deletePlayer(number, team)) {
+				request.setAttribute("allPlayers", service.getAllPlayers(team));
 				url = "player/playerList.jsp";
 			} else {
 				request.setAttribute("errorMsg", "삭제 실패");

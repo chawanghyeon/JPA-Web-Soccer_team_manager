@@ -5,11 +5,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import soccerteam.model.dto.LoginDTO;
-import soccerteam.model.dto.ManagerDTO;
-import soccerteam.model.dto.MedicalStaffDTO;
-import soccerteam.model.dto.PlayerDTO;
+import soccerteam.model.dto.PeopleDTO;
 import soccerteam.model.dto.TeamDTO;
-import soccerteam.model.dto.TrainerDTO;
 import soccerteam.model.entity.LoginEntity;
 import soccerteam.model.entity.ManagerEntity;
 import soccerteam.model.entity.MedicalStaffEntity;
@@ -34,26 +31,26 @@ public interface SoccerMapper {
     TeamDTO toTeamDTO(TeamEntity teamEntity);
     
     //manager
-    ManagerEntity toLoginEntity(ManagerDTO managerDTO);
+    ManagerEntity toLoginEntity(PeopleDTO managerDTO);
     
     @Mapping(expression="java(team.getTName)", target="tName")
-    ManagerDTO toLoginDTO(ManagerEntity managerEntity);
+    PeopleDTO toLoginDTO(ManagerEntity managerEntity);
     
     //medical
-    MedicalStaffEntity toMedicalStaffEntity(MedicalStaffDTO medicalStaffDTO);
+    MedicalStaffEntity toMedicalStaffEntity(PeopleDTO medicalStaffDTO);
     
     @Mapping(expression="java(team.getTName)", target="tName")
-    MedicalStaffDTO toMedicalStaffDTO(MedicalStaffEntity medicalStaffEntity);
+    PeopleDTO toMedicalStaffDTO(MedicalStaffEntity medicalStaffEntity);
     
     //player
-    PlayerEntity toPlayerEntity(PlayerDTO playerDTO);
+    PlayerEntity toPlayerEntity(PeopleDTO playerDTO);
     
     @Mapping(expression="java(team.getTName)", target="tName")
-    PlayerDTO toPlayerDTO(PlayerEntity playerEntity);
+    PeopleDTO toPlayerDTO(PlayerEntity playerEntity);
     
     //trainer
-    TrainerEntity toTrainerEntity(TrainerDTO TrainerDTO);
+    TrainerEntity toTrainerEntity(PeopleDTO TrainerDTO);
     
     @Mapping(expression="java(team.getTName)", target="tName")
-    TrainerDTO toTrainerDTO(TrainerEntity trainerEntity);
+    PeopleDTO toTrainerDTO(TrainerEntity trainerEntity);
 }

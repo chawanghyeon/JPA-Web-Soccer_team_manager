@@ -24,11 +24,11 @@
 	
 	<c:forEach items="${requestScope.allMedicalStaffs}" var="data">
 		 <tr>
-		 	<td>${data.tname}</td>
-		 	<td><a href="${url}soccerteam?command=getMedicalStaff&dNumber=${data.dnumber}">${data.dnumber}</a></td>
-		 	<td>${data.dname}</td>
-		 	<td>${data.dage}</td>
-		 	<td>${data.dposition}</td>
+		 	<td>${data.team}</td>
+		 	<td><a href="${url}soccerteam?command=getMedicalStaff&number=${data.number}">${data.number}</a></td>
+		 	<td>${data.name}</td>
+		 	<td>${data.age}</td>
+		 	<td>${data.position}</td>
 		 </tr>
 	 </c:forEach>
 
@@ -38,11 +38,11 @@
 
 </table>
 <form action="${pageContext.request.contextPath}/medicalStaff/medicalStaffInsert.jsp">
-	<input type="hidden" name="tname" value="${requestScope.allMedicalStaffs[0].tname}">
+	<input type="hidden" name="team" value="${requestScope.allMedicalStaffs[0].team}">
 	<input type="submit" value="추가">
 </form>
 <br><br><br>
-&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/soccerteam?command=getTeam&tName=${requestScope.allMedicalStaffs[0].tname}">팀 페이지로 이동</a>
+&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/soccerteam?command=getTeam&team=${requestScope.allMedicalStaffs[0].team}">팀 페이지로 이동</a>
 <br>
 <font color="blue">의료진 번호를 클릭하면 상세 정보 확인이 가능합니다</font>
 &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
