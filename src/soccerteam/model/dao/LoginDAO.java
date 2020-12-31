@@ -23,7 +23,7 @@ public class LoginDAO {
 		return instance;
 	}
 
-	public boolean addLogin(LoginDTO login) throws SQLException {
+	public boolean addLogin(LoginDTO login) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -38,6 +38,7 @@ public class LoginDAO {
 
 		} catch (Exception e) {
 			tx.rollback();
+			e.printStackTrace();
 			throw e;
 		} finally {
 			em.close();
@@ -60,8 +61,8 @@ public class LoginDAO {
 
 		} catch (Exception e) {
 			tx.rollback();
+			e.printStackTrace();
 			throw e;
-
 		} finally {
 			em.close();
 		}
@@ -94,16 +95,13 @@ public class LoginDAO {
 
 	public LoginDTO getLogin(String userID) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		
 		LoginDTO login = null;
 
 		try {
 			LoginEntity l = em.find(LoginEntity.class, userID);
 			login = new LoginDTO(l.getUserID(), l.getUserPW());
 		} catch (Exception e) {
-			tx.rollback();
+			e.printStackTrace();
 			throw e;
 		} finally {
 			em.close();
@@ -114,9 +112,6 @@ public class LoginDAO {
 	@SuppressWarnings("unchecked")
 	public ArrayList<LoginDTO> getAllLogins() throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		
 		List<LoginEntity> list = null;
 		ArrayList<LoginDTO> llist = new ArrayList<>();
 		
@@ -128,7 +123,8 @@ public class LoginDAO {
 				llist.add(new LoginDTO(String.valueOf(obj[0]), String.valueOf(obj[1])));
 			}
 		} catch (Exception e) {
-			em.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
 		} finally {
 			em.close();
 		}

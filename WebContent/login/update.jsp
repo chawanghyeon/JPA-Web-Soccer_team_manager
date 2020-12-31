@@ -7,6 +7,11 @@
 <title>비밀번호 수정페이지</title>
 </head>
 <body>
+	<section >
+  		<nav>
+    		<jsp:include page="../logout.jsp"></jsp:include>
+  		</nav>
+ 	</section>
 	<br>
 	<br>
 	<br>
@@ -16,7 +21,6 @@
 		<hr>
 		<p>
 		<form action="soccerteam?command=updateLogin" method="post">
-			<input type="hidden" name="userID" value="${login.userID}">
 			<table border="1">
 				<thead>
 					<tr>
@@ -24,8 +28,8 @@
 						<th>사용자 PW</th>
 					</tr>
 					<tr>
-						<td>${requestScope.login.userID}</td>
-						<td><input type="password" name="userPW"></td>
+						<td>${sessionScope.userID}</td>
+						<td><input type="password" name="newPW"></td>
 					</tr>
 					<tr>
 						<td colspan="2"><input type="submit" value="수정">
@@ -33,8 +37,7 @@
 					</tr>
 			</table>
 		</form>
-		<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
-
+		<a href="${pageContext.request.contextPath}/login/detail.jsp">메인페이지</a>
 	</center>
 </body>
 </html>

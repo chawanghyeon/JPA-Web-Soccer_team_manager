@@ -15,7 +15,8 @@
 
 	<center>
 		<h3>${requestScope.errorMsg}</h3>
-			
+		<img id="tome" src="image/KakaoTalk_20201219_234530759_11.gif"
+            alt="메이드바이지수누님" width="400" height="300">
 		<br><br><br>
 		<a href="${pageContext.request.contextPath}/index.html">메인 화면으로 이동하기</a>
 	</center>

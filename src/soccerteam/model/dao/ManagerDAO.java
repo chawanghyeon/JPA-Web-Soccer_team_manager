@@ -88,15 +88,12 @@ public class ManagerDAO {
 
 	public PeopleDTO getManager(int number) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 		PeopleDTO managers = null;
 
 		try {
 			ManagerEntity m = em.find(ManagerEntity.class, number);
 			managers = new PeopleDTO(number, m.getTeam().getTeam(), m.getName(), m.getAge(), m.getPosition());
 		} catch (Exception e) {
-			tx.rollback();
 			throw e;
 		} finally {
 			em.close();
@@ -107,9 +104,6 @@ public class ManagerDAO {
 	@SuppressWarnings("unchecked")
 	public ArrayList<PeopleDTO> getAllManagers(String team) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-
 		List<ManagerEntity> list = null;
 		ArrayList<PeopleDTO> mlist = new ArrayList<>();
 
@@ -122,7 +116,6 @@ public class ManagerDAO {
 						String.valueOf(obj[2]), Integer.parseInt(String.valueOf(obj[3])), String.valueOf(obj[4])));
 			}
 		} catch (Exception e) {
-			tx.rollback();
 			throw e;
 		} finally {
 			em.close();

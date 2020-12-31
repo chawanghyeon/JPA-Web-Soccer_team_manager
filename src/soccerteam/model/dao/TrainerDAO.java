@@ -31,7 +31,7 @@ public class TrainerDAO {
 		boolean result = false;
 
 		try {
-			em.createNativeQuery("insert into trainers (tr_age, tr_name, tr_position, t_name, tr_number) values ("+trainer.getName()+", '"+trainer.getName()+"', '"+trainer.getPosition()+"', '"+trainer.getName()+"', "+trainer.getNumber()+")").executeUpdate();
+			em.createNativeQuery("insert into trainers (tr_age, tr_name, tr_position, t_name, tr_number) values ("+trainer.getAge()+", '"+trainer.getName()+"', '"+trainer.getPosition()+"', '"+trainer.getTeam()+"', "+trainer.getNumber()+")").executeUpdate();
 			tx.commit();
 
 			result = true;
@@ -89,8 +89,6 @@ public class TrainerDAO {
 
 	public PeopleDTO getTrainer(int number) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 
 		PeopleDTO trainer = null;
 
@@ -99,7 +97,6 @@ public class TrainerDAO {
 			trainer = new PeopleDTO(t.getNumber(), t.getTeam().getTeam(), t.getName(), t.getAge(),
 					t.getPosition());
 		} catch (Exception e) {
-			tx.rollback();
 			throw e;
 		} finally {
 			em.close();
@@ -110,9 +107,6 @@ public class TrainerDAO {
 	@SuppressWarnings("unchecked")
 	public ArrayList<PeopleDTO> getAllTrainers(String team) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-
 		List<TrainerEntity> list = null;
 		ArrayList<PeopleDTO> tlist = new ArrayList<>();
 
@@ -125,7 +119,6 @@ public class TrainerDAO {
 						String.valueOf(obj[2]), Integer.parseInt(String.valueOf(obj[3])), String.valueOf(obj[4])));
 			}
 		} catch (Exception e) {
-			tx.rollback();
 			throw e;
 		} finally {
 			em.close();

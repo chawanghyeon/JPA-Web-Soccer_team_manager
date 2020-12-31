@@ -7,6 +7,11 @@
 <title>팀 수정 페이지</title>
 </head>
 <body>
+	<section >
+  		<nav>
+    		<jsp:include page="../logout.jsp"></jsp:include>
+  		</nav>
+ 	</section>
 	<br>
 	<br>
 	<br>
@@ -22,7 +27,7 @@
 						<th>팀 이름</th>
 					</tr>
 					<tr>
-					 	<td><input type="text" name="team" value="${requestScope.team.team}"></td>
+					 	<td><input type="text" name="newTeam" value="${sessionScope.team}"></td>
 					</tr>
 
 					<tr>
@@ -31,7 +36,7 @@
 					</tr>
 			</table>
 		</form>
-		<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
+		<a href="${pageContext.request.contextPath}/login/detail.jsp">메인페이지</a>
 
 	</center>
 </body>

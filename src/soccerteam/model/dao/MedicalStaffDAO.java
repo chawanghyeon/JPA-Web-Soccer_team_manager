@@ -89,9 +89,6 @@ public class MedicalStaffDAO {
 
 	public PeopleDTO getMedicalStaff(int number) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-
 		PeopleDTO medicalStaff = null;
 
 		try {
@@ -99,7 +96,6 @@ public class MedicalStaffDAO {
 			medicalStaff = new PeopleDTO(d.getNumber(), d.getTeam().getTeam(), d.getName(), d.getAge(),
 					d.getPosition());
 		} catch (Exception e) {
-			tx.rollback();
 			throw e;
 		} finally {
 			em.close();
@@ -110,9 +106,6 @@ public class MedicalStaffDAO {
 	@SuppressWarnings("unchecked")
 	public ArrayList<PeopleDTO> getAllMedicalStaffs(String team) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-
 		List<MedicalStaffEntity> list = null;
 		ArrayList<PeopleDTO> dlist = new ArrayList<>();
 
@@ -125,7 +118,6 @@ public class MedicalStaffDAO {
 						String.valueOf(obj[2]), Integer.parseInt(String.valueOf(obj[3])), String.valueOf(obj[4])));
 			}
 		} catch (Exception e) {
-			tx.rollback();
 			throw e;
 		} finally {
 			em.close();

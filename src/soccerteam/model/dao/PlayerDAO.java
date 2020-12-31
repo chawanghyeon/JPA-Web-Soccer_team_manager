@@ -90,8 +90,6 @@ public class PlayerDAO {
 	@SuppressWarnings("unchecked")
 	public PeopleDTO getPlayer(int number, String team) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 
 		PeopleDTO player = null;
 		List<PlayerEntity> list = null;
@@ -103,7 +101,6 @@ public class PlayerDAO {
 			player = new PeopleDTO(Integer.parseInt(String.valueOf(obj[0])), String.valueOf(obj[1]),
 					String.valueOf(obj[2]), Integer.parseInt(String.valueOf(obj[3])), String.valueOf(obj[4]));
 		} catch (Exception e) {
-			tx.rollback();
 			throw e;
 		} finally {
 			em.close();
@@ -114,9 +111,6 @@ public class PlayerDAO {
 	@SuppressWarnings("unchecked")
 	public ArrayList<PeopleDTO> getAllPlayers(String team) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-
 		List<PlayerEntity> list = null;
 		ArrayList<PeopleDTO> plist = new ArrayList<>();
 
@@ -129,7 +123,6 @@ public class PlayerDAO {
 						String.valueOf(obj[2]), Integer.parseInt(String.valueOf(obj[3])), String.valueOf(obj[4])));
 			}
 		} catch (Exception e) {
-			tx.rollback();
 			throw e;
 		} finally {
 			em.close();

@@ -46,13 +46,17 @@ public class SoccerTeamService {
 	}
 
 	public LoginDTO getLogin(String userID, String userPW) throws SQLException, NotExistException, MessageException {
-		LoginDTO login = loginDAO.getLogin(userID);
-		
-		if(login.getUserPW().equals(userPW)) {
-			return login;
+		LoginDTO login = null;
+		try {
+			login = loginDAO.getLogin(userID);
+			
+			if(login.getUserPW().equals(userPW)) {
+				return login;
+			}
+		} catch(Exception e) {
+			throw new MessageException("로그인 실패");
 		}
-		
-		throw new MessageException("아이디나 비밀번호가 틀렸습니다.");
+		return login;
 	}
 
 	public boolean addLogin(LoginDTO login) throws Exception {

@@ -8,7 +8,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import soccerteam.model.dto.PeopleDTO;
 import soccerteam.model.dto.TeamDTO;
 import soccerteam.model.entity.TeamEntity;
 import soccerteam.model.util.DBUtil;
@@ -90,15 +89,12 @@ public class TeamDAO {
 
 	public TeamDTO getTeam(String team) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 		TeamDTO t2 = null;
 
 		try {
 			TeamEntity t = em.find(TeamEntity.class, team);
 			t2 = new TeamDTO(t.getTeam(), t.getLogin().getUserID());
 		} catch (Exception e) {
-			tx.rollback();
 			throw e;
 
 		} finally {
@@ -110,8 +106,6 @@ public class TeamDAO {
 	@SuppressWarnings("unchecked")
 	public ArrayList<TeamDTO> getAllTeams(String userID) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 
 		List<TeamEntity> list = null;
 		ArrayList<TeamDTO> tlist = new ArrayList<>();
@@ -124,7 +118,7 @@ public class TeamDAO {
 				tlist.add(new TeamDTO(String.valueOf(obj[0]), String.valueOf(obj[1])));
 			}
 		} catch (Exception e) {
-			em.getTransaction().rollback();
+			throw e;
 		} finally {
 			em.close();
 		}

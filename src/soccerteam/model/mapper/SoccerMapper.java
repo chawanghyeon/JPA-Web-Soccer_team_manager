@@ -34,7 +34,7 @@ public interface SoccerMapper {
     ManagerEntity toLoginEntity(PeopleDTO managerDTO);
     
     @Mapping(expression="java(team.getTName)", target="tName")
-    PeopleDTO toLoginDTO(ManagerEntity managerEntity);
+    PeopleDTO toPeopleDTO(ManagerEntity managerEntity);
     
     //medical
     MedicalStaffEntity toMedicalStaffEntity(PeopleDTO medicalStaffDTO);

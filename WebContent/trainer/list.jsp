@@ -7,22 +7,27 @@
 <html> 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>모든 트레이너 list 화면</title>
+<title>list 화면</title>
 </head>
 <body>
+	<section >
+  		<nav>
+    		<jsp:include page="../logout.jsp"></jsp:include>
+  		</nav>
+ 	</section>
 <br><br><br>
 <center>
-<h3>트레이너 list</h3>
+<h3>list 화면</h3>
 <hr><p>
 
 <table border="1">
 	<thead>
 		<tr>
-			<th>팀 이름</th><th>트레이너 번호</th><th>트레이너 이름</th><th>트레이너 나이</th><th>트레이너 분야</th>
+			<th>팀 이름</th><th>번호</th><th>이름</th><th>나이</th><th>분야</th>
 		</tr>
 	</thead>
 	
-	<c:forEach items="${requestScope.allTrainers}" var="data">
+	<c:forEach items="${requestScope.peoples}" var="data">
 		 <tr>
 		 	<td>${data.team}</td>
 		 	<td><a href="${url}soccerteam?command=getTrainer&number=${data.number}">${data.number}</a></td>
@@ -37,15 +42,13 @@
 
 
 </table>
-<form action="${pageContext.request.contextPath}/trainer/trainerInsert.jsp">
-	<input type="hidden" name="team" value="${requestScope.allTrainers[0].team}">
+<form action="${pageContext.request.contextPath}/trainer/insert.jsp">
 	<input type="submit" value="추가">
 </form>
 <br><br><br>
-&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/soccerteam?command=getTeam&team=${requestScope.allTrainers[0].team}">팀 페이지로 이동</a>
+&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/soccerteam?command=getTeam">팀 페이지로 이동</a>
 <br>
-<font color="blue">트레이너 번호를 클릭하면 상세 정보 확인이 가능합니다</font>
-&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/index.html">로그아웃</a>
+&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/login/detail.jsp">메인페이지</a>
 
 </center>
 </body>
