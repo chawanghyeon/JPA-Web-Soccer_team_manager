@@ -1,3 +1,7 @@
+<details>
+<summary>Korean</summary>
+<div markdown="1">
+
 # WEB_JPA MINI PROJECT : Control하다
 
 
@@ -8,6 +12,12 @@
 토트넘을 소유하고 있는 00기업이 이번에 유벤투스를 인수하게 되었습니다.<br>
 클라이언트는 한 프로그램을 사용하여 두 기업을 관리하고 싶어합니다.<br>
 두팀을 관리할 있는 프로그램을 만들어주세요.<br>
+
+[PROTOTYPE LINK](https://ovenapp.io/project/Bw3y8pT5PFoud5JYHMvDrt6okzKgig7T#bavCk)
+
+<details>
+<summary>Project 주제</summary>
+<div markdown="1">
 
 <p><p></p>
 팀 꿀단지는 'Control하다'를 만들었습니다. 
@@ -20,9 +30,60 @@
 
 <p><p>
 	
+</div>
+</details>
 
+<details>
+<summary>Project 주제 선정 과정</summary>
+<div markdown="1">
 
-### Service <br>
+Web과 데이터베이스의 연결을 학습하기 위해 간단한 관리 프로그램을 만들었습니다.
+</div>
+</details>
+
+<details>
+<summary>기술 스택</summary>
+<div markdown="1">
+
+- HTML
+- Lombok
+- Java
+- Oracle
+- Slf4j
+- SQL
+- servlet
+- JSP
+</div>
+</details>
+
+<details>
+<summary>STRUCTURE</summary>
+<div markdown="1">
+
+![image](https://user-images.githubusercontent.com/53591258/103433644-6e756900-4c38-11eb-8c58-37fe0e4d236c.png)
+
+### CASE1.관리자 행동 시나리오		
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:key: 로그인 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:ballot_box_with_check: 카테고리 고르기 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:couplekiss: 선수 정보 확인 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: 선수 등록   <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:x: 선수 삭제 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:memo: 선수 명단 확인하기 <br>
+<br>
+
+### CASE2.관리자 행동 시나리오		
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:key: 로그인 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:ballot_box_with_check: 카테고리 고르기 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:couplekiss: 감독 정보 확인 <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: Giovanni Cerra 코치의 정보 수정   <br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: 모든 감독 정보 확인하기  <br>
+<br>
+</div>
+</details>
+
+<details>
+<summary>Service</summary>
+<div markdown="1">
 
 <div>
 
@@ -43,12 +104,12 @@
 #### 의료진 관리 및 의료진 페이지 <br>
 :clock8: 트레이너의 정보를 등록, 확인하고 이력을 확인할 수 있습니다. <br>
 <p><p></p>
+</div>
+</details>
 
-
-
-
-#### 시나리오<br>
-
+<details>
+<summary>시나리오</summary>
+<div markdown="1">
 
 >#### CASE 1. 토트넘선수관리팀에 입사한 왕현씨 <br>
 >연말은 FA가 많다.<br>
@@ -61,213 +122,37 @@
 >꾸준히 팀의 신임을 받은 Giovanni Cerra 코치는 내년부터 감독으로 승진하게 되었다.<br>
 >Giovanni Cerra 코치의 포지션을 변경해야한다.<p><br>
 ><br>
+</div>
+</details>
+
+<details>
+<summary>How to use?</summary>
+<div markdown="1">
+
+1. 우선 회원가입 후 로그인합니다  
+    ![image](https://user-images.githubusercontent.com/53591258/103435893-d3d95200-4c58-11eb-8d7d-f02f5fd018d2.png)  
+    ![image](https://user-images.githubusercontent.com/53591258/103435905-f53a3e00-4c58-11eb-81c5-9b4c770e41ae.png)  
+2. 팀 생성 후 팀 상세보기로 이동 후 감독, 선수, 의료진, 트레이너 중 하나를 선택해 이동합니다  
+    ![image](https://user-images.githubusercontent.com/53591258/103435907-0f741c00-4c59-11eb-8081-0beee80a9c39.png)  
+    ![image](https://user-images.githubusercontent.com/53591258/103435914-2b77bd80-4c59-11eb-9a30-a6b18a8ae687.png)  
+    ![image](https://user-images.githubusercontent.com/53591258/103435918-3f232400-4c59-11eb-886d-c5efbbf434ca.png)  
+3. 팀 내의 해당 구성원 리스트에서 번호를 클릭하거나 새로운 구성원을 생성하면 구성원 상세보기로 이동합니다  
+    ![image](https://user-images.githubusercontent.com/53591258/103435922-55c97b00-4c59-11eb-8e21-bdd40e81fb6b.png)  
+4. 구성원 상세보기 안에서 수정 삭제 가능합니다  
+    ![image](https://user-images.githubusercontent.com/53591258/103435951-e6a05680-4c59-11eb-9a28-d0ab06688013.png)  
+    ![image](https://user-images.githubusercontent.com/53591258/103435961-f9b32680-4c59-11eb-9ac2-183e3485bad9.png)  
+    삭제한 후 구성원 리스트  
+5. 오른쪽 상단에 위치한 로그아웃 버튼을 누르면 로그아웃 후 로그인 페이지로 이동합니다
+6. 자유롭게 즐기기!  
+
+
+</div>
+</details>
+
+<details>
+<summary>ISSUE</summary>
+<div markdown="1">
 
-
-
-## STRUCTURE
-
-
-<div>
-<img width="1000" src=https://user-images.githubusercontent.com/73386460/103197067-b6d71300-4928-11eb-907f-65809a582553.PNG>
-
-		
-
-### CASE1.관리자 행동 시나리오		
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:key: 로그인 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:ballot_box_with_check: 카테고리 고르기 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:couplekiss: 선수 정보 확인 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: 선수 등록   <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:x: 선수 삭제 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:memo: 선수 명단 확인하기 <br>
-<br>
-
-
-### CASE2.관리자 행동 시나리오		
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:key: 로그인 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:ballot_box_with_check: 카테고리 고르기 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:couplekiss: 감독 정보 확인 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: Giovanni Cerra 코치의 정보 수정   <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: 모든 감독 정보 확인하기  <br>
-<br>
-
-
-</br></p>
-
-## SQL TABLE 
-
-+ Soccer Management DDL 
-
-```SQL
-
-CREATE TABLE team(
-	t_name	         varchar2(25)    NOT NULL,
-	user_id	         varchar2(50)	NOT NULL
-);
-
-
-CREATE TABLE  players (
-	p_number           number(20)		NOT NULL,
-	t_name             varchar2(25)		NOT NULL,
-	p_name 	           varchar2(50)		NOT NULL,
-	p_age	           number(20)		NOT NULL,
-    p_position         varchar2(50)		NOT NULL
-);
-
-
-CREATE TABLE  managers (
-	 m_number	 number(20)		    NOT NULL,
-	 t_name	     varchar2(25)		NOT NULL,
-	 m_name  	 varchar2(50)		NOT NULL,
-	 m_age	     number(20)		    NOT NULL,
-	 m_position	 varchar2(50)		NOT NULL
-);
-
-
-
-CREATE TABLE medical_staff (
-	d_number	      number(20)		    NOT NULL,
-	t_name	          varchar2(25)		NOT NULL,
-	d_name	          varchar2(50)		NOT NULL,
-	d_age	          number(20)		    NOT NULL,
-	d_position	      varchar2(50)		    NOT NULL
-);
-
-
-
-CREATE TABLE trainers (
-	tr_number	 number(20)		    NOT NULL,
-	t_name	     varchar2(25)		NOT NULL,
-	tr_name	     varchar2(50)		NOT NULL,
-	tr_age	     number(20)		    NOT NULL,
-	tr_position	 varchar2(50)		    NOT NULL
-);
-
-
-
-CREATE TABLE logins (
-	user_id	           varchar2(50)	      NOT NULL,
-	user_pw	           varchar2(50)	      NOT NULL
-);
-
-
-ALTER TABLE logins ADD CONSTRAINT PK_LOGINS PRIMARY KEY (userid);
-
-ALTER TABLE players ADD CONSTRAINT PK_PLAYERS PRIMARY KEY (p_number);
-
-ALTER TABLE team ADD CONSTRAINT PK_TEAM PRIMARY KEY (t_name);
-
-ALTER TABLE team ADD CONSTRAINT FK_logins_TO_team_1 FOREIGN KEY (userid)
-REFERENCES logins (userid);
-
-ALTER TABLE managers ADD CONSTRAINT PK_MANAGERS PRIMARY KEY (m_number);
-
-ALTER TABLE medical_staff ADD CONSTRAINT PK_MEDICAL_STAFF PRIMARY KEY (d_number);
-
-ALTER TABLE trainers ADD CONSTRAINT PK_TRAINERS PRIMARY KEY (tr_number);
-
-ALTER TABLE players ADD CONSTRAINT FK_team_TO_players_1 FOREIGN KEY (t_name)
-REFERENCES team (t_name);
-
-ALTER TABLE managers ADD CONSTRAINT FK_team_TO_managers_1 FOREIGN KEY (t_name)
-REFERENCES team (t_name);
-
-ALTER TABLE medical_staff ADD CONSTRAINT FK_team_TO_medical_staff_1 FOREIGN KEY (t_name)
-REFERENCES team (t_name);
-
-ALTER TABLE trainers ADD CONSTRAINT FK_team_TO_trainers_1 FOREIGN KEY (t_name)
-REFERENCES team (t_name);
-
-DROP TABLE players CASCADE CONSTRAINTS;
-
-DROP TABLE team CASCADE CONSTRAINTS;
-
-DROP TABLE managers CASCADE CONSTRAINTS;
-
-DROP TABLE medical_staff CASCADE CONSTRAINTS;
-
-DROP TABLE trainers CASCADE CONSTRAINTS;
-
-DROP TABLE logins CASCADE CONSTRAINTS;
-
-```
-
-+ Soccer Management DML 
-
-```SQL
-
-insert into logins values ('cwh', '1234');
-insert into logins values ('yoon1234', '4567');
-
-insert into team values ('토트넘', 'cwh');
-insert into team values ('유벤투스', 'yoon1234');
-
-
-insert into players values(1,'토트넘','권오민',23,'골키퍼');	
-insert into players values(2,'토트넘','권희성',25,'수비수');	
-insert into players values(3,'토트넘','김민건',27,'수비수');	
-insert into players values(4,'토트넘','김성호',29,'수비수');	
-insert into players values(5,'토트넘','김연식',28,'수비수');	
-insert into players values(6,'토트넘','김재웅',27,'공격수');	
-insert into players values(7,'토트넘','김준형',30,'공격수');	
-insert into players values(8,'토트넘','김창훈',25,'공격수');	
-insert into players values(9,'토트넘','김혜경',24,'미드필더');	
-insert into players values(10,'토트넘','김혜성',21,'미드필더');	
-insert into players values(11,'토트넘','박다영',22,'미드필더');	
-insert into players values(12,'유벤투스','염아정',24,'골키퍼');	
-insert into players values(13,'유벤투스','김연지',26,'수비수');	
-insert into players values(14,'유벤투스','박민영',28,'수비수');	
-insert into players values(15,'유벤투스','고은비',27,'수비수');	
-insert into players values(16,'유벤투스','장종욱',25,'수비수');	
-insert into players values(17,'유벤투스','이정민',24,'공격수');	
-insert into players values(18,'유벤투스','조윤혜',26,'공격수');	
-insert into players values(19,'유벤투스','최지수',24,'공격수');	
-insert into players values(20,'유벤투스','최지원',27,'미드필더');	
-insert into players values(21,'유벤투스','최태열',26,'미드필더');	
-insert into players values(22,'유벤투스','양호준',25,'미드필더');	
-	
-				
-
-
-insert into trainers values(301,'토트넘','배수지',34,'재활');
-insert into trainers values(302,'토트넘','김태연',50,'재활');
-insert into trainers values(303,'유벤투스','한소희',40,'재활');
-insert into trainers values(304,'토트넘','김준면',30,'PT');
-insert into trainers values(305,'유벤투스','김선호',36,'PT');
-insert into trainers values(306,'유벤투스','남주혁',37,'PT');	
-
-
-
-insert into managers values (100, '토트넘', 'José Mourinho', 60, 'Manager');
-insert into managers values (101, '토트넘', 'João Sacramento', 50, 'Coach');
-insert into managers values (102, '토트넘', 'Nuno Santos', 40, 'Coach');
-insert into managers values (103, '유벤투스', 'Ledley King', 46, 'Coach');
-insert into managers values (104, '유벤투스', 'Carlos Lalin', 48, 'Coach');
-insert into managers values (105, '유벤투스', 'Giovanni Cerra', 57, 'Coach');
-				
-
-
-insert into medical_staff values (200, '토트넘', '차의사', 30, '정신과');			
-insert into medical_staff values (201, '토트넘', '조의사', 40, '정형외과');			
-insert into medical_staff values (202, '토트넘', '김의사', 32, '내과');			
-insert into medical_staff values (203, '유벤투스', '박의사', 43, '정형외과');			
-insert into medical_staff values (204, '유벤투스', '이의사', 50, '정형외과');			
-insert into medical_staff values (205, '유벤투스', '최의사', 53, '정형외과');			
-					
-				
-commit;
-
-```
-
-
-
-
-
-## PROTOTYPE LINK
-https://ovenapp.io/project/Bw3y8pT5PFoud5JYHMvDrt6okzKgig7T#bavCk
-
-
-
-## ISSUE
 1. 구조  
 	- 맨처음 sql table구조를 설계할 때 제약 조건을 잘 못 설정했습니다.
 	- ERDCLOUD에서 sql문장을 자동으로 생성해주는 기능을 썼는데 오류가 많았습니다.
@@ -292,15 +177,112 @@ https://ovenapp.io/project/Bw3y8pT5PFoud5JYHMvDrt6okzKgig7T#bavCk
 %>
 </td>
 ```
-같은 코드지만 el태그를 사용한 부분은 인식을 하지 못하는 문제가 있었습니다.
-
-```java
-em.remove(em.find(LoginEntity.class, userID));
-em.createNativeQuery("DELETE FROM logins WHERE user_id="+"'"+userID+"'").executeUpdate();
-```
-em.remove가 실행되지 않는 문제가 발생해 createNativeQuery로 해결했습니다.
+같은 코드지만 el태그를 사용한 부분은 인식을 하지 못하는 문제가 있었습니다. 원인을 찾아보니 대소문자 문제였습니다.  
+ex) tName(X), tname(O)
 
 ```java
 em.remove(em.find(LoginEntity.class, userID));
 ```
 context에 저장하지 않고 바로 삭제하려 해서 에러가 발생했습니다.
+</div>
+</details>
+
+</div>
+</details>
+
+<details>
+<summary>English</summary>
+<div markdown="1">
+
+[PROTOTYPE LINK](https://ovenapp.io/project/Bw3y8pT5PFoud5JYHMvDrt6okzKgig7T#bavCk)
+
+
+## Project topic
+
+It is a program that can manage players, coaches, medical staff, and trainers by creating a soccer team.
+
+## Reason for selecting a topic
+
+We have created a simple administrative program to learn the connection between the Web and the database.
+
+## Technical stack
+
+- HTML
+- Lombok
+- Java
+- Oracle
+- Slf4j
+- SQL
+- servlet
+- JSP
+
+<details>
+<summary>STRUCTURE</summary>
+<div markdown="1">
+
+![image](https://user-images.githubusercontent.com/53591258/103433644-6e756900-4c38-11eb-8c58-37fe0e4d236c.png)
+</div>
+</details>
+
+<details>
+<summary>How to use?</summary>
+<div markdown="1">
+
+1. First, sign in after signing up for membership.  
+    ![image](https://user-images.githubusercontent.com/53591258/103435893-d3d95200-4c58-11eb-8d7d-f02f5fd018d2.png)  
+    ![image](https://user-images.githubusercontent.com/53591258/103435905-f53a3e00-4c58-11eb-81c5-9b4c770e41ae.png)  
+2. After creating a team, go to the Team Details view and select one of the coaches, athletes, medics, or trainers to move.  
+    ![image](https://user-images.githubusercontent.com/53591258/103435907-0f741c00-4c59-11eb-8081-0beee80a9c39.png)  
+    ![image](https://user-images.githubusercontent.com/53591258/103435914-2b77bd80-4c59-11eb-9a30-a6b18a8ae687.png)  
+    ![image](https://user-images.githubusercontent.com/53591258/103435918-3f232400-4c59-11eb-886d-c5efbbf434ca.png)  
+3. Click a number in the list of appropriate members within a team, or create a new member, and you will be taken to the Members Details view.  
+    ![image](https://user-images.githubusercontent.com/53591258/103435922-55c97b00-4c59-11eb-8e21-bdd40e81fb6b.png)  
+4. You can modify and delete it in the Membership Details view.  
+    ![image](https://user-images.githubusercontent.com/53591258/103435951-e6a05680-4c59-11eb-9a28-d0ab06688013.png)  
+    ![image](https://user-images.githubusercontent.com/53591258/103435961-f9b32680-4c59-11eb-9ac2-183e3485bad9.png)  
+    List of members after deletion  
+5. Press the Logout button located in the upper right corner to logout and go to the login page.
+6. Enjoy Yourself Freely!  
+</div>
+</details>
+
+<details>
+<summary>ISSUE</summary>
+<div markdown="1">
+
+1. Structure  
+	- The constraint was set incorrectly when designing the first sql table structure.
+	- we used the function of automatically generate sql sentences in ERDCLOUD , but there were many errors.
+	- An error occurred because we were confused between JoinColumn and MappedBy.  
+
+2. Git  
+despite of we separate the source file, when coding, the Eclipse settings file or class file are automatically changed, so there were often conflicts.  
+Created and resolved the .gitignore file by setting the files to be excluded when committed.
+
+3. Code
+```jsp
+<td>${requestScope.team.tName}</td>
+ 		
+ 		
+<td>
+<% TeamDTO t = (TeamDTO)request.getAttribute("team"); 
+	if(t != null){
+%>
+		<%=t.getTName()%>		
+<%			
+	}
+%>
+</td>
+```
+There was a problem that the same code but the use of the el-tag was not recognized. When I looked up the cause, it was a case-sensitive problem.  
+ex) tName(X), tname(O)
+
+```java
+em.remove(em.find(LoginEntity.class, userID));
+```
+An error occurred because I tried to delete it right away without saving it in context.
+</div>
+</details>
+
+</div>
+</details>
