@@ -77,8 +77,6 @@ public class LoginDAO {
 		boolean result = false;
 
 		try {
-			
-//			em.remove(em.find(LoginEntity.class, userID));//context에 저장하지 않고 바로 삭제하려 해서 에러
 			em.createNativeQuery("DELETE FROM logins WHERE user_id='"+userID+"'").executeUpdate();
 			tx.commit();
 

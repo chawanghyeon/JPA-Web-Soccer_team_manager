@@ -8,6 +8,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.junit.Test;
+
 import soccerteam.model.dto.PeopleDTO;
 import soccerteam.model.entity.ManagerEntity;
 import soccerteam.model.util.DBUtil;
@@ -73,7 +75,8 @@ public class ManagerDAO {
 		boolean result = false;
 
 		try {
-			em.remove(em.find(ManagerEntity.class, number));
+			ManagerEntity m = em.find(ManagerEntity.class, number);
+			em.remove(m);
 			tx.commit();
 
 			result = true;
@@ -88,17 +91,18 @@ public class ManagerDAO {
 
 	public PeopleDTO getManager(int number) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
-		PeopleDTO managers = null;
+		PeopleDTO manager = null;
 
 		try {
 			ManagerEntity m = em.find(ManagerEntity.class, number);
-			managers = new PeopleDTO(number, m.getTeam().getTeam(), m.getName(), m.getAge(), m.getPosition());
+			manager = new PeopleDTO(number, m.getTeam().getTeam(), m.getName(), m.getAge(), m.getPosition());
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw e;
 		} finally {
 			em.close();
 		}
-		return managers;
+		return manager;
 	}
 
 	@SuppressWarnings("unchecked")

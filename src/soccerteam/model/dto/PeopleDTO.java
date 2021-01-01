@@ -20,7 +20,7 @@ import soccerteam.model.entity.TrainerEntity;
 @ToString
 
 public class PeopleDTO {
-
+	
 	private int number;
 
 	private String team;
@@ -31,19 +31,4 @@ public class PeopleDTO {
 
 	private String position;
 	
-	public TrainerEntity toTrainerEntity(TeamEntity team) {
-		return TrainerEntity.builder().number(number).name(name).age(age).position(position).team(team).build();
-	}
-	
-	public PlayerEntity toPlayerEntity(TeamEntity team) {
-		return PlayerEntity.builder().number(number).name(name).age(age).position(position).team(team).build();
-	}
-	
-	public MedicalStaffEntity toMedicalStaffEntity(TeamEntity team) {
-		return MedicalStaffEntity.builder().number(number).name(name).age(age).position(position).team(team).build();
-	}
-	
-	public ManagerEntity toManagerEntity(TeamEntity team) {
-		return ManagerEntity.builder().number(number).team(team).name(name).age(age).position(position).build();
-	}
 }

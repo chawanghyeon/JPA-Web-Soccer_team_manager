@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import lombok.extern.slf4j.Slf4j;
 import soccerteam.model.dto.LoginDTO;
 import soccerteam.model.dto.PeopleDTO;
 import soccerteam.model.dto.TeamDTO;
 import soccerteam.model.service.SoccerTeamService;
+
+@Slf4j
 
 @WebServlet("/soccerteam")
 public class SoccerteamController extends HttpServlet {
@@ -27,10 +30,12 @@ public class SoccerteamController extends HttpServlet {
 		String command = request.getParameter("command");
 
 		if (command == null) {
+			log.trace("잘못된 접근");
 			request.setAttribute("errorMsg", "잘못된 접근입니다.");
 			request.getRequestDispatcher("showError.jsp").forward(request, response);
 		} else {
 			try {
+				log.trace(command);
 				if (command.equals("getLogin")) {// 특정 관리자 정보 검색
 					getLogin(request, response);
 				} else if ((String) session.getAttribute("userID") != null && (String) session.getAttribute("userPW") != null){
@@ -106,10 +111,12 @@ public class SoccerteamController extends HttpServlet {
 						logout(request, response);
 					}
 				} else {
+					log.trace("로그인 필요");
 					request.setAttribute("errorMsg", "로그인 해주세요!");
 					request.getRequestDispatcher("showError.jsp").forward(request, response);
 				}
 			} catch (Exception s) {
+				log.trace("잘못된 접근");
 				request.setAttribute("errorMsg", "잘못된 접근입니다.");
 				request.getRequestDispatcher("showError.jsp").forward(request, response);
 				s.printStackTrace();
@@ -119,6 +126,7 @@ public class SoccerteamController extends HttpServlet {
 
 	public void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		log.trace("로그아웃");
 		session.invalidate();
 		session = null;
 		request.getRequestDispatcher("index.html").forward(request, response);
@@ -133,8 +141,10 @@ public class SoccerteamController extends HttpServlet {
 		try {
 			String team = (String) session.getAttribute("team");
 			request.setAttribute("peoples", service.getAllTrainers(team));
+			log.trace("모든 트레이너 검색");
 			url = "trainer/list.jsp";
 		} catch (Exception s) {
+			log.trace(s.getMessage());
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();
 		}
@@ -152,11 +162,14 @@ public class SoccerteamController extends HttpServlet {
 
 			if (p != null) {
 				session.setAttribute("people", p);
+				log.trace("트레이너" + p.toString() + "검색");
 				url = "trainer/detail.jsp";
 			} else {
+				log.trace("존재하지 않는 트레이너입니다.");
 				request.setAttribute("errorMsg", "존재하지 않는 트레이너입니다.");
 			}
 		} catch (Exception s) {
+			log.trace(s.getMessage());
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();
 		}
@@ -182,11 +195,14 @@ public class SoccerteamController extends HttpServlet {
 				if (service.addTrainer(people)) {
 					session.setAttribute("people", people);
 					request.setAttribute("successMsg", "가입 완료");
+					log.trace("트레이너" + people.toString() + "wjwkd");
 					url = "trainer/detail.jsp";
 				} else {
+					log.trace("트레이너" + people.toString() + "가입 실패");
 					request.setAttribute("errorMsg", "다시 시도하세요");
 				}
 			} catch (Exception s) {
+				log.trace(s.getMessage());
 				request.setAttribute("errorMsg", s.getMessage());
 			}
 			request.getRequestDispatcher(url).forward(request, response);
@@ -196,6 +212,7 @@ public class SoccerteamController extends HttpServlet {
 	// 트레이너 수정 요구
 	public void requestUpdateTrainer(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		log.trace("트레이너 수정 요구");
 		request.getRequestDispatcher("trainer/update.jsp").forward(request, response);
 	}
 
@@ -211,11 +228,14 @@ public class SoccerteamController extends HttpServlet {
 
 			if (service.updateTrainer(number, position)) {
 				session.setAttribute("people", service.getTrainer(number));
+				log.trace("트레이너 수정" + position);
 				url = "trainer/detail.jsp";
 			} else {
+				log.trace("트레이너 수정 실패");
 				request.setAttribute("errorMsg", "수정 실패");
 			}
 		} catch (Exception s) {
+			log.trace(s.getMessage());
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();
 		}
@@ -234,11 +254,14 @@ public class SoccerteamController extends HttpServlet {
 			if (service.deleteTrainer(number)) {
 				String team = (String) session.getAttribute("team");
 				request.setAttribute("peoples", service.getAllTrainers(team));
+				log.trace("트레이너 삭제");
 				url = "trainer/list.jsp";
 			} else {
+				log.trace("트레이너 삭제 실패");
 				request.setAttribute("errorMsg", "삭제 실패");
 			}
 		} catch (Exception s) {
+			log.trace(s.getMessage());
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();
 		}
@@ -261,18 +284,22 @@ public class SoccerteamController extends HttpServlet {
 			}
 
 			if (l != null) {
+				log.trace("메인페이지 이동");
 				session.setAttribute("allTeams", service.getAllTeam(userID));
 				session.setAttribute("userID", userID);
 				session.setAttribute("userPW", userPW);
 				url = "login/detail.jsp";
 			} else if (session.getAttribute("userID") != null) {
+				log.trace("메인페이지 이동");
 				userID = (String) session.getAttribute("userID");
 				session.setAttribute("allTeams", service.getAllTeam(userID));
 				url = "login/detail.jsp";
 			} else {
+				log.trace("존재하지 않는 관리자입니다.");
 				request.setAttribute("errorMsg", "존재하지 않는 관리자입니다.");
 			}
 		} catch (Exception s) {
+			log.trace(s.getMessage());
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();
 		}
@@ -296,12 +323,15 @@ public class SoccerteamController extends HttpServlet {
 					session.setAttribute("userID", userID);
 					session.setAttribute("userPW", userPW);
 					request.setAttribute("successMsg", "가입 완료");
+					log.trace("관리자" + login.toString() + "가입 완료");
 					url = "login/detail.jsp";
 				} else {
+					log.trace("관리자" + login.toString() + "가입 실패");
 					request.setAttribute("errorMsg", "다시 시도하세요");
 				}
 			}
 		} catch (Exception s) {
+			log.trace("회원가입 실패");
 			request.setAttribute("errorMsg", "회원가입 실패");
 		}
 		request.getRequestDispatcher(url).forward(request, response);
@@ -310,6 +340,7 @@ public class SoccerteamController extends HttpServlet {
 	// 관리자 비밀번호 수정 요구
 	public void requestUpdateLogin(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		log.trace("관리자 비밀번호 수정 요구");
 		request.getRequestDispatcher("login/update.jsp").forward(request, response);
 	}
 
@@ -327,9 +358,11 @@ public class SoccerteamController extends HttpServlet {
 				session.setAttribute("userPW", newPW);
 				url = "login/detail.jsp";
 			} else {
+				log.trace(newPW + "비밀번호 수정 실패");
 				request.setAttribute("errorMsg", "수정 실패");
 			}
 		} catch (Exception s) {
+			log.trace(s.getMessage());
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();
 		}
@@ -346,11 +379,14 @@ public class SoccerteamController extends HttpServlet {
 			if (service.deleteLogin((String) session.getAttribute("userID"))) {
 				session.invalidate();
 				session = null;
+				log.trace("관리자 삭제");
 				url = "index.html";
 			} else {
+				log.trace("관리자 삭제 실패");
 				request.setAttribute("errorMsg", "삭제 실패");
 			}
 		} catch (Exception s) {
+			log.trace(s.getMessage());
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();
 		}
@@ -366,8 +402,10 @@ public class SoccerteamController extends HttpServlet {
 		try {
 			String team = (String) session.getAttribute("team");
 			request.setAttribute("peoples", service.getAllManagers(team));
+			log.trace("모든 감독 검색");
 			url = "manager/list.jsp";
 		} catch (Exception s) {
+			log.trace("모든 감독 검색 실패");
 			request.setAttribute("errorMsg", "모든 감독 검색 실패");
 			s.printStackTrace();
 		}
@@ -384,11 +422,14 @@ public class SoccerteamController extends HttpServlet {
 			PeopleDTO m = service.getManager(Integer.parseInt(request.getParameter("number")));
 			if (m != null) {
 				session.setAttribute("people", m);
+				log.trace("감독" + m.toString() + "검색");
 				url = "manager/detail.jsp";
 			} else {
+				log.trace("존재하지 않는 감독입니다.");
 				request.setAttribute("errorMsg", "존재하지 않는 감독입니다.");
 			}
 		} catch (Exception s) {
+			log.trace(s.getMessage());
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();
 		}
@@ -413,11 +454,14 @@ public class SoccerteamController extends HttpServlet {
 				if (service.addManager(people)) {
 					session.setAttribute("people", people);
 					request.setAttribute("successMsg", "가입 완료");
+					log.trace("감독" + people.toString() + "가입 완료");
 					url = "manager/detail.jsp";
 				} else {
+					log.trace("감독" + people.toString() + "가입 실패");
 					request.setAttribute("errorMsg", "다시 시도하세요");
 				}
 			} catch (Exception s) {
+				log.trace("감독" + people.toString() + "가입 실패");
 				request.setAttribute("errorMsg", "감독 등록 실패");
 			}
 			request.getRequestDispatcher(url).forward(request, response);
@@ -427,6 +471,7 @@ public class SoccerteamController extends HttpServlet {
 	// 매니저 수정 요구
 	public void requestUpdateManager(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		log.trace("감독 수정 요구");
 		request.getRequestDispatcher("manager/update.jsp").forward(request, response);
 	}
 
@@ -442,11 +487,14 @@ public class SoccerteamController extends HttpServlet {
 
 			if (service.updateManager(number, position)) {
 				session.setAttribute("people", service.getManager(number));
+				log.trace("감독 수정");
 				url = "manager/detail.jsp";
 			} else {
+				log.trace("감독 수정 실패");
 				request.setAttribute("errorMsg", "수정 실패");
 			}
 		} catch (Exception s) {
+			log.trace("감독 수정 실패");
 			request.setAttribute("errorMsg", "감독 수정 실패");
 			s.printStackTrace();
 		}
@@ -465,11 +513,14 @@ public class SoccerteamController extends HttpServlet {
 			if (service.deleteManager(number)) {
 				String team = (String) session.getAttribute("team");
 				request.setAttribute("peoples", service.getAllManagers(team));
+				log.trace("감독 삭제");
 				url = "manager/list.jsp";
 			} else {
+				log.trace("감독 삭제 실패");
 				request.setAttribute("errorMsg", "삭제 실패");
 			}
 		} catch (Exception s) {
+			log.trace("감독 삭제 실패");
 			request.setAttribute("errorMsg", "삭제 실패");
 			s.printStackTrace();
 		}
@@ -485,8 +536,10 @@ public class SoccerteamController extends HttpServlet {
 		try {
 			String userID = (String) session.getAttribute("userID");
 			request.setAttribute("allTeams", service.getAllTeam(userID));
+			log.trace("모든 팀 검색");
 			url = "team/list.jsp";
 		} catch (Exception s) {
+			log.trace("모든 팀 검색 실패");
 			request.setAttribute("errorMsg", "모든 팀 검색 실패");
 			s.printStackTrace();
 		}
@@ -508,12 +561,15 @@ public class SoccerteamController extends HttpServlet {
 				t = service.getTeam((String) session.getAttribute("team"));
 			}
 			if (t != null) {
+				log.trace("팀 검색");
 				session.setAttribute("team", t.getTeam());
 				url = "team/detail.jsp";
 			} else {
+				log.trace("팀 검색 실패");
 				request.setAttribute("errorMsg", "존재하지 않는 팀입니다.");
 			}
 		} catch (Exception s) {
+			log.trace("팀 검색 실패");
 			request.setAttribute("errorMsg", "팀 검색 실패");
 			s.printStackTrace();
 		}
@@ -536,11 +592,14 @@ public class SoccerteamController extends HttpServlet {
 				if (service.addTeam(t)) {
 					session.setAttribute("team", t.getTeam());
 					request.setAttribute("successMsg", "가입 완료");
+					log.trace("팀 가입");
 					url = "team/detail.jsp";
 				} else {
+					log.trace("팀 가입 실패");
 					request.setAttribute("errorMsg", "다시 시도하세요");
 				}
 			} catch (Exception s) {
+				log.trace("팀 가입 실패");
 				request.setAttribute("errorMsg", "팀 가입 실패");
 			}
 			request.getRequestDispatcher(url).forward(request, response);
@@ -550,6 +609,7 @@ public class SoccerteamController extends HttpServlet {
 	// 팀 수정 요구
 	public void requestUpdateTeam(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		log.trace("팀 수정 요구");
 		request.getRequestDispatcher("team/update.jsp").forward(request, response);
 	}
 
@@ -565,11 +625,14 @@ public class SoccerteamController extends HttpServlet {
 
 			if (service.updateTeam(team, newTeam)) {
 				session.setAttribute("team", service.getTeam(team));
+				log.trace("팀 수정");
 				url = "team/detail.jsp";
 			} else {
+				log.trace("팀 수정 실패");
 				request.setAttribute("errorMsg", "수정 실패");
 			}
 		} catch (Exception s) {
+			log.trace("팀 수정 실패");
 			request.setAttribute("errorMsg", "수정 실패");
 			s.printStackTrace();
 		}
@@ -588,11 +651,14 @@ public class SoccerteamController extends HttpServlet {
 			if (service.deleteTeam(team)) {
 				String userID = (String) session.getAttribute("userID");
 				request.setAttribute("allTeams", service.getAllTeam(userID));
+				log.trace("팀 삭제");
 				url = "login/detail.jsp";
 			} else {
+				log.trace("팀 삭제 실패");
 				request.setAttribute("errorMsg", "팀 삭제 실패");
 			}
 		} catch (Exception s) {
+			log.trace("팀 삭제 실패");
 			request.setAttribute("errorMsg", "팀 삭제 실패");
 			s.printStackTrace();
 		}
@@ -608,8 +674,10 @@ public class SoccerteamController extends HttpServlet {
 		try {
 			String team = (String) session.getAttribute("team");
 			request.setAttribute("peoples", service.getAllMedicalStaffs(team));
+			log.trace("모든 의료진 검색");
 			url = "medicalStaff/list.jsp";
 		} catch (Exception s) {
+			log.trace("모든 의료진 검색 실패");
 			request.setAttribute("errorMsg", "모든 의료진 검색 실패");
 			s.printStackTrace();
 		}
@@ -628,11 +696,14 @@ public class SoccerteamController extends HttpServlet {
 
 			if (p != null) {
 				session.setAttribute("people", p);
+				log.trace("의료진" + p.toString() + "검색");
 				url = "medicalStaff/detail.jsp";
 			} else {
+				log.trace("의료진 검색 실패");
 				request.setAttribute("errorMsg", "존재하지 않는 의료진입니다.");
 			}
 		} catch (Exception s) {
+			log.trace("의료진 검색 실패");
 			request.setAttribute("errorMsg", "의료진 검색 실패");
 			s.printStackTrace();
 		}
@@ -658,11 +729,14 @@ public class SoccerteamController extends HttpServlet {
 				if (service.addMedicalStaff(people)) {
 					session.setAttribute("people", people);
 					request.setAttribute("successMsg", "가입 완료");
+					log.trace("의료진" + people.toString() + "가입");
 					url = "medicalStaff/detail.jsp";
 				} else {
+					log.trace("의료진 가입 실패");
 					request.setAttribute("errorMsg", "다시 시도하세요");
 				}
 			} catch (Exception s) {
+				log.trace("의료진 가입 실패");
 				request.setAttribute("errorMsg", "의료진 등록 실패");
 			}
 			request.getRequestDispatcher(url).forward(request, response);
@@ -672,6 +746,7 @@ public class SoccerteamController extends HttpServlet {
 	// 의료진 수정 요구
 	public void requestUpdateMedicalStaff(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		log.trace("의료진 수정 요구");
 		request.getRequestDispatcher("medicalStaff/update.jsp").forward(request, response);
 	}
 
@@ -687,11 +762,14 @@ public class SoccerteamController extends HttpServlet {
 
 			if (service.updateMedicalStaff(number, position)) {
 				session.setAttribute("people", service.getMedicalStaff(number));
+				log.trace("의료진 수정");
 				url = "medicalStaff/detail.jsp";
 			} else {
+				log.trace("의료진 수정 실패");
 				request.setAttribute("errorMsg", "수정 실패");
 			}
 		} catch (Exception s) {
+			log.trace("의료진 수정 실패");
 			request.setAttribute("errorMsg", "의료진 수정 실패");
 			s.printStackTrace();
 		}
@@ -710,11 +788,14 @@ public class SoccerteamController extends HttpServlet {
 			if (service.deleteMedicalStaff(number)) {
 				String team = (String) session.getAttribute("team");
 				request.setAttribute("peoples", service.getAllMedicalStaffs(team));
+				log.trace("의료진 삭제");
 				url = "medicalStaff/list.jsp";
 			} else {
+				log.trace("의료진 삭제 실패");
 				request.setAttribute("errorMsg", "삭제 실패");
 			}
 		} catch (Exception s) {
+			log.trace("의료진 삭제 실패");
 			request.setAttribute("errorMsg", "의료진 삭제 실패");
 			s.printStackTrace();
 		}
@@ -731,6 +812,7 @@ public class SoccerteamController extends HttpServlet {
 			String team = (String) session.getAttribute("team");
 			System.out.println(team);
 			request.setAttribute("peoples", service.getAllPlayers(team));
+			log.trace("모든 선수 검색");
 			url = "player/list.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", "모든 선수 검색 실패");
@@ -753,10 +835,13 @@ public class SoccerteamController extends HttpServlet {
 			if (p != null) {
 				session.setAttribute("people", p);
 				url = "player/detail.jsp";
+				log.trace("선수 검색" + p.toString());
 			} else {
+				log.trace("선수 검색 실패");
 				request.setAttribute("errorMsg", "존재하지 않는 선수입니다.");
 			}
 		} catch (Exception s) {
+			log.trace("선수 검색 실패");
 			request.setAttribute("errorMsg", "선수 검색 실패");
 			s.printStackTrace();
 		}
@@ -782,11 +867,14 @@ public class SoccerteamController extends HttpServlet {
 				if (service.addPlayer(people)) {
 					request.setAttribute("peoples", service.getAllPlayers(team));
 					request.setAttribute("successMsg", "가입 완료");
+					log.trace("선수 가입");
 					url = "player/list.jsp";
 				} else {
+					log.trace("선수 가입 실패");
 					request.setAttribute("errorMsg", "다시 시도하세요");
 				}
 			} catch (Exception s) {
+				log.trace("선수 가입 실패");
 				request.setAttribute("errorMsg", "선수 등록 실패");
 			}
 			request.getRequestDispatcher(url).forward(request, response);
@@ -796,6 +884,7 @@ public class SoccerteamController extends HttpServlet {
 	// 선수 수정 요구
 	public void requestUpdatePlayer(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		log.trace("선수 수정 요구");
 		request.getRequestDispatcher("player/update.jsp").forward(request, response);
 	}
 
@@ -812,11 +901,14 @@ public class SoccerteamController extends HttpServlet {
 
 			if (service.updatePlayer(number, position, team)) {
 				session.setAttribute("people", service.getPlayer(number, team));
+				log.trace("선수 수정");
 				url = "player/detail.jsp";
 			} else {
+				log.trace("선수 수정 실패");
 				request.setAttribute("errorMsg", "수정 실패");
 			}
 		} catch (Exception s) {
+			log.trace("선수 수정 실패");
 			request.setAttribute("errorMsg", "선수 수정 실패");
 			s.printStackTrace();
 		}
@@ -835,11 +927,14 @@ public class SoccerteamController extends HttpServlet {
 
 			if (service.deletePlayer(number, team)) {
 				request.setAttribute("peoples", service.getAllPlayers(team));
+				log.trace("선수 삭제");
 				url = "player/list.jsp";
 			} else {
+				log.trace("선수 삭제 실패");
 				request.setAttribute("errorMsg", "삭제 실패");
 			}
 		} catch (Exception s) {
+			log.trace("선수 삭제 실패");
 			request.setAttribute("errorMsg", "선수 삭제 실패");
 			s.printStackTrace();
 		}
