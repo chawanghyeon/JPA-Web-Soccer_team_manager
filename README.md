@@ -1,5 +1,5 @@
 <details>
-<summary>Korean1</summary>
+<summary>Korean</summary>
 <div markdown="1">
 
 # WEB_JPA MINI PROJECT : Control하다
