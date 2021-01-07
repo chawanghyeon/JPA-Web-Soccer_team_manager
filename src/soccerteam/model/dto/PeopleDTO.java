@@ -6,11 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import soccerteam.model.entity.ManagerEntity;
-import soccerteam.model.entity.MedicalStaffEntity;
-import soccerteam.model.entity.PlayerEntity;
-import soccerteam.model.entity.TeamEntity;
-import soccerteam.model.entity.TrainerEntity;
 
 @NoArgsConstructor
 @AllArgsConstructor

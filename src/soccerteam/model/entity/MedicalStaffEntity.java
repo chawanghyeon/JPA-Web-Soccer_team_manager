@@ -31,7 +31,7 @@ public class MedicalStaffEntity {
 	private int number;
 
 	@NotNull
-	@ManyToOne(targetEntity=TeamEntity.class)
+	@ManyToOne(targetEntity = TeamEntity.class)
 	@JoinColumn(name = "t_name")
 	private TeamEntity team;
 

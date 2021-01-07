@@ -18,18 +18,9 @@
  	</section>
 <br><br><br>
 <center>
+ 	
+<h1>${sessionScope.team}</h1>
 
-<h3>팀 상세보기</h3>
-<hr><p> 
- 
-<table border="1">
-	
- 		<h1>${sessionScope.team}</h1>
- 
-		
-</table>
-
-<br><br><br>
 &nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllPlayers">선수</a>
 
 &nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllManagers">감독</a>
@@ -37,6 +28,7 @@
 &nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllMedicalStaffs">의료진</a>
 
 &nbsp;&nbsp;&nbsp;<a href="soccerteam?command=getAllTrainers">트레이너</a>
+<div id="a"></div>
 <br><br><br>
 <form action="${pageContext.request.contextPath}/soccerteam" method="post">
 	<input type="hidden" name="command" value="deleteTeam">
