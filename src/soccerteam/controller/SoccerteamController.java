@@ -131,24 +131,23 @@ public class SoccerteamController extends HttpServlet {
 		session = null;
 		request.getRequestDispatcher("index.html").forward(request, response);
 	}
-
+	
 	// 모든 트레이너 검색
 	public void getAllTrainers(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	throws ServletException, IOException {
 		String url = "showError.jsp";
 		HttpSession session = request.getSession();
-
+		
 		try {
 			String team = (String) session.getAttribute("team");
-			request.setAttribute("peoples", service.getAllTrainers(team));
+			session.setAttribute("peoples", service.getAllTrainers(team));
 			log.trace("모든 트레이너 검색");
-			url = "trainer/list.jsp";
 		} catch (Exception s) {
 			log.trace(s.getMessage());
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();
+			request.getRequestDispatcher(url).forward(request, response);
 		}
-		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	// 트레이너 검색
@@ -252,10 +251,8 @@ public class SoccerteamController extends HttpServlet {
 			int number = ((PeopleDTO) session.getAttribute("people")).getNumber();
 
 			if (service.deleteTrainer(number)) {
-				String team = (String) session.getAttribute("team");
-				request.setAttribute("peoples", service.getAllTrainers(team));
 				log.trace("트레이너 삭제");
-				url = "trainer/list.jsp";
+				url = "team/detail.jsp";
 			} else {
 				log.trace("트레이너 삭제 실패");
 				request.setAttribute("errorMsg", "삭제 실패");
@@ -673,15 +670,14 @@ public class SoccerteamController extends HttpServlet {
 
 		try {
 			String team = (String) session.getAttribute("team");
-			request.setAttribute("peoples", service.getAllMedicalStaffs(team));
+			session.setAttribute("peoples", service.getAllMedicalStaffs(team));
 			log.trace("모든 의료진 검색");
-			url = "medicalStaff/list.jsp";
 		} catch (Exception s) {
 			log.trace("모든 의료진 검색 실패");
 			request.setAttribute("errorMsg", "모든 의료진 검색 실패");
 			s.printStackTrace();
+			request.getRequestDispatcher(url).forward(request, response);
 		}
-		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	// 의료진 검색
@@ -786,10 +782,8 @@ public class SoccerteamController extends HttpServlet {
 			int number = ((PeopleDTO) session.getAttribute("people")).getNumber();
 
 			if (service.deleteMedicalStaff(number)) {
-				String team = (String) session.getAttribute("team");
-				request.setAttribute("peoples", service.getAllMedicalStaffs(team));
 				log.trace("의료진 삭제");
-				url = "medicalStaff/list.jsp";
+				url = "team/detail.jsp";
 			} else {
 				log.trace("의료진 삭제 실패");
 				request.setAttribute("errorMsg", "삭제 실패");

@@ -30,7 +30,7 @@
 	<c:forEach items="${requestScope.peoples}" var="data">
 		 <tr>
 		 	<td>${data.team}</td>
-		 	<td><a href="${url}soccerteam?command=getPlayer&number=${data.number}">${data.number}</a></td>
+		 	<td><a href="${pageContext.request.contextPath}/soccerteam?command=getPlayer&number=${data.number}">${data.number}</a></td>
 		 	<td>${data.name}</td>
 		 	<td>${data.age}</td>
 		 	<td>${data.position}</td>

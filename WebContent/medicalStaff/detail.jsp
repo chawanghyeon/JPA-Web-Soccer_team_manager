@@ -40,7 +40,7 @@ ${requestScope.successMsg}
 
 <a href="soccerteam?command=deleteMedicalStaff">탈퇴하기</a>
 
-&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/login/detail.jsp">메인페이지</a>
+&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/team/detail.jsp">메인페이지</a>
 
 </center>
 </body>

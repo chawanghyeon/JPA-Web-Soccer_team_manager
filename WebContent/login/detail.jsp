@@ -20,30 +20,7 @@
 	<br>
 	<br>
 	<center>
-
-		${requestScope.successMsg}
-
-		<h3>메인페이지</h3>
-		<hr>
-		<p>
-		<table border="1">
-			<tr>
-				<th>사용자 ID</th>
-			</tr>
-			<tr>
-				<td>${sessionScope.userID}</td>
-			</tr>
-		</table>
-		<p>
-			<%-- <c:forEach items="${requestScope.allTeams}" var="data">
-					${data.team}<br>
-			</c:forEach> --%>
-
-
-
-
-
-
+			<h3>사용자 ID : ${sessionScope.userID}</h3>
 			<%
 				ArrayList<TeamDTO> list = (ArrayList<TeamDTO>) session.getAttribute("allTeams");
 				if (list != null) {
@@ -58,10 +35,6 @@
 					}
 				}
 			%>
-
-
-
-
 		<br> <br>
 		<form action="${pageContext.request.contextPath}/team/insert.jsp">
 			<input type="submit" value="팀 생성하기">
