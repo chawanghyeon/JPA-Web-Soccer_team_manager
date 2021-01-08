@@ -21,20 +21,20 @@ ${requestScope.successMsg}
 
 <h3>상세보기</h3>
 <hr><p> 
- 
-<table border="1">
-	<tr>
-		<th>팀 이름</th><th>번호</th><th>이름</th><th>나이</th><th>분야</th>
-	</tr>
- 	<tr>
- 		<td>${sessionScope.people.team}</td>
- 		<td>${sessionScope.people.number}</td>
- 		<td>${sessionScope.people.name}</td>
- 		<td>${sessionScope.people.age}</td>
- 		<td>${sessionScope.people.position}</td>
- 	</tr>
-</table>
-
+<div id="content">
+	<table border="1">
+		<tr>
+			<th>팀 이름</th><th>번호</th><th>이름</th><th>나이</th><th>분야</th>
+		</tr>
+		<tr>
+			<td>${sessionScope.people.team}</td>
+			<td>${sessionScope.people.number}</td>
+			<td>${sessionScope.people.name}</td>
+			<td>${sessionScope.people.age}</td>
+			<td>${sessionScope.people.position}</td>
+		</tr>
+	</table>
+</div>
 <br><br><br>
 <a href="soccerteam?command=requestUpdateTrainer">수정하기</a>
 
