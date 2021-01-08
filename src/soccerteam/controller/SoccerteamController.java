@@ -509,7 +509,7 @@ public class SoccerteamController extends HttpServlet {
 				String team = (String) session.getAttribute("team");
 				request.setAttribute("peoples", service.getAllManagers(team));
 				log.trace("감독 삭제");
-				url = "manager/list.jsp";
+				url = "team/detail.jsp";
 			} else {
 				log.trace("감독 삭제 실패");
 				request.setAttribute("errorMsg", "삭제 실패");

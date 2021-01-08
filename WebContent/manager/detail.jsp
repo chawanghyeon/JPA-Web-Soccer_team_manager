@@ -7,8 +7,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>상세보기</title>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
+    <script>
+      function managerUpdate() {
+        axios
+          .get('http://localhost/soccer_team_manager/manager/update.jsp')
+          .then((resData) => {
+            document.getElementById('content').innerHTML = resData.data;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+      function reset() {
+        document.getElementById('content').innerHTML = `
+				<table border="1">
+					<tr>
+						<th>팀 이름</th>
+						<th>번호</th>
+						<th>이름</th>
+						<th>나이</th>
+						<th>분야</th>
+					</tr>
+					<tr>
+						<td>${sessionScope.people.team}</td>
+						<td>${sessionScope.people.number}</td>
+						<td>${sessionScope.people.name}</td>
+						<td>${sessionScope.people.age}</td>
+						<td>${sessionScope.people.position}</td>
+					</tr>
+				</table>`;
+      }
+    </script>
 	<section >
   		<nav>
     		<jsp:include page="../logout.jsp"></jsp:include>
@@ -21,7 +54,7 @@ ${requestScope.successMsg}
 
 <h3>상세보기</h3>
 <hr><p> 
- 
+ <div id="content">
 <table border="1">
 	<tr>
 		<th>팀 이름</th><th>번호</th><th>이름</th><th>나이</th><th>분야</th>
@@ -34,9 +67,11 @@ ${requestScope.successMsg}
  		<td>${sessionScope.people.position}</td>
  	</tr>
 </table>
-
+</div>
 <br><br><br>
-<a href="soccerteam?command=requestUpdateManager">수정하기</a>
+<button onclick ="managerUpdate()">수정하기</button>
+<!-- <a href="soccerteam?command=requestUpdateManager">수정하기</a>
+-->
 
 <a href="soccerteam?command=deleteManager">탈퇴하기</a>
 
