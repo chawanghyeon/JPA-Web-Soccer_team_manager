@@ -8,8 +8,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import org.junit.Test;
-
 import soccerteam.model.dto.PeopleDTO;
 import soccerteam.model.entity.ManagerEntity;
 import soccerteam.model.util.DBUtil;

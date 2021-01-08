@@ -9,6 +9,29 @@
 <title>상세보기</title>
 </head>
 <body>
+	<script>
+		function medicalStaffs() {
+        axios
+          .get('http://localhost/soccer_team_manager/soccerteam', {
+            params: {
+              command: 'requestUpdateTrainer',
+            },
+          })
+          .then(() => {
+            axios
+              .get('http://localhost/soccer_team_manager/medicalStaff/list.jsp')
+              .then((resData) => {
+                document.getElementById('content').innerHTML = resData.data;
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+	</script>
 	<section >
   		<nav>
     		<jsp:include page="../logout.jsp"></jsp:include>

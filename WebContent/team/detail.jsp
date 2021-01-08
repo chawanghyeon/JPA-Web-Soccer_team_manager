@@ -11,18 +11,34 @@ import="java.util.ArrayList"%> <%@ page import="soccerteam.model.dto.TeamDTO"%>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       // 선수 상세보기 비동기 처리하는 함수 - 윤혜
-      function players() {
+      function step02() {
         axios
-          .get('http://localhost/soccer_team_manager/soccerteam', {
+          .get('response.jsp', {
             params: {
-              command: 'getAllPlayers', 
+              name: '유재석',
+              age: 40,
+            },
+          })
+          .then((resData) => {
+            console.log(resData.data.name);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+      // 감독 상세보기 비동기 처리하는 함수 - 혜성
+      function managers() {
+        axios
+          .get('http://localhost/JPA-Web-Soccer_team_manager/soccerteam', {
+            params: {
+              command: 'getAllManagers',
             },
           })
           .then(() => {
             axios
-              .get('http://localhost/soccer_team_manager/player/list.jsp') 
+              .get('http://localhost/JPA-Web-Soccer_team_manager/manager/list.jsp')
               .then((resData) => {
-                console.log(resData.data);
                 document.getElementById('content').innerHTML = resData.data;
               })
               .catch((error) => {
@@ -33,20 +49,18 @@ import="java.util.ArrayList"%> <%@ page import="soccerteam.model.dto.TeamDTO"%>
             console.log(error);
           });
       }
-
-      // 감독 상세보기 비동기 처리하는 함수 - 혜성
-
+      
       // 의료진 상세보기 비동기 처리하는 함수 - 왕현
       function medicalStaffs() {
         axios
-          .get('http://localhost/soccer_team_manager/soccerteam', {
+          .get('http://localhost/JPA-Web-Soccer_team_manager/soccerteam', {
             params: {
               command: 'getAllMedicalStaffs',
             },
           })
           .then(() => {
             axios
-              .get('http://localhost/soccer_team_manager/medicalStaff/list.jsp')
+              .get('http://localhost/JPA-Web-Soccer_team_manager/medicalStaff/list.jsp')
               .then((resData) => {
                 document.getElementById('content').innerHTML = resData.data;
               })
@@ -62,14 +76,14 @@ import="java.util.ArrayList"%> <%@ page import="soccerteam.model.dto.TeamDTO"%>
       // 트레이너 상세보기 비동기 처리하는 함수 - 왕현
       function trainers() {
         axios
-          .get('http://localhost/soccer_team_manager/soccerteam', {
+          .get('http://localhost/JPA-Web-Soccer_team_manager/soccerteam', {
             params: {
               command: 'getAllTrainers',
             },
           })
           .then(() => {
             axios
-              .get('http://localhost/soccer_team_manager/trainer/list.jsp')
+              .get('http://localhost/JPA-Web-Soccer_team_manager/trainer/list.jsp')
               .then((resData) => {
                 document.getElementById('content').innerHTML = resData.data;
               })

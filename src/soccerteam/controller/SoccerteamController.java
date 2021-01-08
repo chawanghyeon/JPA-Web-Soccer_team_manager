@@ -393,20 +393,18 @@ public class SoccerteamController extends HttpServlet {
 	// 모든 매니저 검색
 	public void getAllManagers(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "showError.jsp";
 		HttpSession session = request.getSession();
 
 		try {
 			String team = (String) session.getAttribute("team");
-			request.setAttribute("peoples", service.getAllManagers(team));
+			session.setAttribute("peoples", service.getAllManagers(team));
 			log.trace("모든 감독 검색");
-			url = "manager/list.jsp";
 		} catch (Exception s) {
 			log.trace("모든 감독 검색 실패");
 			request.setAttribute("errorMsg", "모든 감독 검색 실패");
 			s.printStackTrace();
+			request.getRequestDispatcher("showError.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	// 매니저 검색
