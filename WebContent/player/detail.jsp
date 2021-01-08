@@ -7,24 +7,57 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>상세보기</title>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-	<section> <nav> <jsp:include page="../logout.jsp"></jsp:include>
-	</nav> </section>
-	<br>
-	<br>
-	<br>
-	<center>
+	<script>
+function playerUpdate(){
+	axios
+	.get('http://localhost/soccer_team_manager/trainer/update.jsp')
+	.then((resData) =>{
+		document.getElementById('content').innerHTML = resData.data;
+	})
+	.catch((error) => {
+		console.log(error);
+	})
+}
 
+function reset(){
+	document.getElementById('content').innerHTML = `
+	<table border="1">
+		  <tr>
+        <th>팀 이름</th>
+        <th>번호</th>
+        <th>이름</th>
+        <th>나이</th>
+        <th>분야</th>
+      </tr>
+      <tr>
+        <td>${sessionScope.people.team}</td>
+        <td>${sessionScope.people.number}</td>
+        <td>${sessionScope.people.name}</td>
+        <td>${sessionScope.people.age}</td>
+        <td>${sessionScope.people.position}</td>
+      </tr>
+    </table>`;
+	
+}
+
+</script>
+	<section> 
+	<nav> 
+	<jsp:include page="../logout.jsp"></jsp:include>
+	</nav> </section>
+	<br />
+	<br />
+	<br />
+	<center>
 		${requestScope.successMsg}
 
 		<h3>상세보기</h3>
 		<hr>
-		<p>
-		<form action="soccerteam?command=updatePlayer" method="post">
-			<input type="hidden" name="number"
-				value="${sessionScope.people.number}">
-
+		<p></p>
+		<div id="content">
 			<table border="1">
 				<tr>
 					<th>팀 이름</th>
@@ -33,7 +66,6 @@
 					<th>나이</th>
 					<th>분야</th>
 					<th>포지션 수정</th>
-			
 				</tr>
 				<tr>
 					<td>${sessionScope.people.team}</td>
@@ -41,19 +73,15 @@
 					<td>${sessionScope.people.name}</td>
 					<td>${sessionScope.people.age}</td>
 					<td>${sessionScope.people.position}</td>
-					<td><input type="text" name="position"
-					value="${sessionScope.people.position}"></td>
-					<td colspan="5"><input type="submit" value="수정">
-						&nbsp;&nbsp;&nbsp; <input type="reset" value="취소"></td>
+					<td></td>
+				  <td><button onclick="playerUpdate()">수정하기</button></td>
 				</tr>
-
 			</table>
-		</form>
-
-		<br>
-		<br>
-		<br> 
-		<a href="soccerteam?command=deletePlayer">탈퇴하기</a> &nbsp;&nbsp;&nbsp;
+		</div>
+		<br /><br /><br />
+		
+		<a href="soccerteam?command=deletePlayer">탈퇴하기</a>
+		 &nbsp;&nbsp;&nbsp;
 		<a href="${pageContext.request.contextPath}/login/detail.jsp">메인페이지</a>
 
 
