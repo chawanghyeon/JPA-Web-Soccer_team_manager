@@ -48,7 +48,6 @@ import="java.util.ArrayList"%> <%@ page import="soccerteam.model.dto.TeamDTO"%>
             axios
               .get('http://localhost/soccer_team_manager/medicalStaff/list.jsp')
               .then((resData) => {
-                console.log(resData.data);
                 document.getElementById('content').innerHTML = resData.data;
               })
               .catch((error) => {
@@ -72,7 +71,6 @@ import="java.util.ArrayList"%> <%@ page import="soccerteam.model.dto.TeamDTO"%>
             axios
               .get('http://localhost/soccer_team_manager/trainer/list.jsp')
               .then((resData) => {
-                console.log(resData.data);
                 document.getElementById('content').innerHTML = resData.data;
               })
               .catch((error) => {

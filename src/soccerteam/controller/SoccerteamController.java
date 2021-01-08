@@ -532,7 +532,7 @@ public class SoccerteamController extends HttpServlet {
 
 		try {
 			String userID = (String) session.getAttribute("userID");
-			request.setAttribute("allTeams", service.getAllTeam(userID));
+			session.setAttribute("allTeams", service.getAllTeam(userID));
 			log.trace("모든 팀 검색");
 			url = "team/list.jsp";
 		} catch (Exception s) {
@@ -647,7 +647,7 @@ public class SoccerteamController extends HttpServlet {
 
 			if (service.deleteTeam(team)) {
 				String userID = (String) session.getAttribute("userID");
-				request.setAttribute("allTeams", service.getAllTeam(userID));
+				session.setAttribute("allTeams", service.getAllTeam(userID));
 				log.trace("팀 삭제");
 				url = "login/detail.jsp";
 			} else {
@@ -665,7 +665,6 @@ public class SoccerteamController extends HttpServlet {
 	// 모든 의료진 검색
 	public void getAllMedicalStaffs(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "showError.jsp";
 		HttpSession session = request.getSession();
 
 		try {
@@ -676,7 +675,7 @@ public class SoccerteamController extends HttpServlet {
 			log.trace("모든 의료진 검색 실패");
 			request.setAttribute("errorMsg", "모든 의료진 검색 실패");
 			s.printStackTrace();
-			request.getRequestDispatcher(url).forward(request, response);
+			request.getRequestDispatcher("showError.jsp").forward(request, response);
 		}
 	}
 
