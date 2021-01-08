@@ -805,14 +805,14 @@ public class SoccerteamController extends HttpServlet {
 		try {
 			String team = (String) session.getAttribute("team");
 			System.out.println(team);
-			request.setAttribute("peoples", service.getAllPlayers(team));
+			session.setAttribute("peoples", service.getAllPlayers(team));
 			log.trace("모든 선수 검색");
-			url = "player/list.jsp";
 		} catch (Exception s) {
+			log.trace("모든 선수 검색 실패");
 			request.setAttribute("errorMsg", "모든 선수 검색 실패");
 			s.printStackTrace();
+			request.getRequestDispatcher(url).forward(request, response);
 		}
-		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	// 선수 검색

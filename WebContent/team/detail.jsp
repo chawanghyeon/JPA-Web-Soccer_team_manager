@@ -11,16 +11,23 @@ import="java.util.ArrayList"%> <%@ page import="soccerteam.model.dto.TeamDTO"%>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       // 선수 상세보기 비동기 처리하는 함수 - 윤혜
-      function step02() {
+      function players() {
         axios
-          .get('response.jsp', {
+          .get('http://localhost/soccer_team_manager/soccerteam', {
             params: {
-              name: '유재석',
-              age: 40,
+              command: 'getAllPlayers', 
             },
           })
-          .then((resData) => {
-            console.log(resData.data.name);
+          .then(() => {
+            axios
+              .get('http://localhost/soccer_team_manager/player/list.jsp') 
+              .then((resData) => {
+                console.log(resData.data);
+                document.getElementById('content').innerHTML = resData.data;
+              })
+              .catch((error) => {
+                console.log(error);
+              });
           })
           .catch((error) => {
             console.log(error);
