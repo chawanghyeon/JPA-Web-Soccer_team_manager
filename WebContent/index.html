@@ -1,29 +1,37 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>꿀단지 축구팀 관리 프로그램</title>
-</head>
-<body>
-	<br>
-	<br>
-	<br>
-
-	<center>
-		<h3>로그인 화면</h3>
-		<p>
-		<p>
-		<form action="soccerteam?command=getLogin" method="post">
-			&nbsp;&nbsp;&nbsp;<p>
-			ID : <input type="text" name="userID"><input type="hidden"><p>
-			PW : <input type="password" name="userPW"><input type="hidden"><p>
-			<input type="submit" value="로그인">
-		</form>
-		<form action="login/insert.jsp" method="post">
-		&nbsp;&nbsp;&nbsp;<button onclick="login/insert">회원가입</button>
-		</form>
-		<p>
-	</center>
-
-</body>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>꿀단지 축구팀 관리 프로그램</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="soccer">
+          <div class="circle"></div>
+          <img src="./soccer.gif" alt="soccer" />
+        </div>
+        <div class="info">
+          <h1 class="title">Login</h1>
+          <h3>It's a soccer team management program.</h3>
+          <form action="soccerteam?command=getLogin" method="post">
+            <div class="login">
+              ID<input type="text" name="userID"/>
+              PW<input type="password" name="userPW"/>
+              <input type="submit" value="로그인" />
+            </div>
+          </form>
+          <div class="purchase">
+            <button onclick="login/insert">회원가입</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
 </html>
