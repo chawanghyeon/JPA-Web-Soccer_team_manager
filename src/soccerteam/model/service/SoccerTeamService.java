@@ -56,7 +56,7 @@ public class SoccerTeamService {
 		} catch(Exception e) {
 			throw new MessageException("로그인 실패");
 		}
-		return login;
+		return null;
 	}
 
 	public boolean addLogin(LoginDTO login) throws Exception {
