@@ -10,6 +10,8 @@ import="java.util.ArrayList"%> <%@ page import="soccerteam.model.dto.TeamDTO"%>
     <title>팀 상세보기 화면</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+    
+    
       // 선수 상세보기 비동기 처리하는 함수 - 윤혜
        function players() {
         axios
