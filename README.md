@@ -1,7 +1,3 @@
-<details>
-<summary>Korean</summary>
-<div markdown="1">
-
 # WEB_JPA MINI PROJECT : Control하다
 
 
@@ -15,9 +11,7 @@
 
 [PROTOTYPE LINK](https://ovenapp.io/project/Bw3y8pT5PFoud5JYHMvDrt6okzKgig7T#bavCk)
 
-<details>
-<summary>Project 주제</summary>
-<div markdown="1">
+## Project 주제
 
 <p><p></p>
 팀 꿀단지는 'Control하다'를 만들었습니다. 
@@ -29,23 +23,16 @@
          관리 프로그램입니다. :computer:  <br>
 
 <p><p>
-	
-</div>
-</details>
 
-<details>
-<summary>Project 주제 선정 과정</summary>
-<div markdown="1">
+## Project 주제 선정 과정
 
-Web과 데이터베이스의 연결을 학습하기 위해 간단한 관리 프로그램을 만들었습니다.
-</div>
-</details>
+Web과 데이터베이스의 연결을 학습하고 간단한 CSS와 Javascript 응용을 위해 간단한 관리 프로그램을 만들었습니다.
 
-<details>
-<summary>기술 스택</summary>
-<div markdown="1">
+## 기술 스택
 
 - HTML
+- CSS
+- Javascript
 - Lombok
 - Java
 - Oracle
@@ -53,12 +40,8 @@ Web과 데이터베이스의 연결을 학습하기 위해 간단한 관리 프�
 - SQL
 - servlet
 - JSP
-</div>
-</details>
 
-<details>
-<summary>STRUCTURE</summary>
-<div markdown="1">
+## STRUCTURE
 
 ![image](https://user-images.githubusercontent.com/53591258/103433644-6e756900-4c38-11eb-8c58-37fe0e4d236c.png)
 
@@ -78,14 +61,8 @@ Web과 데이터베이스의 연결을 학습하기 위해 간단한 관리 프�
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: Giovanni Cerra 코치의 정보 수정   <br>
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;&nbsp;:pencil: 모든 감독 정보 확인하기  <br>
 <br>
-</div>
-</details>
 
-<details>
-<summary>Service</summary>
-<div markdown="1">
-
-<div>
+## Service
 
 #### 선수관리 및 선수 페이지  <br>
 :clock8: 선수의 정보를 등록, 확인하고 업데이트 및 삭제를 할 수 있습니다.<br>
@@ -104,12 +81,8 @@ Web과 데이터베이스의 연결을 학습하기 위해 간단한 관리 프�
 #### 의료진 관리 및 의료진 페이지 <br>
 :clock8: 트레이너의 정보를 등록, 확인하고 이력을 확인할 수 있습니다. <br>
 <p><p></p>
-</div>
-</details>
 
-<details>
-<summary>시나리오</summary>
-<div markdown="1">
+## 시나리오
 
 >#### CASE 1. 토트넘선수관리팀에 입사한 왕현씨 <br>
 >연말은 FA가 많다.<br>
@@ -122,36 +95,30 @@ Web과 데이터베이스의 연결을 학습하기 위해 간단한 관리 프�
 >꾸준히 팀의 신임을 받은 Giovanni Cerra 코치는 내년부터 감독으로 승진하게 되었다.<br>
 >Giovanni Cerra 코치의 포지션을 변경해야한다.<p><br>
 ><br>
-</div>
-</details>
 
 <details>
 <summary>How to use?</summary>
 <div markdown="1">
 
 1. 우선 회원가입 후 로그인합니다  
-    ![image](https://user-images.githubusercontent.com/53591258/103435893-d3d95200-4c58-11eb-8d7d-f02f5fd018d2.png)  
-    ![image](https://user-images.githubusercontent.com/53591258/103435905-f53a3e00-4c58-11eb-81c5-9b4c770e41ae.png)  
+	![로그인](https://user-images.githubusercontent.com/53591258/104253961-11d84080-54b9-11eb-8885-d086e4f05d64.PNG)  
+	![loginDetail](https://user-images.githubusercontent.com/53591258/104253968-17358b00-54b9-11eb-9083-47176b834b1f.PNG)  
 2. 팀 생성 후 팀 상세보기로 이동 후 감독, 선수, 의료진, 트레이너 중 하나를 선택해 이동합니다  
-    ![image](https://user-images.githubusercontent.com/53591258/103435907-0f741c00-4c59-11eb-8081-0beee80a9c39.png)  
-    ![image](https://user-images.githubusercontent.com/53591258/103435914-2b77bd80-4c59-11eb-9a30-a6b18a8ae687.png)  
-    ![image](https://user-images.githubusercontent.com/53591258/103435918-3f232400-4c59-11eb-886d-c5efbbf434ca.png)  
+	![teamDetail](https://user-images.githubusercontent.com/53591258/104253973-1bfa3f00-54b9-11eb-8ff8-a92abd71e209.PNG)  
+	![medical](https://user-images.githubusercontent.com/53591258/104253981-21f02000-54b9-11eb-946b-c9e2b2f48dd7.PNG)  
+	![add](https://user-images.githubusercontent.com/53591258/104253984-2583a700-54b9-11eb-9179-1e9418acec7a.PNG)  
 3. 팀 내의 해당 구성원 리스트에서 번호를 클릭하거나 새로운 구성원을 생성하면 구성원 상세보기로 이동합니다  
-    ![image](https://user-images.githubusercontent.com/53591258/103435922-55c97b00-4c59-11eb-8e21-bdd40e81fb6b.png)  
+	![medicalDetail](https://user-images.githubusercontent.com/53591258/104253990-29afc480-54b9-11eb-860d-ace65609c034.PNG)  
 4. 구성원 상세보기 안에서 수정 삭제 가능합니다  
-    ![image](https://user-images.githubusercontent.com/53591258/103435951-e6a05680-4c59-11eb-9a28-d0ab06688013.png)  
-    ![image](https://user-images.githubusercontent.com/53591258/103435961-f9b32680-4c59-11eb-9ac2-183e3485bad9.png)  
+	![update](https://user-images.githubusercontent.com/53591258/104254001-3207ff80-54b9-11eb-9ade-237fa4f46322.PNG)  
+	![afterDelete](https://user-images.githubusercontent.com/53591258/104254009-37654a00-54b9-11eb-828b-d07d4272c36f.PNG)  
     삭제한 후 구성원 리스트  
-5. 오른쪽 상단에 위치한 로그아웃 버튼을 누르면 로그아웃 후 로그인 페이지로 이동합니다
+5. 오른쪽 상단에 위치한 로그아웃 버튼을 누르면 로그아웃 후 로그인 페이지로 이동합니다  
 6. 자유롭게 즐기기!  
-
-
 </div>
 </details>
 
-<details>
-<summary>ISSUE</summary>
-<div markdown="1">
+## ISSUE
 
 1. 구조  
 	- 맨처음 sql table구조를 설계할 때 제약 조건을 잘 못 설정했습니다.
@@ -184,11 +151,6 @@ ex) tName(X), tname(O)
 em.remove(em.find(LoginEntity.class, userID));
 ```
 context에 저장하지 않고 바로 삭제하려 해서 에러가 발생했습니다.
-</div>
-</details>
-
-</div>
-</details>
 
 <details>
 <summary>English</summary>
@@ -208,6 +170,8 @@ We have created a simple administrative program to learn the connection between 
 ## Technical stack
 
 - HTML
+- CSS
+-Javascript
 - Lombok
 - Java
 - Oracle
@@ -229,17 +193,17 @@ We have created a simple administrative program to learn the connection between 
 <div markdown="1">
 
 1. First, sign in after signing up for membership.  
-    ![image](https://user-images.githubusercontent.com/53591258/103435893-d3d95200-4c58-11eb-8d7d-f02f5fd018d2.png)  
-    ![image](https://user-images.githubusercontent.com/53591258/103435905-f53a3e00-4c58-11eb-81c5-9b4c770e41ae.png)  
+    ![로그인](https://user-images.githubusercontent.com/53591258/104253961-11d84080-54b9-11eb-8885-d086e4f05d64.PNG)  
+	![loginDetail](https://user-images.githubusercontent.com/53591258/104253968-17358b00-54b9-11eb-9083-47176b834b1f.PNG)  
 2. After creating a team, go to the Team Details view and select one of the coaches, athletes, medics, or trainers to move.  
-    ![image](https://user-images.githubusercontent.com/53591258/103435907-0f741c00-4c59-11eb-8081-0beee80a9c39.png)  
-    ![image](https://user-images.githubusercontent.com/53591258/103435914-2b77bd80-4c59-11eb-9a30-a6b18a8ae687.png)  
-    ![image](https://user-images.githubusercontent.com/53591258/103435918-3f232400-4c59-11eb-886d-c5efbbf434ca.png)  
+    ![teamDetail](https://user-images.githubusercontent.com/53591258/104253973-1bfa3f00-54b9-11eb-8ff8-a92abd71e209.PNG)  
+	![medical](https://user-images.githubusercontent.com/53591258/104253981-21f02000-54b9-11eb-946b-c9e2b2f48dd7.PNG)  
+	![add](https://user-images.githubusercontent.com/53591258/104253984-2583a700-54b9-11eb-9179-1e9418acec7a.PNG)  
 3. Click a number in the list of appropriate members within a team, or create a new member, and you will be taken to the Members Details view.  
-    ![image](https://user-images.githubusercontent.com/53591258/103435922-55c97b00-4c59-11eb-8e21-bdd40e81fb6b.png)  
+    ![medicalDetail](https://user-images.githubusercontent.com/53591258/104253990-29afc480-54b9-11eb-860d-ace65609c034.PNG)  
 4. You can modify and delete it in the Membership Details view.  
-    ![image](https://user-images.githubusercontent.com/53591258/103435951-e6a05680-4c59-11eb-9a28-d0ab06688013.png)  
-    ![image](https://user-images.githubusercontent.com/53591258/103435961-f9b32680-4c59-11eb-9ac2-183e3485bad9.png)  
+    ![update](https://user-images.githubusercontent.com/53591258/104254001-3207ff80-54b9-11eb-9ade-237fa4f46322.PNG)  
+	![afterDelete](https://user-images.githubusercontent.com/53591258/104254009-37654a00-54b9-11eb-828b-d07d4272c36f.PNG)  
     List of members after deletion  
 5. Press the Logout button located in the upper right corner to logout and go to the login page.
 6. Enjoy Yourself Freely!  
