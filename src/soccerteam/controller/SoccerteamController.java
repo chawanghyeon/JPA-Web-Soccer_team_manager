@@ -38,7 +38,10 @@ public class SoccerteamController extends HttpServlet {
 				log.trace(command);
 				if (command.equals("getLogin")) {// 특정 관리자 정보 검색
 					getLogin(request, response);
-				} else if ((String) session.getAttribute("userID") != null && (String) session.getAttribute("userPW") != null){
+				} else if (command.equals("addLogin")) {
+					addLogin(request, response);
+				} else if ((String) session.getAttribute("userID") != null
+						&& (String) session.getAttribute("userPW") != null) {
 					if (command.equals("getAllTrainers")) {// 모든 트레이너 검색
 						getAllTrainers(request, response);
 					} else if (command.equals("getTrainer")) {// 특정 트레이너 정보 검색
@@ -51,8 +54,6 @@ public class SoccerteamController extends HttpServlet {
 						updateTrainer(request, response);
 					} else if (command.equals("deleteTrainer")) {// 트레이너 삭제
 						deleteTrainer(request, response);
-					} else if (command.equals("addLogin")) {// 관리자 추가 등록
-						addLogin(request, response);
 					} else if (command.equals("requestUpdateLogin")) {// 관리자 정보 수정요청
 						requestUpdateLogin(request, response);
 					} else if (command.equals("updateLogin")) {// 관리자 정보 수정
@@ -131,13 +132,13 @@ public class SoccerteamController extends HttpServlet {
 		session = null;
 		request.getRequestDispatcher("index.html").forward(request, response);
 	}
-	
+
 	// 모든 트레이너 검색
 	public void getAllTrainers(HttpServletRequest request, HttpServletResponse response)
-	throws ServletException, IOException {
+			throws ServletException, IOException {
 		String url = "showError.jsp";
 		HttpSession session = request.getSession();
-		
+
 		try {
 			String team = (String) session.getAttribute("team");
 			session.setAttribute("peoples", service.getAllTrainers(team));
@@ -286,12 +287,11 @@ public class SoccerteamController extends HttpServlet {
 				session.setAttribute("userID", userID);
 				session.setAttribute("userPW", userPW);
 				url = "login/detail.jsp";
-			} else if (session.getAttribute("userID") != null) {
+			} else if((String)session.getAttribute("userID") != null){
 				log.trace("메인페이지 이동");
-				userID = (String) session.getAttribute("userID");
-				session.setAttribute("allTeams", service.getAllTeam(userID));
+				session.setAttribute("allTeams", service.getAllTeam((String)session.getAttribute("userID")));
 				url = "login/detail.jsp";
-			} else {
+			}else{
 				log.trace("존재하지 않는 관리자입니다.");
 				request.setAttribute("errorMsg", "존재하지 않는 관리자입니다.");
 			}
@@ -308,7 +308,7 @@ public class SoccerteamController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		HttpSession session = request.getSession();
-
+		System.out.println("add");
 		String userID = request.getParameter("userID");
 		String userPW = request.getParameter("userPW");
 
@@ -321,7 +321,7 @@ public class SoccerteamController extends HttpServlet {
 					session.setAttribute("userPW", userPW);
 					request.setAttribute("successMsg", "가입 완료");
 					log.trace("관리자" + login.toString() + "가입 완료");
-					url = "login/detail.jsp";
+					url = "index.html";
 				} else {
 					log.trace("관리자" + login.toString() + "가입 실패");
 					request.setAttribute("errorMsg", "다시 시도하세요");
@@ -859,7 +859,7 @@ public class SoccerteamController extends HttpServlet {
 					request.setAttribute("peoples", service.getAllPlayers(team));
 					request.setAttribute("successMsg", "가입 완료");
 					log.trace("선수 가입");
-					url = "player/list.jsp";
+					url = "team/detail.jsp";
 				} else {
 					log.trace("선수 가입 실패");
 					request.setAttribute("errorMsg", "다시 시도하세요");
@@ -919,7 +919,7 @@ public class SoccerteamController extends HttpServlet {
 			if (service.deletePlayer(number, team)) {
 				request.setAttribute("peoples", service.getAllPlayers(team));
 				log.trace("선수 삭제");
-				url = "player/list.jsp";
+				url = "team/detail.jsp";
 			} else {
 				log.trace("선수 삭제 실패");
 				request.setAttribute("errorMsg", "삭제 실패");

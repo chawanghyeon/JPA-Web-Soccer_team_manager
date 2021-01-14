@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 		<form action="soccerteam?command=updatePlayer" method="post">
 		<input type="hidden" name="number" value="${sessionScope.people.number}">
-			<table border="1">
+			<table class="type11" border="1">
 				<thead>
 					<tr>
 						<th>팀 이름</th>
@@ -18,7 +18,6 @@
 					 	<td>${sessionScope.people.age}</td>
 					 	<td><input type="text" name="position" value="${sessionScope.people.position}"></td>
 					</tr>
-
 					<tr>
 						<td colspan="5"><input type="submit" value="수정">
 							&nbsp;&nbsp;&nbsp; <input type="reset" value="취소"></td>

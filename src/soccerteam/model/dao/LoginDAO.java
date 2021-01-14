@@ -31,7 +31,7 @@ public class LoginDAO {
 		boolean result = false;
 
 		try {
-			em.persist(login.toEntity());
+			em.createNativeQuery("insert into logins (USER_ID, USER_PW) values ("+login.getUserID()+", "+login.getUserPW()+")").executeUpdate();
 			tx.commit();
 
 			result = true;
