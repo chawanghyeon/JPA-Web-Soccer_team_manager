@@ -10,8 +10,6 @@ import="java.util.ArrayList"%> <%@ page import="soccerteam.model.dto.TeamDTO"%>
     <title>팀 상세보기 화면</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-    
-    
       // 선수 상세보기 비동기 처리하는 함수 - 윤혜
       function players() {
         axios
@@ -45,9 +43,7 @@ import="java.util.ArrayList"%> <%@ page import="soccerteam.model.dto.TeamDTO"%>
           })
           .then(() => {
             axios
-              .get(
-                'http://localhost/soccer_team_manager/manager/list.jsp'
-              )
+              .get('http://localhost/soccer_team_manager/manager/list.jsp')
               .then((resData) => {
                 document.getElementById('content').innerHTML = resData.data;
               })
@@ -70,9 +66,7 @@ import="java.util.ArrayList"%> <%@ page import="soccerteam.model.dto.TeamDTO"%>
           })
           .then(() => {
             axios
-              .get(
-                'http://localhost/soccer_team_manager/medicalStaff/list.jsp'
-              )
+              .get('http://localhost/soccer_team_manager/medicalStaff/list.jsp')
               .then((resData) => {
                 document.getElementById('content').innerHTML = resData.data;
               })
@@ -95,9 +89,7 @@ import="java.util.ArrayList"%> <%@ page import="soccerteam.model.dto.TeamDTO"%>
           })
           .then(() => {
             axios
-              .get(
-                'http://localhost/soccer_team_manager/trainer/list.jsp'
-              )
+              .get('http://localhost/soccer_team_manager/trainer/list.jsp')
               .then((resData) => {
                 document.getElementById('content').innerHTML = resData.data;
               })
@@ -124,7 +116,10 @@ import="java.util.ArrayList"%> <%@ page import="soccerteam.model.dto.TeamDTO"%>
       <div class="card">
         <div class="soccer">
           <div class="circle"></div>
-          <img src="http://localhost/soccer_team_manager/soccer.gif" alt="soccer" />
+          <img
+            src="http://localhost/soccer_team_manager/soccer.gif"
+            alt="soccer"
+          />
         </div>
         <div class="info">
           <h1 class="title">${sessionScope.team}</h1>
